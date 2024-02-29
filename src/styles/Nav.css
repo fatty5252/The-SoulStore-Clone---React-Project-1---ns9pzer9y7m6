@@ -75,6 +75,7 @@
   }
   .bottomNavLeft {
     display: flex;
+    font-size: 13px;
     height: 100%;
     align-items: center;
   }
@@ -84,7 +85,7 @@
     display: flex;
     position: relative;
     align-items: center;
-    font-size: 18px;
+    /* font-size: 18px; */
     font-weight: 400;
     height: 3rem;
     margin-right:20px;
@@ -108,5 +109,6 @@
   .bottomNavRight {
     font-size: 6rem;
     margin-right: 20px;
+    font-size: 20px;
 
   }
