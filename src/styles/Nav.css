@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* .logoNav {
+    position: absolute;
+  } */
+  
+  .logoNav img {
+    height: 4rem;
+    margin-left: 0px;
+  }
+  .topBottomNav {
+    flex-grow: 1;
+  }
+  .topNav {
+    /* height: 4rem; */
+    /* padding: 10px; */
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding-left: 5rem;
+    background-color: #E11B23;
+  }
+  .flex{
+    display: flex;
+    gap: 10px;
+
+  }
+  .topNavLeft {
+    display: flex;
+    margin-left: 120px;
+  }
+  .topNavLeftItem{
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 700;
+    border-right: 1px solid black;
+    padding: 10px;
+  }
+  .topNavLeftItem:nth-child(1){
+    border-left: 1px solid black;
+  }
+  .topNavLeftItem:hover{
+    background-color: white;
+  }
+  
+  .topNavRight { 
+
+    font-size: 1rem;
+    margin-right: 20px;
+  }
+  .bottomNav {
+    background-color: white;
+    /* border: 2px solid black; */
+    height: 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 3rem;
+  }
+  .bottomNavLeft {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+  .categoryParent {
+    margin-right: 0.5rem;
+    height: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 400;
+    height: 3rem;
+    margin-right:20px;
+
+  }
+  /* .categoryUnderline { */
+  .categoryParent::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    background-color: red;
+    height: 0.2rem;
+    bottom: 0;
+    display: none;
+  }
+  .categoryParent:hover::after {
+    /* background-color: aqua; */
+    /* border-bottom: 5px solid red; */
+    display: block;
+  }
+  .bottomNavRight {
+    font-size: 6rem;
+    margin-right: 20px;
+
+  }
