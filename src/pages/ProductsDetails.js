@@ -1,9 +1,102 @@
 import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import "../styles/ProductDetails.css";
+import { CiHeart } from "react-icons/ci";
 
 export default function ProductsDetails() {
+
+  const [getSize, setSize] = useState("");
+  const [quantity, setQuantity] = useState(0);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  let id = searchParams.get("id");
+  //  console.log(id);
+   
+  const [productDetails, setProductDetails] = useState('');
+
+  useEffect(()=>{
+    fetchIdDetails();
+  },[])
+
+  const fetchIdDetails = async()=>{
+    try {
+      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`,{
+        headers: {
+          projectId: "rhxg8aczyt09"
+        }
+      });
+      // console.log(responce.data.data);
+      setProductDetails(responce.data.data)
+    }
+    catch(err){
+      console.log("Error shows ", err);
+    }
+  }
+const selctSizeHandler=(size)=>{
+  setSize(size);
+}
+console.log(typeof(getSize));
+const selctQuantityHandler = (event) => {
+  const selectedQuantity = parseInt(event.target.value);
+  setQuantity(selectedQuantity);
+};
+// console.log(quantity);
+const navigate = useNavigate();
+
+const navigateToCart=()=>{
+  navigate(`/Men/ProductsDetails/ProductCart?id=${id}&size=${getSize}&quantity=${quantity}`);
+}
+
+  // console.log(id);
   return (
-    <div>
-      ProductsDetails
+    
+    <div className='main-container'>
+      <div className='left-container'>
+        {productDetails &&
+          productDetails.images.map((itemImage,index)=>(
+            <img className='img-container' key={index} src={itemImage}/>
+          ))
+        }
+      
+      </div>
+      <div className='right-container'>
+        <p className='name'>{productDetails.name}</p>
+        <p className='category'>{productDetails.subCategory}</p>
+        <hr/>
+        <p className='brand bold'>Brand: {productDetails.brand}</p>
+        <p className='price bold'>₹ {productDetails.price}</p>
+        <p>Please select a size.</p>
+        <div className='size-parent'>
+         {productDetails && productDetails.size.map((itemSize,index)=>(
+          <p onClick={()=>selctSizeHandler(itemSize)} key={index} className={`size ${getSize==itemSize? 'activSize': ""}`}>{itemSize}</p>
+        ))}
+        </div>
+        <p className='color bold'>Color: {productDetails.color}</p>
+        <p className='rating bold'>Ratings: {productDetails.ratings}/5.0</p>
+        <div className='quantity bold'>Quantity &nbsp;
+          <select onChange={(event)=>selctQuantityHandler(event)} value={quantity} name='quantity'>
+            <option value={1}>1</option>
+            <option value={2}>2</option>
+            <option value={3}>3</option>
+            <option value={4}>4</option>
+            <option value={5}>5</option>
+            <option value={6}>6</option>
+            <option value={7}>7</option>
+            <option value={8}>8</option>
+            <option value={9}>9</option>
+            <option value={10}>10</option>
+          </select>
+        </div>
+        <div className='btn-container'>
+          <button onClick={()=>navigateToCart()} className='cart-btn'>ADD TO CART</button>
+          <button className='wish-btn'><CiHeart />ADD TO WISHlIST</button>
+        </div>
+        
+        
+      </div>
     </div>
   )
 }

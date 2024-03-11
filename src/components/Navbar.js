@@ -13,13 +13,23 @@ import { Link } from 'react-router-dom';
 
 
 
-function Navbar() {
+export default function Navbar() {
 
-  const { getToken, getName, TokenHandler, NameHandler } = useUser();
+  const { getToken, getName, setNewToken, token, TokenHandler, NameHandler } = useUser();
+  
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
+ 
+    const toggleSearchBar = () => {
+      setIsSearchBarOpen(!isSearchBarOpen);
+    };
+  
 
   const logOutHandler = () => {
     TokenHandler(null);
     NameHandler(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    setNewToken("")
   }
 
   const [getData, setData] = useState([]);
@@ -80,13 +90,12 @@ function Navbar() {
                 }
               </div>
               <div className="bottomNavRight flex">
-                <div className="categoryParent">
-                  <span>
-                    {/* <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form> */}
+                <div className="categoryParent search-container">
+                
+                  <span className="search-icon" onClick={()=>toggleSearchBar()}>
                     <FaSearch /></span>
+                    {isSearchBarOpen && <span className="search-bar">
+                      <input type="search" placeholder="Searchbar..."/></span>}
                   {/* <div className="categoryUnderline" /> */}
                 </div>
                 <div className="categoryParent">
@@ -96,11 +105,11 @@ function Navbar() {
                 <ul className="navbar-nav mr-auto">
                 <li className="nav-item dropdown my-2 my-lg-0 left-nav" >                 
                   <div className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
-                    {getToken ? <span><FaRegUser /> {getName.toUpperCase()}</span> : <span><FaRegUser /></span>}
+                    {localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name").toUpperCase()}</span> : <span><FaRegUser /></span>}
                   </div>
                   <div className="dropdown-menu">
-                    {getToken && <><Link className="dropdown-item" onClick={logOutHandler} to="/login">Logout</Link></>}
-                    {!getToken && <>
+                    {localStorage.getItem("token") && <><Link className="dropdown-item" onClick={logOutHandler} to="/login">Logout</Link></>}
+                    {!localStorage.getItem("token") && <>
                       <Link className="dropdown-item" to="/login">Login</Link>
                       <Link className="dropdown-item" to="/register">Register</Link>
                     </>}
@@ -122,5 +131,3 @@ function Navbar() {
     </>
   )
 }
-
-export default Navbar

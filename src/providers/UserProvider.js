@@ -7,6 +7,7 @@ export const UserProvider=({children})=> {
 
     const [getToken, setToken] = useState(null);
     const [getName, setName] = useState(null);
+    const [token, setNewToken] = useState(localStorage.getItem("token"));
 
     const TokenHandler=(data)=>{
         setToken(data);
@@ -19,6 +20,8 @@ export const UserProvider=({children})=> {
     const object = {
       getToken,
       getName,
+      token,
+      setNewToken,
       TokenHandler,
       NameHandler
     }

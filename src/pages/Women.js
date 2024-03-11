@@ -31,9 +31,9 @@ export default function Women() {
 console.log("men component loaded");
   return (
     <>
-    <div className='global-container'>
-    <div className='container'>
-      <img src='/images/web_copy_2.webp'/>
+    <div>
+    <div>
+      <img className='container' src='/images/web_copy_2.webp'/>
       </div>
       <div className='heading'>
       <h1>CATEGORIES</h1>

@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    /* width: 100vw; */
   }
   
   .logoNav img {
@@ -20,7 +21,7 @@
   .topNav {
     /* height: 4rem; */
     /* padding: 10px; */
-    width: 100vw;
+   
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,7 +69,7 @@
     padding: 10px;
   }
   .bottomNav {
-    background-color: white;
+    background-color: white; 
     /* position: fixed; */
     /* border: 2px solid black; */
     height: 4rem;
@@ -80,6 +81,7 @@
   }
   .bottomNavLeft {
     display: flex;
+    flex-wrap: wrap;
     font-size: 0.8rem;
     height: 100%;
     align-items: center;
@@ -113,4 +115,32 @@
     font-size: 1.5rem;
     margin-right: 50px;
 
+  }
+  .search-container {
+    position: relative;
+    display: inline-block;
+  }
+  .search-icon {
+    cursor: pointer;
+  }
+  .search-bar {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 200px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .search-container:hover .search-bar {
+    display: block;
   }

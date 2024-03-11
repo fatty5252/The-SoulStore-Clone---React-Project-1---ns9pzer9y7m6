@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.main-addCart-container{
+    margin: 30px;
+}
+.leftCart-container{
+    width: 70%;
+}
+.rightCart-container{
+    width: 30%;
+}
+.heading{
+    font-weight: 700;
+    margin-top: 20px;
+}
+.flex{
+    display: flex;
+}
+.justify-center{
+    justify-content: center;
+}
+.subLeft{
+    height: 50px;
+    width: 30%;
+}
+.addCart-img{
+    height: 10rem;
+    width: 10rem;
+}
+.subright{
+    width: 70%;
+    border: 1px solid black;
+}
+.size{
+    margin-right: 2rem;
+}
+.width-100{
+    width: 100%;
+    margin-top: 3rem;
+}
+
