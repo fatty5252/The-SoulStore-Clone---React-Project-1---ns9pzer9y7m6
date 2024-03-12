@@ -1,26 +1,29 @@
 import "../styles/Men.css";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
+import { useUser } from "../providers/UserProvider";
 
 
 
 
 export default function Women() {
 
+const {searchItem, setSearchItem} = useUser();
   const [getData, setData] = useState([]);
 
   useEffect(()=>{
     mensList();
-  },[])
+  },[searchItem])
 
   const mensList = async()=>{
     try {
-      const responce = await axios.get("https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?limit=100",{
+      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"subCategory":"${searchItem}"}&limit=100`,{
         headers: {
           projectId: "rhxg8aczyt09"
         }
       });
-      console.log(responce.data.data);
+      // console.log(responce.data.data);
       setData(responce.data.data)
     }
     catch(err){
@@ -28,7 +31,13 @@ export default function Women() {
     }
   }
 
-console.log("men component loaded");
+  const navigate = useNavigate();
+
+  const nevigateToProductDetails=(value)=>{
+       navigate(`/Women/ProductsDetails?id=${value}`);
+  }
+
+// console.log("men component loaded");
   return (
     <>
     <div>
@@ -36,11 +45,11 @@ console.log("men component loaded");
       <img className='container' src='/images/web_copy_2.webp'/>
       </div>
       <div className='heading'>
-      <h1>CATEGORIES</h1>
+      <h1>PRODUCTS</h1>
       </div>
       <div className="main-cart-container">
     { getData.map((item,index)=>item.gender==="Women" && (
-      <div key={index} className='cart-container'>
+      <div onClick={()=>nevigateToProductDetails(item._id)} key={index} className='cart-container'>
       <img className="cart-img" src={item.displayImage}/>
       <div className="p">
       <p className='description'>{item.description}</p>

@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../styles/ProductDetails.css";
 import { CiHeart } from "react-icons/ci";
+import { useUser } from '../providers/UserProvider';
 
 export default function ProductsDetails() {
+
+  const {addToWhishList} =  useUser();
 
   const [getSize, setSize] = useState("");
   const [quantity, setQuantity] = useState(0);
@@ -46,9 +49,51 @@ const selctQuantityHandler = (event) => {
 // console.log(quantity);
 const navigate = useNavigate();
 
-const navigateToCart=()=>{
-  navigate(`/Men/ProductsDetails/ProductCart?id=${id}&size=${getSize}&quantity=${quantity}`);
-}
+const navigateToCart = async () => {
+
+  try {
+  
+  const response = await axios.patch(
+  
+  `https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,
+  
+  {
+  
+  "quantity": quantity, 
+  "size": getSize
+  
+  },
+  
+  {
+  
+  headers: {
+  
+  projectId: "rhxg8aczyt09",
+  
+  Authorization: `Bearer ${localStorage.getItem("token")}`
+  
+  }
+  
+  }
+  
+  );
+  
+  setCartItem(response.data.data.items);
+  
+  console.log(response);
+  
+ 
+  
+  } catch (err) {
+  
+  console.log("Error shows ", err);
+  
+  }
+  
+  }
+  const navigateToCart1=()=>{
+    navigate(`/Men/ProductsDetails/ProductCart?id=${id}&size=${getSize}&quantity=${quantity}`);
+  }
 
   // console.log(id);
   return (
@@ -91,8 +136,9 @@ const navigateToCart=()=>{
           </select>
         </div>
         <div className='btn-container'>
-          <button onClick={()=>navigateToCart()} className='cart-btn'>ADD TO CART</button>
-          <button className='wish-btn'><CiHeart />ADD TO WISHlIST</button>
+          <button onClick={navigateToCart} className='cart-btn'>ADD TO CART</button>
+          <button onClick={navigateToCart1} className='cart-btn'>GO TO CART</button>
+          <button onClick={()=>addToWhishList(productDetails._id)} className='wish-btn'><CiHeart />ADD TO WISHlIST</button>
         </div>
         
         

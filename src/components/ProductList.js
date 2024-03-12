@@ -3,9 +3,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "../providers/UserProvider";
 
 
 export default function ProductList() {
+
+  const {categoryToggle, setCategoryToggle} = useUser();
+  console.log(categoryToggle);
 
     const categoryLocation = useLocation();
     const searchParams = new URLSearchParams(categoryLocation.search);
@@ -33,7 +37,7 @@ export default function ProductList() {
       }
     }
     fetchProducts();
-  },[]);
+  },[categoryToggle]);
 
   const nevigateToProductDetails=(value)=>{
     navigate(`/ProductsList?id=${value}`);

@@ -1,0 +1,99 @@
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import "../styles/ProductCart.css";
+
+export default function WhishList() {
+
+    const [whishListItem, setWhishListItem] = useState([]);
+    const [wishListToggle, setwishListToggle] = useState(true);
+
+
+    useEffect(() => {
+        const fetchWhishListItems = async () => {
+            try {
+                const response = await axios.get(
+                    `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/`,
+                    {
+                        headers: {
+                            projectID: "rhxg8aczyt09",
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
+                );
+                setWhishListItem(response.data.data.items)
+                // console.log(response.data.data.items);
+            } catch (err) {
+                console.log("Error shows ", err);
+            }
+        };
+        fetchWhishListItems();
+    }, [wishListToggle]);
+
+        const deletWhishListItems = async (id) => {
+            try {
+                const response = await axios.delete(
+                    `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${id}`,
+                    {
+                        headers: {
+                            projectID: "rhxg8aczyt09",
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
+                        }
+                    }
+                );
+                setwishListToggle(!wishListToggle);
+              
+            } catch (err) {
+                console.log("Error shows ", err);
+            }
+        };
+  
+
+
+
+    return (
+        <div >
+            <div className='heading'>
+                <p>MY BAG ----------- ADDRESS ----------- PAYMENT</p>
+            </div>
+            <hr></hr>
+            <div className='main-addCart-container flex'>
+                <div className='leftCart-container flex' >
+
+                    {whishListItem &&
+                        whishListItem.map((item, index) => (
+                            <> <div className='subLeft'>
+                                <img className='addCart-img' src={item.products.displayImage} />
+                            </div>
+                                <div className='subright'>
+                                    <p className='brand-name'>{item.products.name}</p>
+                                    <p className='price'>₹{item.products.price}</p>
+                                    <span className='size width-100'>Size: {item.products.size}</span>
+                                    <span className='quantity'>Qty: {item.products.quantity}</span>
+                                    <div>
+                                    <button onClick={()=>deletWhishListItems(item.products._id)} className='order-btn width-100'>REMOVE FROM WISHLIST</button>
+                                    </div>
+                                </div>
+                            </>
+                        ))
+                    }
+
+                </div>
+                <div className='rightCart-container'>
+                    
+                    <button className='order-btn width-100'>PLACE ORDER</button>
+                </div>
+                {/* <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            Apply Coupon
+          </button>
+          <br></br>
+          <div class="dropdown-menu">
+            <input class="dropdown-item" placeholder='Enter Code Here' />
+            <span class="dropdown-item" >Apply</span>
+
+          </div>
+        </div> */}
+            </div>
+        </div>
+    )
+}

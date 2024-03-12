@@ -4,7 +4,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { FaRegUser } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useUser } from "../providers/UserProvider";
@@ -15,10 +15,18 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
 
-  const { getToken, getName, setNewToken, token, TokenHandler, NameHandler } = useUser();
-  
-  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
- 
+  const { getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
+  searchItem, setSearchItem } = useUser();
+
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(true);
+  console.log(categoryToggle);
+
+  const navigate = useNavigate();
+
+  const nevigateToProductCategory = (value) => {
+    navigate(`/ProductCategory?category=${value}`);
+  }
+
     const toggleSearchBar = () => {
       setIsSearchBarOpen(!isSearchBarOpen);
     };
@@ -51,9 +59,7 @@ export default function Navbar() {
       }
     }
     mensList();
-
-  }, [])
-
+  }, []);
 
   return (
     <>
@@ -78,11 +84,11 @@ export default function Navbar() {
             <div className="bottomNav">
               <div className="bottomNavLeft">
                 <div className="logoNav">
-                  <img src="https://www.thesouledstore.com/static/img/300x157-twitter.png" />
+                  <img src="https://www.thesouledstore.com/static/img/300x157-twitter.png" onClick={()=>navigate('/')} />
                 </div>
                 {
                   getData.map((item, index) => {
-                    return <div key={index} className="categoryParent">
+                    return <div onClick={()=>{nevigateToProductCategory(item),setCategoryToggle(!categoryToggle)}} key={index} className="categoryParent">
                       {item.toUpperCase()}
                       <div className="categoryUnderline" />
                     </div>
@@ -94,12 +100,13 @@ export default function Navbar() {
                 
                   <span className="search-icon" onClick={()=>toggleSearchBar()}>
                     <FaSearch /></span>
-                    {isSearchBarOpen && <span className="search-bar">
-                      <input type="search" placeholder="Searchbar..."/></span>}
+                    {!isSearchBarOpen && <span className="search-bar">
+                      <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>}
                   {/* <div className="categoryUnderline" /> */}
                 </div>
                 <div className="categoryParent">
-                  <span><FaRegHeart /></span>
+                  <span onClick={()=>navigate('/WhishList')}><FaRegHeart /></span>
+                  <p></p>
                 </div>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
                 <ul className="navbar-nav mr-auto">
@@ -118,10 +125,8 @@ export default function Navbar() {
                 </ul>
                 {/* </div> */}
                 <div className="categoryParent">
-                  <span><HiOutlineShoppingBag /></span>
+                  <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
                 </div>
-             
-
               </div>
             </div>
           </div>

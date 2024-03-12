@@ -124,7 +124,6 @@
     cursor: pointer;
   }
   .search-bar {
-    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -141,6 +140,6 @@
     box-sizing: border-box;
   }
   
-  .search-container:hover .search-bar {
+  /* .search-container:hover .search-bar {
     display: block;
-  }
+  } */

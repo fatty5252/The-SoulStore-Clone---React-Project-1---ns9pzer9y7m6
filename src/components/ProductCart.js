@@ -3,8 +3,11 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { CiHeart } from "react-icons/ci";
 import "../styles/ProductCart.css";
+import { useUser } from '../providers/UserProvider';
 
 export default function ProductCart() {
+
+  const {addToWhishList} = useUser();
 
   const Cartlocation = useLocation();
   const cartSerchParams = new URLSearchParams(Cartlocation.search);
@@ -17,31 +20,28 @@ export default function ProductCart() {
   const [cartitem, setCartItem] = useState([]);
   const [cartItemToggle, setCartItemToggle] = useState(true);
 
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await axios.patch(
-          `https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,
-          {
-            "quantity": quantity,
-            "size": size
-          },
-          {
-            headers: {
-              projectId: "rhxg8aczyt09",
-              Authorization: `Bearer ${localStorage.getItem("token")}`
-            }
-          }
-        );
-        setCartItem(response.data.data.items);
-        console.log(response);
-        //   setProductDetails(response.data.data)
-      } catch (err) {
-        console.log("Error shows ", err);
-      }
-    };
+  useEffect(() => { 
     fetchCartItems();
-  }, []);
+  }, [cartItemToggle]);
+
+  const fetchCartItems = async () => {
+    try {
+      const response = await axios.get(
+        "https://academics.newtonschool.co/api/v1/ecommerce/cart",
+        {
+          headers: {
+            projectId: "rhxg8aczyt09",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+      setCartItem(response.data.data.items);
+      console.log(response);
+      //   setProductDetails(response.data.data)
+    } catch (err) {
+      console.log("Error shows ", err);
+    }
+  };
 
     // Delet Item API
 
@@ -63,6 +63,7 @@ export default function ProductCart() {
           console.log("Error shows ", err);
         }
       };
+
 
   
   return (
@@ -86,12 +87,13 @@ export default function ProductCart() {
                   <span className='quantity'>Qty: {item.product.quantity}</span>              
                 <div>
                 <button onClick={()=>deleteCartItems(item.product._id)} className='remove width-100'>REMOVE</button>
+                <button onClick={()=>{addToWhishList(item.product._id), deleteCartItems(item.product._id)}} ><CiHeart /> MOVE TO WHISHLIST</button>
                 </div>
                 </div>
               </>
             ))
           }         
-          <button className='add-whislist width-100'><CiHeart /> ADD FROM WISHLIST</button>
+          
         </div>
         <div className='rightCart-container'>
           <button className='order-btn width-100'>PLACE ORDER</button>
