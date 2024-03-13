@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import "../styles/ProductCart.css";
+import { useUser } from '../providers/UserProvider';
 
 export default function WhishList() {
+
+    const { setWishListCount } = useUser();
 
     const [whishListItem, setWhishListItem] = useState([]);
     const [wishListToggle, setwishListToggle] = useState(true);
@@ -21,6 +24,9 @@ export default function WhishList() {
                     }
                 );
                 setWhishListItem(response.data.data.items)
+                setWishListCount(response.data.data.items.length);
+                console.log(response.data.data.items.length);
+                // localStorage.setItem("wishList",response.data.data.items.length)
                 // console.log(response.data.data.items);
             } catch (err) {
                 console.log("Error shows ", err);
@@ -67,8 +73,6 @@ export default function WhishList() {
                                 <div className='subright'>
                                     <p className='brand-name'>{item.products.name}</p>
                                     <p className='price'>₹{item.products.price}</p>
-                                    <span className='size width-100'>Size: {item.products.size}</span>
-                                    <span className='quantity'>Qty: {item.products.quantity}</span>
                                     <div>
                                     <button onClick={()=>deletWhishListItems(item.products._id)} className='order-btn width-100'>REMOVE FROM WISHLIST</button>
                                     </div>

@@ -27,30 +27,31 @@
 /* .cart-img:hover{
  
 } */
-.description{
+.para-description{
     width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-wrap: nowrap;
+    text-wrap: wrap;
     margin-bottom: 0;
 }
 .title{
     margin-bottom: 0;
 }
 .p{
-    padding-left: 10px; 
+    padding-left: 10px;
+     
 }
 .name{
     margin-bottom: 0;
 }
-/* .men-container{
+.men-container{
     margin-top: 4rem;
    width: 100vw;
     overflow-x: hidden;
     border: 1px solid red;
-} */
+}
 .container{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center; 
 }

@@ -53,7 +53,7 @@ const {searchItem, setSearchItem} = useUser();
             <div onClick={() => nevigateToProductDetails(item._id)} key={index} className='cart-container'>
               <img className="cart-img" src={item.displayImage} />
               <div className="p">
-                <p className='description'>{item.description}</p>
+                <p className='para-description'>{item.description}</p>
                 <p className='title'>{item.subCategory}</p>
                 <p className='title'>{item.sellerTag}</p>
                 <p className="price">₹ {item.price}</p>

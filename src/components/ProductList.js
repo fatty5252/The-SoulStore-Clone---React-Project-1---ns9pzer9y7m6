@@ -9,7 +9,7 @@ import { useUser } from "../providers/UserProvider";
 export default function ProductList() {
 
   const {categoryToggle, setCategoryToggle} = useUser();
-  console.log(categoryToggle);
+  // console.log(categoryToggle);
 
     const categoryLocation = useLocation();
     const searchParams = new URLSearchParams(categoryLocation.search);
@@ -40,10 +40,8 @@ export default function ProductList() {
   },[categoryToggle]);
 
   const nevigateToProductDetails=(value)=>{
-    navigate(`/ProductsList?id=${value}`);
+    navigate(`/ProductList/ProductsDetails?id=${value}`);
 }
-
- 
 
   return (
     <div className='main-cart-container' >

@@ -38,6 +38,7 @@
   .topNavLeft {
     display: flex;
     margin-left: 120px;
+    margin-bottom: 0;
   }
   .topNavLeftItem{
     display: flex;

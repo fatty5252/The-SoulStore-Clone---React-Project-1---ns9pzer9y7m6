@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
 const UserContext = createContext();
@@ -11,6 +11,36 @@ export const UserProvider=({children})=> {
     const [token, setNewToken] = useState(localStorage.getItem("token"));
     const [categoryToggle, setCategoryToggle] = useState(false);
     const [searchItem, setSearchItem] = useState('');
+    const [cartitem, setCartItem] = useState([]);
+    const [cartItemToggle, setCartItemToggle] = useState(true);
+    const [totalAmmount, setTotalAmmount] = useState('');
+    const [wishListCount, setWishListCount] = useState(0);
+    const [cartItemCount, setCartItemCount] = useState (0);
+  
+    useEffect(() => {
+      fetchCartItems();
+    }, [cartItemToggle]);
+  
+    const fetchCartItems = async () => {
+      try {
+        const response = await axios.get(
+          "https://academics.newtonschool.co/api/v1/ecommerce/cart",
+          {
+            headers: {
+              projectId: "rhxg8aczyt09",
+              Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+          }
+        );
+        setCartItem(response.data.data.items);
+        setTotalAmmount(response.data.data.totalPrice)
+  
+        console.log(response);
+        //   setProductDetails(response.data.data)
+      } catch (err) {
+        console.log("Error shows ", err);
+      }
+    };
 
     const TokenHandler=(data)=>{
         setToken(data);
@@ -63,12 +93,12 @@ export const UserProvider=({children})=> {
 
     const object = {
       getToken,
-      getName,
+      getName,cartItemToggle, setCartItemToggle,totalAmmount, setTotalAmmount,cartitem, setCartItem,
       token,
       categoryToggle,
       setCategoryToggle,getCategoryImage,
-      searchItem,
-      setSearchItem,
+      searchItem,wishListCount, setWishListCount,
+      setSearchItem,cartItemCount, setCartItemCount,
       setNewToken,
       TokenHandler,
       NameHandler,

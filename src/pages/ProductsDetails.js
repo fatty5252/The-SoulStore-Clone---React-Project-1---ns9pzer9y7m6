@@ -8,7 +8,7 @@ import { useUser } from '../providers/UserProvider';
 
 export default function ProductsDetails() {
 
-  const {addToWhishList} =  useUser();
+  const { addToWhishList, setWishListCount, cartItemCount, setCartItemCount } = useUser();
 
   const [getSize, setSize] = useState("");
   const [quantity, setQuantity] = useState(0);
@@ -17,16 +17,18 @@ export default function ProductsDetails() {
   const searchParams = new URLSearchParams(location.search);
   let id = searchParams.get("id");
   //  console.log(id);
-   
+
   const [productDetails, setProductDetails] = useState('');
+  const [toggleBtn, setToggleBtn] = useState(false);
 
-  useEffect(()=>{
+
+  useEffect(() => {
     fetchIdDetails();
-  },[])
+  }, [])
 
-  const fetchIdDetails = async()=>{
+  const fetchIdDetails = async () => {
     try {
-      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`,{
+      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/product/${id}`, {
         headers: {
           projectId: "rhxg8aczyt09"
         }
@@ -34,95 +36,90 @@ export default function ProductsDetails() {
       // console.log(responce.data.data);
       setProductDetails(responce.data.data)
     }
-    catch(err){
+    catch (err) {
       console.log("Error shows ", err);
     }
   }
-const selctSizeHandler=(size)=>{
-  setSize(size);
-}
-console.log(typeof(getSize));
-const selctQuantityHandler = (event) => {
-  const selectedQuantity = parseInt(event.target.value);
-  setQuantity(selectedQuantity);
-};
-// console.log(quantity);
-const navigate = useNavigate();
+  const selctSizeHandler = (size) => {
+    setSize(size);
+  }
+  console.log(typeof (getSize));
+  const selctQuantityHandler = (event) => {
+    const selectedQuantity = parseInt(event.target.value);
+    setQuantity(selectedQuantity);
+  };
+  // console.log(quantity);
+  const navigate = useNavigate();
 
-const navigateToCart = async () => {
+  const fetchToCartItems = async () => {
 
-  try {
-  
-  const response = await axios.patch(
-  
-  `https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,
-  
-  {
-  
-  "quantity": quantity, 
-  "size": getSize
-  
-  },
-  
-  {
-  
-  headers: {
-  
-  projectId: "rhxg8aczyt09",
-  
-  Authorization: `Bearer ${localStorage.getItem("token")}`
-  
+    try {
+      const response = await axios.patch(
+        `https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,
+
+        {
+          "quantity": quantity,
+          "size": getSize
+        },
+        {
+          headers: {
+
+            projectId: "rhxg8aczyt09",
+
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+
+      if (response.data.status === "success"){
+      setCartItemCount(response.data.data.items.length);
+       console.log(response.data.data.items.length);
+      //  localStorage.setItem("cartItem",response.data.data.items.length);
+        setToggleBtn(!toggleBtn);
+      }
+    
+
+      console.log(response);
+
+    } catch (err) {
+
+      console.log("Error shows ", err);
+
+    }
+
   }
-  
-  }
-  
-  );
-  
-  setCartItem(response.data.data.items);
-  
-  console.log(response);
-  
- 
-  
-  } catch (err) {
-  
-  console.log("Error shows ", err);
-  
-  }
-  
-  }
-  const navigateToCart1=()=>{
-    navigate(`/Men/ProductsDetails/ProductCart?id=${id}&size=${getSize}&quantity=${quantity}`);
+  const navigateToCart = () => {
+    navigate("/Men/ProductsDetails/ProductCart");
   }
 
   // console.log(id);
   return (
-    
+
     <div className='main-container'>
       <div className='left-container'>
         {productDetails &&
-          productDetails.images.map((itemImage,index)=>(
-            <img className='img-container' key={index} src={itemImage}/>
+          productDetails.images.map((itemImage, index) => (
+            <img className='img-container' key={index} src={itemImage} />
           ))
         }
-      
+
       </div>
       <div className='right-container'>
         <p className='name'>{productDetails.name}</p>
         <p className='category'>{productDetails.subCategory}</p>
-        <hr/>
+        <hr />
         <p className='brand bold'>Brand: {productDetails.brand}</p>
         <p className='price bold'>₹ {productDetails.price}</p>
         <p>Please select a size.</p>
         <div className='size-parent'>
-         {productDetails && productDetails.size.map((itemSize,index)=>(
-          <p onClick={()=>selctSizeHandler(itemSize)} key={index} className={`size ${getSize==itemSize? 'activSize': ""}`}>{itemSize}</p>
-        ))}
+          {productDetails && productDetails.size.map((itemSize, index) => (
+            <p onClick={() => selctSizeHandler(itemSize)} key={index} className={`size ${getSize == itemSize ? 'activSize' : ""}`}>{itemSize}</p>
+          ))}
         </div>
         <p className='color bold'>Color: {productDetails.color}</p>
-        <p className='rating bold'>Ratings: {productDetails.ratings}/5.0</p>
+        <p className='rating bold'>Ratings: {Math.round(productDetails.ratings)}/5</p>
         <div className='quantity bold'>Quantity &nbsp;
-          <select onChange={(event)=>selctQuantityHandler(event)} value={quantity} name='quantity'>
+          <select onChange={(event) => selctQuantityHandler(event)} value={quantity} name='quantity'>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -136,12 +133,12 @@ const navigateToCart = async () => {
           </select>
         </div>
         <div className='btn-container'>
-          <button onClick={navigateToCart} className='cart-btn'>ADD TO CART</button>
-          <button onClick={navigateToCart1} className='cart-btn'>GO TO CART</button>
-          <button onClick={()=>addToWhishList(productDetails._id)} className='wish-btn'><CiHeart />ADD TO WISHlIST</button>
+        {!toggleBtn ?  <button onClick={fetchToCartItems} className='cart-btn'>ADD TO CART</button>
+         : <button onClick={navigateToCart} className='cart-btn'>GO TO CART</button> }
+          <button onClick={() => {addToWhishList(productDetails._id)}} className='wish-btn'><CiHeart />ADD TO WISHlIST</button>
         </div>
-        
-        
+
+
       </div>
     </div>
   )

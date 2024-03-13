@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useUser } from "../providers/UserProvider";
 import { Link } from 'react-router-dom';
+import WhishList from "./WhishList";
 
 
 
@@ -16,10 +17,10 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
 
   const { getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
-  searchItem, setSearchItem } = useUser();
+  searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount } = useUser();
 
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(true);
-  console.log(categoryToggle);
+  // console.log(categoryToggle);
 
   const navigate = useNavigate();
 
@@ -106,7 +107,7 @@ export default function Navbar() {
                 </div>
                 <div className="categoryParent">
                   <span onClick={()=>navigate('/WhishList')}><FaRegHeart /></span>
-                  <p></p>
+                  <p>{wishListCount}</p>
                 </div>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
                 <ul className="navbar-nav mr-auto">
@@ -126,6 +127,7 @@ export default function Navbar() {
                 {/* </div> */}
                 <div className="categoryParent">
                   <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
+                  <p>{cartItemCount}</p>
                 </div>
               </div>
             </div>
