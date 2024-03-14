@@ -1,3 +1,4 @@
+import "../styles/Men.css";
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -44,9 +45,9 @@ export default function Home() {
         {getcategory && getcategory.map((item, index) => (
           <div onClick={() => nevigateToProductCategory(item)} key={index} className='cart-container'>
             <img className="cart-img" src={getCategoryImage(item).categorySrc} />           
-            <div className="p">
+            {/* <div className="p"> */}
               <p className='description'>{item.toUpperCase()}</p>
-            </div>
+            {/* </div> */}
           </div>
         ))
         }

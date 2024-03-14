@@ -49,10 +49,10 @@ const {searchItem, setSearchItem} = useUser();
       </div>
       <div className="main-cart-container">
     { getData.map((item,index)=>item.gender==="Women" && (
-      <div onClick={()=>nevigateToProductDetails(item._id)} key={index} className='cart-container'>
+      <div onClick={()=>nevigateToProductDetails(item._id)} key={index} className='cart-container-men'>
       <img className="cart-img" src={item.displayImage}/>
       <div className="p">
-      <p className='description'>{item.description}</p>
+      <p className='para-description'>{item.description}</p>
       <p className='title'>{item.subCategory}</p>
       <p className="price">₹ {item.price}</p>
       </div>

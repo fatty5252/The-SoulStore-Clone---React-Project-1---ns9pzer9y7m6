@@ -4,9 +4,10 @@
     box-sizing: border-box;
 }
 .main-container{
-    width: 100vw;
+    width: 98vw;
     display: flex;
     overflow-x: hidden;
+   
 }
 .left-container{
     width: 60vw;

@@ -1,4 +1,4 @@
-import "../styles/Men.css";
+import "../styles/ProductList.css";
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -51,7 +51,7 @@ export default function ProductList() {
           } className="cart-container">
             <img className="cart-img" src={product.displayImage} alt={product.name} />
             <div className="p">
-            <p className="name">{product.name}</p>
+            <p className="listName">{product.name}</p>
             <p className='title'>{product.subCategory}</p>
             <p className="price">{product.price}</p>
             </div>
