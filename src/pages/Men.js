@@ -42,8 +42,8 @@ const {searchItem, setSearchItem} = useUser();
   return (
     <>
       <div className='men-container'>
-        <div >
-          <img className='container' src='/images/banne1.webp' />
+        <div className='container' >
+          <img src='/images/banne1.webp' />
         </div>
         <div className='heading'>
           <h1>PRODUCTS</h1>
@@ -55,7 +55,7 @@ const {searchItem, setSearchItem} = useUser();
               <div className="p">
                 <p className='para-description'>{item.description}</p>
                 <p className='title'>{item.subCategory}</p>
-                <p className='title'>{item.sellerTag}</p>
+                {/* <p className='title'>{item.sellerTag}</p> */}
                 <p className="price">₹ {item.price}</p>
               </div>
             </div>

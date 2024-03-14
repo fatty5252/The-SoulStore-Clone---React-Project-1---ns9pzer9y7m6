@@ -8,7 +8,7 @@ import { useUser } from '../providers/UserProvider';
 
 export default function ProductsDetails() {
 
-  const { addToWhishList, setWishListCount, cartItemCount, setCartItemCount } = useUser();
+  const { addToWhishList, setWishListCount, cartItemCount, setCartItemCount, setCartItemToggle, cartItemToggle } = useUser();
 
   const [getSize, setSize] = useState("");
   const [quantity, setQuantity] = useState(0);
@@ -35,6 +35,7 @@ export default function ProductsDetails() {
       });
       // console.log(responce.data.data);
       setProductDetails(responce.data.data)
+      console.log(responce.data.data);
     }
     catch (err) {
       console.log("Error shows ", err);
@@ -56,42 +57,31 @@ export default function ProductsDetails() {
     try {
       const response = await axios.patch(
         `https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,
-
         {
           "quantity": quantity,
           "size": getSize
         },
         {
           headers: {
-
             projectId: "rhxg8aczyt09",
-
             Authorization: `Bearer ${localStorage.getItem("token")}`
-          }
-        }
-      );
+          }});
 
       if (response.data.status === "success"){
-      setCartItemCount(response.data.data.items.length);
+      // setCartItemCount(response.data.data.items.length);
        console.log(response.data.data.items.length);
-      //  localStorage.setItem("cartItem",response.data.data.items.length);
+       localStorage.setItem("cartItem",response.data.data.items.length);
         setToggleBtn(!toggleBtn);
+        setCartItemToggle(!cartItemToggle)
       }
-    
-
-      console.log(response);
-
+      // console.log(response);
     } catch (err) {
-
-      console.log("Error shows ", err);
-
+     console.log("Error shows ", err);
     }
-
   }
   const navigateToCart = () => {
     navigate("/Men/ProductsDetails/ProductCart");
   }
-
   // console.log(id);
   return (
 
@@ -107,7 +97,7 @@ export default function ProductsDetails() {
       <div className='right-container'>
         <p className='name'>{productDetails.name}</p>
         <p className='category'>{productDetails.subCategory}</p>
-        <hr />
+        <hr></hr>
         <p className='brand bold'>Brand: {productDetails.brand}</p>
         <p className='price bold'>₹ {productDetails.price}</p>
         <p>Please select a size.</p>
@@ -133,9 +123,9 @@ export default function ProductsDetails() {
           </select>
         </div>
         <div className='btn-container'>
-        {!toggleBtn ?  <button onClick={fetchToCartItems} className='cart-btn'>ADD TO CART</button>
+        {!toggleBtn ? <button onClick={fetchToCartItems} className='cart-btn'>ADD TO CART</button>
          : <button onClick={navigateToCart} className='cart-btn'>GO TO CART</button> }
-          <button onClick={() => {addToWhishList(productDetails._id)}} className='wish-btn'><CiHeart />ADD TO WISHlIST</button>
+          <button onClick={() => {addToWhishList(productDetails._id)}} className='wish-btn'><CiHeart />ADD TO WISHLIST</button>
         </div>
 
 

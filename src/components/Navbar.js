@@ -127,7 +127,7 @@ export default function Navbar() {
                 {/* </div> */}
                 <div className="categoryParent">
                   <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
-                  <p>{cartItemCount}</p>
+                  <p>{localStorage.getItem("cartItem")}</p>
                 </div>
               </div>
             </div>

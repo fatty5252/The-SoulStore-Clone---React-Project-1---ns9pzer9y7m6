@@ -7,8 +7,6 @@
     width: 100vw;
     display: flex;
     overflow-x: hidden;
-
-
 }
 .left-container{
     width: 60vw;
@@ -29,7 +27,7 @@
 }
 .size{
     border: 2px solid #808080;
-    width: 300px;
+    width: 5rem;
     text-align: center;
     border-radius: 20px;
 }
@@ -56,5 +54,9 @@ button{
 }
 .activSize{
     border: 2px solid #117A7A;
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
 }
 

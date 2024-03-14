@@ -43,9 +43,9 @@ export default function Home() {
       <div className="main-cart-container">
         {getcategory && getcategory.map((item, index) => (
           <div onClick={() => nevigateToProductCategory(item)} key={index} className='cart-container'>
-            <img className="cart-img" src={getCategoryImage(item).categorySrc} />
+            <img className="cart-img" src={getCategoryImage(item).categorySrc} />           
             <div className="p">
-              <p className='description'>{item}</p>
+              <p className='description'>{item.toUpperCase()}</p>
             </div>
           </div>
         ))

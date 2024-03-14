@@ -13,6 +13,7 @@ import BestDeal from "./BestDeal";
 import { UserProvider } from "../providers/UserProvider";
 import WhishList from "./WhishList";
 import Address from "./Address";
+import CheckOut from "./CheckOut";
 
 
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/Men/ProductsDetails/ProductCart" element={<ProductCart/>}/>
         <Route path="/ProductCart" element={<ProductCart/>}/>
         <Route path="/Address" element={<Address/>}/>
+        <Route path="/Checkout" element={<CheckOut/>}/>
        </Routes>              
       </BrowserRouter>
       </UserProvider>

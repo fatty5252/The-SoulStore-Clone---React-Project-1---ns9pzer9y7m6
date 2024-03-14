@@ -9,13 +9,15 @@ export default function ProductCart() {
 
   const navigate = useNavigate();
 
-  const { addToWhishList,cartItemToggle, setCartItemToggle,totalAmmount, setTotalAmmount,cartitem, setCartItem} = useUser();
+  const { addToWhishList,cartItemToggle, setCartItemToggle,totalAmmount, setTotalAmmount,cartitem, setCartItem, } = useUser();
 
   const Cartlocation = useLocation();
   const cartSerchParams = new URLSearchParams(Cartlocation.search);
   let id = cartSerchParams.get("id");
   let size = cartSerchParams.get("size");
   let quantity = cartSerchParams.get("quantity");
+  console.log(cartitem);
+  
 
   // Delet Item API
 
@@ -124,7 +126,7 @@ export default function ProductCart() {
             <p>{totalAmmount + (totalAmmount * 18) / 100}</p>
           </div>
           <div className='rightCart-container'>
-            <button className='order-btn width-100'>PLACE ORDER</button>
+            <button onClick={navigateToCart} className='order-btn width-100'>PLACE ORDER</button>
           </div>
         </div>
       </div>

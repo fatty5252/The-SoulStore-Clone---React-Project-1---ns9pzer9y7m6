@@ -5,7 +5,7 @@ import { useUser } from '../providers/UserProvider';
 
 export default function WhishList() {
 
-    const { setWishListCount } = useUser();
+    const { setWishListCount, cartItemToggle } = useUser();
 
     const [whishListItem, setWhishListItem] = useState([]);
     const [wishListToggle, setwishListToggle] = useState(true);
@@ -23,17 +23,20 @@ export default function WhishList() {
                         }
                     }
                 );
-                setWhishListItem(response.data.data.items)
-                setWishListCount(response.data.data.items.length);
-                console.log(response.data.data.items.length);
-                // localStorage.setItem("wishList",response.data.data.items.length)
-                // console.log(response.data.data.items);
+                if (response.data.status === "success"){
+                    setWhishListItem(response.data.data.items)
+                    setWishListCount(response.data.data.items.length);
+                    // console.log(response.data.data.items.length);
+                    localStorage.setItem("wishList",response.data.data.items.length)
+                    
+                }
+                // console.log(response);
             } catch (err) {
                 console.log("Error shows ", err);
             }
         };
         fetchWhishListItems();
-    }, [wishListToggle]);
+    }, [wishListToggle, cartItemToggle]);
 
         const deletWhishListItems = async (id) => {
             try {

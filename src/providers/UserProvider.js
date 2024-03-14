@@ -14,12 +14,10 @@ export const UserProvider=({children})=> {
     const [cartitem, setCartItem] = useState([]);
     const [cartItemToggle, setCartItemToggle] = useState(true);
     const [totalAmmount, setTotalAmmount] = useState('');
-    const [wishListCount, setWishListCount] = useState(0);
+    const [wishListCount, setWishListCount] = useState(localStorage.getItem("wishList"));
     const [cartItemCount, setCartItemCount] = useState (0);
+    const [storageData, setStorageData] = useState(JSON.parse(localStorage.getItem("addData")));
   
-    useEffect(() => {
-      fetchCartItems();
-    }, [cartItemToggle]);
   
     const fetchCartItems = async () => {
       try {
@@ -32,15 +30,19 @@ export const UserProvider=({children})=> {
             }
           }
         );
-        setCartItem(response.data.data.items);
-        setTotalAmmount(response.data.data.totalPrice)
-  
-        console.log(response);
+        if (response.data.status === "success"){
+          setCartItem(response.data.data.items);
+          setTotalAmmount(response.data.data.totalPrice)
+        } 
+        // console.log(response);
         //   setProductDetails(response.data.data)
       } catch (err) {
         console.log("Error shows ", err);
       }
     };
+    useEffect(() => {
+      fetchCartItems();
+    }, [cartItemToggle]);
 
     const TokenHandler=(data)=>{
         setToken(data);
@@ -64,7 +66,8 @@ export const UserProvider=({children})=> {
             }
           }
         );
-        console.log(response);
+        // console.log(response);
+        setCartItemToggle(!cartItemToggle);
       } catch (err) {
         console.log("Error shows ", err);
       }
@@ -99,7 +102,7 @@ export const UserProvider=({children})=> {
       setCategoryToggle,getCategoryImage,
       searchItem,wishListCount, setWishListCount,
       setSearchItem,cartItemCount, setCartItemCount,
-      setNewToken,
+      setNewToken,storageData, setStorageData,
       TokenHandler,
       NameHandler,
       addToWhishList
