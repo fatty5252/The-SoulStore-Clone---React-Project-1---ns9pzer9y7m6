@@ -36,6 +36,7 @@ function App() {
         <Route path="/WhishList" element={<WhishList/>}/>
         <Route path="/Women/:ProductsDetails" element={<ProductsDetails/>}/>
         <Route path="/Men/:ProductsDetails" element={<ProductsDetails/>}/>
+        <Route path="/:ProductsDetails" element={<ProductsDetails/>}/>
         <Route path="/:ProductCategory" element={<ProductList/>}/>
         <Route path="/ProductList/:ProductsDetails" element={<ProductsDetails/>}/>
         <Route path="/Men/ProductsDetails/ProductCart" element={<ProductCart/>}/>
