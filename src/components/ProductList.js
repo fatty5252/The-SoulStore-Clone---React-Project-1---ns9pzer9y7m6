@@ -14,7 +14,7 @@ export default function ProductList() {
     const categoryLocation = useLocation();
     const searchParams = new URLSearchParams(categoryLocation.search);
     let category = searchParams.get("category");
-    // console.log(category);
+    console.log(category);
 
     const [products, setProduct] = useState([]);
 
@@ -53,7 +53,7 @@ export default function ProductList() {
             <div className="p">
             <p className="listName">{product.name}</p>
             <p className='title'>{product.subCategory}</p>
-            <p className="price">{product.price}</p>
+            <p className="price">₹ {product.price}</p>
             </div>
           </div>
         ))}

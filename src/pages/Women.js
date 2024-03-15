@@ -1,4 +1,4 @@
-import "../styles/Men.css";
+import "../styles/Women.css";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -41,7 +41,7 @@ const {searchItem, setSearchItem} = useUser();
   return (
     <>
     <div>
-    <div className="men-container">
+    <div className="women-container">
       <img className='container' src='/images/web_copy_2.webp'/>
       </div>
       <div className='heading'>
@@ -49,7 +49,7 @@ const {searchItem, setSearchItem} = useUser();
       </div>
       <div className="main-cart-container">
     { getData.map((item,index)=>item.gender==="Women" && (
-      <div onClick={()=>nevigateToProductDetails(item._id)} key={index} className='cart-container-men'>
+      <div onClick={()=>nevigateToProductDetails(item._id)} key={index} className='cart-container-women'>
       <img className="cart-img" src={item.displayImage}/>
       <div className="p">
       <p className='para-description'>{item.description}</p>

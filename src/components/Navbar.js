@@ -25,7 +25,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const nevigateToProductCategory = (value) => {
-    navigate(`/ProductCategory?category=${value}`);
+    navigate(`/ProductList?category=${value}`);
   }
 
     const toggleSearchBar = () => {

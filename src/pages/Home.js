@@ -1,4 +1,4 @@
-import "../styles/Men.css";
+import "../styles/Home.css";
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const nevigateToProductCategory = (value) => {
-    navigate(`/ProductCategory?category=${value}`);
+    navigate(`/ProductList?category=${value}`);
   }
   const nevigateToProductDetails = (value) => {
     navigate(`/ProductsDetails?id=${value}`);
