@@ -29,14 +29,10 @@
 .img-container {
     width: 97%;
     margin-bottom: 0.6rem;
-
-    /* margin: 10px; */
-    /* height: 50%; */
 }
 
 .size-parent {
     display: flex;
-    gap: 20px;
 }
 
 .size {

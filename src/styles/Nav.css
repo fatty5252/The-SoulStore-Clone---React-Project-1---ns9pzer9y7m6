@@ -9,8 +9,7 @@
     display: flex;
     align-items: center;
     /* position: relative; */
-    width: 98.5vw;
-    border: 2px solid red;
+    width: 98.7vw;
   }
   
   .logoNav img {
@@ -21,7 +20,7 @@
     flex-grow: 1;
   } */
   .topNav {
-    width: 98vw;
+    width: 98.6vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,7 +38,6 @@
     display: flex;
     margin-left: 120px;
     margin-bottom: 0;
-    border: 2px solid white;
   }
   .topNavLeftItem{
     display: flex;
@@ -62,21 +60,18 @@
   
   .topNavRight { 
     gap:20px;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: 400;
-    font-style:'italicSource Sans Pro','sans-serif';
-    margin-right: 100px;
+    margin-right: 4rem;
     color:white;
-    text-transform: uppercase;
-    padding: 10px;
     border: 2px solid grey;
   }
+  
   .bottomNav {
     background-color: white; 
     /* position: fixed; */
-    border: 2px solid blue;
     height: 4rem;
-    width: 98vw;
+    width: 98.6vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -85,10 +80,10 @@
   .bottomNavLeft {
     display: flex;
     flex-wrap: nowrap;
-    font-size: 0.8rem;
+    font-size: 1rem;
     height: 100%;
     align-items: center;
-    border: 2px solid purple;
+    margin-left: 30px;
   }
   .categoryParent {
     margin-right: 0.5rem;
@@ -115,12 +110,12 @@
     /* border-bottom: 5px solid red; */
     display: block;
   }
-  .bottomNavRight {
+  /* .bottomNavRight {
     font-size: 1.1rem;
     margin-right: 50px;
     border: 2px solid green;
 
-  }
+  } */
   .search-container {
     position: relative;
     display: inline-block;
