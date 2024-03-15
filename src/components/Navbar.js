@@ -77,9 +77,41 @@ export default function Navbar() {
                 </NavLink>
               </ul>
               <div className="topNavRight flex">
-                <span>TRACK ORDER</span>
+                {/* <span>TRACK ORDER</span>
                 <span>CONTACT US</span>
-                <span><FaMobileScreenButton />DOWNLOAD APP</span>
+                <span><FaMobileScreenButton />DOWNLOAD APP</span> */}
+                 <div className="categoryParent search-container">
+                
+                <span className="search-icon" onClick={()=>toggleSearchBar()}>
+                  <FaSearch /></span>
+                  {!isSearchBarOpen && <span className="search-bar">
+                    <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>}
+                {/* <div className="categoryUnderline" /> */}
+              </div>
+              <div className="categoryParent">
+                <span onClick={()=>navigate('/WhishList')}><FaRegHeart /></span>
+                <p>{wishListCount}</p>
+              </div>
+              {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
+              <ul className="navbar-nav mr-auto">
+              <li className="nav-item dropdown my-2 my-lg-0 left-nav" >                 
+                <div className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+                  {localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name").toUpperCase()}</span> : <span><FaRegUser /></span>}
+                </div>
+                <div className="dropdown-menu">
+                  {localStorage.getItem("token") && <><Link className="dropdown-item" onClick={logOutHandler} to="/login">Logout</Link></>}
+                  {!localStorage.getItem("token") && <>
+                    <Link className="dropdown-item" to="/login">Login</Link>
+                    <Link className="dropdown-item" to="/register">Register</Link>
+                  </>}
+                </div>
+              </li>
+              </ul>
+              {/* </div> */}
+              <div className="categoryParent">
+                <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
+                <p>{localStorage.getItem("cartItem")}</p>
+              </div>
               </div>
             </div>
             <div className="bottomNav">
@@ -96,20 +128,20 @@ export default function Navbar() {
                   })
                 }
               </div>
-              <div className="bottomNavRight flex">
+              {/* <div className="bottomNavRight flex">
                 <div className="categoryParent search-container">
                 
                   <span className="search-icon" onClick={()=>toggleSearchBar()}>
                     <FaSearch /></span>
                     {!isSearchBarOpen && <span className="search-bar">
                       <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>}
-                  {/* <div className="categoryUnderline" /> */}
+                 
                 </div>
                 <div className="categoryParent">
                   <span onClick={()=>navigate('/WhishList')}><FaRegHeart /></span>
                   <p>{wishListCount}</p>
                 </div>
-                {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
+               
                 <ul className="navbar-nav mr-auto">
                 <li className="nav-item dropdown my-2 my-lg-0 left-nav" >                 
                   <div className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -124,12 +156,11 @@ export default function Navbar() {
                   </div>
                 </li>
                 </ul>
-                {/* </div> */}
                 <div className="categoryParent">
                   <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
                   <p>{localStorage.getItem("cartItem")}</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

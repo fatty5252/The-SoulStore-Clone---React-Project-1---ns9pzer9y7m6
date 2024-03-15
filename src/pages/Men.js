@@ -43,7 +43,7 @@ const {searchItem, setSearchItem} = useUser();
     <>
       <div className='men-container'>
         <div className='container' >
-          <img src='/images/banne1.webp' />
+          <img className="hero-img" src='/images/banne1.webp' />
         </div>
         <div className='heading'>
           <h1>PRODUCTS</h1>
