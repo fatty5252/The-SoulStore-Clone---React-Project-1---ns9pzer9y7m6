@@ -19,8 +19,8 @@ export default function Navbar() {
   const { getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
   searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount } = useUser();
 
-  const [isSearchBarOpen, setIsSearchBarOpen] = useState(true);
-  // console.log(categoryToggle);
+  const [isHovered, setIsHovered] = useState(false);
+  
 
   const navigate = useNavigate();
 
@@ -28,8 +28,11 @@ export default function Navbar() {
     navigate(`/ProductList?category=${value}`);
   }
 
-    const toggleSearchBar = () => {
-      setIsSearchBarOpen(!isSearchBarOpen);
+    const handleMouseEnter = () => {
+     setIsHovered(true);
+    };
+    const handleMouseLeave = () => {
+     setIsHovered(false);
     };
   
 
@@ -81,11 +84,17 @@ export default function Navbar() {
                 <span>CONTACT US</span>
                 <span><FaMobileScreenButton />DOWNLOAD APP</span> */}
                  <div className="categoryParent search-container">
+                  <div className="navbar">
+                    <div className="search-icon" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}> 
+                    {isHovered && (<input type="text"value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} placeholder="Search..." className="search-bar"/>)}
+                    <FaSearch />
+                    </div>
+                  </div>
                 
-                <span className="search-icon" onClick={()=>toggleSearchBar()}>
+                {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>
                   <FaSearch /></span>
                   {!isSearchBarOpen && <span className="search-bar">
-                    <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>}
+                    <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
                 {/* <div className="categoryUnderline" /> */}
               </div>
               <div className="categoryParent">
@@ -110,7 +119,7 @@ export default function Navbar() {
               {/* </div> */}
               <div className="categoryParent">
                 <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
-                <p>{localStorage.getItem("cartItem")}</p>
+                <p>{cartItemCount}</p>
               </div>
               </div>
             </div>

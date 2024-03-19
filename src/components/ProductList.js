@@ -39,6 +39,26 @@ export default function ProductList() {
     fetchProducts();
   },[categoryToggle]);
 
+  // for filter Sidebar=====================================================================
+
+  useEffect(()=>{
+    const fetchProducts = async () => {
+    try {
+        const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${category}"}?{"gender:"${gender}"?{}}`,{
+          headers: {
+            projectId: "rhxg8aczyt09"
+          }
+        });
+        // console.log(responce.data.data);
+        setProduct(responce.data.data);
+      }
+      catch(err){
+        console.log("Error shows ", err);
+      }
+    }
+    fetchProducts();
+  },[categoryToggle]);
+
   const nevigateToProductDetails=(value)=>{
     navigate(`/ProductList/ProductsDetails?id=${value}`);
 }

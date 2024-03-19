@@ -5,12 +5,46 @@
 }
 .main-addCart-container{
     margin: 30px;
+    width: 96vw;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
 }
 .leftCart-container{
-    width: 70%;
+    width: 60vw;
+    flex-direction: column;
 }
 .rightCart-container{
-    width: 30%;
+    width: 30vw;
+    /* border: 2px solid blue; */
+    padding: 1.5rem;
+}
+.address-bar {
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid grey;
+    height: 3rem;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    margin-left: 3rem;
+
+}
+.cont-btn{
+    justify-content: center;
+}
+.order-btn{
+    width: 20rem;
+    border-radius: 0.5rem;
+}
+.address-btn{
+    width: 5rem;
+    columns: #117A7A;
+    font-weight: 700;
+    background: none;
+    border: none;
+}
+.address-para{
+    text-align: center;
 }
 .heading{
     font-weight: 700;
@@ -23,22 +57,85 @@
     justify-content: center;
 }
 .subLeft{
-    height: 50px;
-    width: 30%;
+    /* height: 50px; */
+    width: 100%;
+    border: 0.5px solid grey;
+    background-color: #F5F5F5;
+    justify-content: space-between;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    
+
 }
 .addCart-img{
-    height: 10rem;
-    width: 10rem;
+    height: 15rem;
+    width: 12rem;
 }
 .subright{
     width: 70%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    flex-direction: column;
+    /* align-items: start; */
+    padding-bottom: 1rem;
+  
 }
 .size{
     margin-right: 2rem;
+    border: 1px solid black;
 }
 .width-100{
     width: 100%;
     margin-top: 3rem;
 }
+.prd-container{
+    /* border: 2px solid purple; */
+    justify-content: space-between;
+    flex-direction: column;
+    /* border: 1px solid grey; */
+}
+.btns-del-add{
+    justify-content: end;
+    padding: 1rem;
+    /* align-content: space-between; */
+}
+.remove-del{
+    border: none;
+    padding: 1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+}
+.price{
+    font-weight: 700;
+}
+.qty-size{
+    /* border: 1px solid grey; */
+    align-items: center;
+}
+.ct{
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    border: 1px solid grey;
 
+}
+.order-btn{
+    padding: 0.5rem;
+    text-align: center;
+    color: white;
+    background-color: #298E83;
+}
+
+.bill-heading{
+    font-weight: 700;
+    padding: 1.5rem;
+}
+.clear-cart-btn{
+    width: 20rem;
+    padding: 0.5rem;
+    justify-content: center;
+    color: #298E83;
+    border-radius: 0.5rem;
+    text-align: center;
+    margin-left: 15rem;
+    font-weight: 700;
+}

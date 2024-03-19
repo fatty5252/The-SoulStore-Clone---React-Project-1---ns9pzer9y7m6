@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useUser } from '../providers/UserProvider';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Address.css';
 
 export default function Address() {
    
@@ -90,32 +91,32 @@ export default function Address() {
       </div>
       {!toggleForm && <button onClick={()=>setToggleForm(!toggleForm)}>+</button>}
       {toggleForm && <div className='form-parent'>
-        <form>
-          <div >
+        <form className='form-main'>
+          <div className='item-form'>
             <input onChange={(e) => { AddressInfo("name", e.target.value) }} type="text" placeholder='Name' value={addData.name} />
           </div>
-          <div >
+          <div className='item-form'>
             <input onChange={(e) => { AddressInfo("lastName", e.target.value) }} type="text" placeholder='LastName' value={addData.lastName} />
           </div>
-          <div>
+          <div className='item-form'>
             <input onChange={(e) => { AddressInfo("house", `${e.target.value}`) }} type="text" placeholder='House No., Building Name' value={addData.house} />
           </div>
-          <div >
+          <div className='item-form'>
             <input onChange={(e) => AddressInfo("street", `${e.target.value}`)} type="text" placeholder='Street Name, Area' value={addData.street} />
           </div>
-          <div >
+          <div className='item-form'>
             <input onChange={(e) => { AddressInfo("landmark", `${e.target.value}`) }} type="text" placeholder='Landmark' value={addData.landmark} />
           </div>
-          <div >
+          <div className='item-form'>
             <input onChange={(e) => AddressInfo("pincode", `${e.target.value}`)} type="text" placeholder='Pin Code' value={addData.pincode} />
           </div>
-          <div >
+          <div className='item-form'>
             <input onChange={(e) => AddressInfo("city", `${e.target.value}`)} type="text" placeholder='City/District' value={addData.city} />
           </div>
-          <select onChange={(e) => AddressInfo("country", e.target.value)} value={addData.country}>
+          <select  className='item-form' onChange={(e) => AddressInfo("country", e.target.value)} value={addData.country}>
             <option value="India">India</option>
           </select>
-          <select value={addData.state} onChange={(e) => AddressInfo("state", `${e.target.value}`)} >
+          <select className='item-form' value={addData.state} onChange={(e) => AddressInfo("state", `${e.target.value}`)} >
             {
               indianStatesArray.map((item) => (
                 <option key={item}>{item}</option>
@@ -128,7 +129,8 @@ export default function Address() {
           <button type="button" onClick={()=>closeForm()} class="btn btn-primary">Cancel</button>
           <button type="button" onClick={()=>saveAdd()} class="btn btn-primary">Save</button>
         </form>
-        <p>{addData.name}</p>
+        
+        {/* <p>{addData.name}</p> */}
       </div>}
       <div>
           <h2>BILLING DETAILS</h2>

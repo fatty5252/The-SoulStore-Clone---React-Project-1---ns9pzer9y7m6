@@ -86,7 +86,8 @@ export default function Home() {
         </div>
         <div className="main-cart-container bestdeals">
           {bestDeals.map((item, index) =>(
-            <div onClick={() => nevigateToProductDetails(item._id)} key={index} className='cart-container-men'>
+            <div onClick={() => nevigateToProductDetails(item._id)} key={index} 
+            className='cart-container'>
               <img className="cart-img" src={item.displayImage} />
               <div className="p">
                 <p className='para-description'>{item.name}</p>

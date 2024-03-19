@@ -14,8 +14,8 @@ export const UserProvider=({children})=> {
     const [cartitem, setCartItem] = useState([]);
     const [cartItemToggle, setCartItemToggle] = useState(true);
     const [totalAmmount, setTotalAmmount] = useState('');
-    const [wishListCount, setWishListCount] = useState(localStorage.getItem("wishList"));
-    const [cartItemCount, setCartItemCount] = useState (0);
+    const [wishListCount, setWishListCount] = useState(parseInt(localStorage.getItem("wishList")));
+    const [cartItemCount, setCartItemCount] = useState (parseInt(localStorage.getItem("cartItem")));
     const [storageData, setStorageData] = useState(JSON.parse(localStorage.getItem("addData")));
   
   
@@ -68,6 +68,7 @@ export const UserProvider=({children})=> {
         );
         // console.log(response);
         setCartItemToggle(!cartItemToggle);
+        setWishListCount(wishListCount+1);
       } catch (err) {
         console.log("Error shows ", err);
       }

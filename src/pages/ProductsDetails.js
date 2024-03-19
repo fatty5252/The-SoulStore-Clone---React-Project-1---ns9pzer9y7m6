@@ -11,7 +11,7 @@ export default function ProductsDetails() {
   const { addToWhishList, setWishListCount, cartItemCount, setCartItemCount, setCartItemToggle, cartItemToggle } = useUser();
 
   const [getSize, setSize] = useState("");
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -68,7 +68,7 @@ export default function ProductsDetails() {
           }});
 
       if (response.data.status === "success"){
-      // setCartItemCount(response.data.data.items.length);
+      setCartItemCount(response.data.data.items.length);
        console.log(response.data.data.items.length);
        localStorage.setItem("cartItem",response.data.data.items.length);
         setToggleBtn(!toggleBtn);

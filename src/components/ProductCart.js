@@ -9,14 +9,14 @@ export default function ProductCart() {
 
   const navigate = useNavigate();
 
-  const { addToWhishList,cartItemToggle, setCartItemToggle,totalAmmount, setTotalAmmount,cartitem, setCartItem, } = useUser();
+  const { addToWhishList,cartItemToggle, setCartItemToggle,totalAmmount, setTotalAmmount,cartitem, setCartItem, cartItemCount, setCartItemCount } = useUser();
 
   const Cartlocation = useLocation();
   const cartSerchParams = new URLSearchParams(Cartlocation.search);
   let id = cartSerchParams.get("id");
   let size = cartSerchParams.get("size");
   let quantity = cartSerchParams.get("quantity");
-  console.log(cartitem);
+  // console.log(cartitem);
   
 
   // Delet Item API
@@ -31,7 +31,8 @@ export default function ProductCart() {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
-      );
+      );console.log(cartItemCount);
+      setCartItemCount(cartItemCount-1);
       setCartItemToggle(!cartItemToggle);
       // console.log(response);
       //   setProductDetails(response.data.data)
@@ -53,6 +54,8 @@ export default function ProductCart() {
         }
       );
       setCartItemToggle(!cartItemToggle);
+      setCartItemCount(0);
+      
       // console.log(response);
       //   setProductDetails(response.data.data)
     } catch (err) {
@@ -71,32 +74,39 @@ export default function ProductCart() {
         <p>MY BAG ----------- ADDRESS ----------- PAYMENT</p>
       </div>
       <hr></hr>
-      <div>
-        <p>Please select address..</p>
-        <button onClick={navigateToCart}>ADD</button>
-      </div>
       <div className='main-addCart-container flex'>
         <div className='leftCart-container flex' >
-
+        <div className='address-bar flex'>
+        <span className='address-para '>Please select address..</span>
+        <button className='address-btn' onClick={navigateToCart}>ADD</button>
+      </div>
+        <div className='prd-container flex'>
           {
             cartitem.map((item, index) => (
-              <> <div className='subLeft'>
+              <> <div className='subLeft flex'>
                 <img className='addCart-img' src={item.product.displayImage} />
-              </div>
-                <div className='subright'>
+              
+                <div className='subright flex'>
                   <p className='brand-name'>{item.product.name}</p>
                   <p className='price'>₹{item.product.price}</p>
-                  <span className='size width-100'>Size: {item.product.size}</span>
+                  <div className='qty-size flex'>
+                  <span className='cart-size'>Size: {item.product.size}</span>
                   <span className='quantity'>Qty: {item.product.quantity}</span>
+                  </div>
                   <div>
-                    <button onClick={() => deleteCartItems(item.product._id)} className='remove width-100'>REMOVE</button>
-                    <button onClick={() => { addToWhishList(item.product._id), deleteCartItems(item.product._id) }} ><CiHeart /> MOVE TO WHISHLIST</button>
+                    <div className='btns-del-add flex'>
+                    <button onClick={() => deleteCartItems(item.product._id)} className='remove-del'>REMOVE</button>
+                    <button onClick={() => { addToWhishList(item.product._id), deleteCartItems(item.product._id) }} 
+                    className='remove-del' ><CiHeart /> MOVE TO WHISHLIST</button>
+                    </div>
+                    </div>
                   </div>
                 </div>
               </>
             ))
           }
-          <button onClick={() => { clearCartItems() }} >CLEAR CART </button>
+          </div>
+          <button className='clear-cart-btn' onClick={() => { clearCartItems() }} >CLEAR CART </button>
 
         </div>
 
@@ -111,22 +121,30 @@ export default function ProductCart() {
 
           </div>
         </div> */}
-        <div>
-          <h2>BILLING DETAILS</h2>
-          <div>
+        <div className='main-rtg'>
+        
+          <div className='rightCart-container'>
+          <div className='cont-btn flex'> 
+          <button onClick={navigateToCart} className='order-btn'>PLACE ORDER</button></div>
+          <p className='bill-heading'>BILLING DETAILS</p>
+          
+          <div className='bill-details'>
+          <div className='ct flex'>
             <p>CART TOTAL</p>
             <p>{totalAmmount}</p>
           </div>
-          <div>
+          <div className='ct flex'>
             <p>GST</p>
             <p>{(totalAmmount * 18) / 100}</p>
           </div>
-          <div>
+          <div className='ct flex'>
             <p>TOTAL AMMOUNT</p>
-            <p>{totalAmmount + (totalAmmount * 18) / 100}</p>
+            <p>{(totalAmmount + (totalAmmount * 18) / 100)}</p>
           </div>
-          <div className='rightCart-container'>
-            <button onClick={navigateToCart} className='order-btn width-100'>PLACE ORDER</button>
+          </div>
+          <div className='cont-btn flex'> 
+          <button onClick={navigateToCart} className='order-btn'>PLACE ORDER</button></div>
+           
           </div>
         </div>
       </div>
