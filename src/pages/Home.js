@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUser } from '../providers/UserProvider';
+import Footer from "../components/Footer";
 
 export default function Home() {
 
@@ -96,7 +97,8 @@ export default function Home() {
             </div>
           ))
           }
-        </div>    
+        </div> 
+        {/* <Footer/>    */}
     </>
   )
 }

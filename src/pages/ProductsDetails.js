@@ -44,7 +44,7 @@ export default function ProductsDetails() {
   const selctSizeHandler = (size) => {
     setSize(size);
   }
-  console.log(typeof (getSize));
+
   const selctQuantityHandler = (event) => {
     const selectedQuantity = parseInt(event.target.value);
     setQuantity(selectedQuantity);

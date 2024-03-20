@@ -17,6 +17,7 @@ export const UserProvider=({children})=> {
     const [wishListCount, setWishListCount] = useState(parseInt(localStorage.getItem("wishList")));
     const [cartItemCount, setCartItemCount] = useState (parseInt(localStorage.getItem("cartItem")));
     const [storageData, setStorageData] = useState(JSON.parse(localStorage.getItem("addData")));
+   
   
   
     const fetchCartItems = async () => {
@@ -34,6 +35,7 @@ export const UserProvider=({children})=> {
           setCartItem(response.data.data.items);
           setTotalAmmount(response.data.data.totalPrice)
         } 
+
         // console.log(response);
         //   setProductDetails(response.data.data)
       } catch (err) {
