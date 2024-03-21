@@ -61,12 +61,11 @@ export default function WhishList() {
 
     return (
         <div >
-            <div className='heading'>
+            <div className='wish-heading'>
                 <p>MY WISHLIST</p>
             </div>
             <hr></hr>
             <div className='main-wishList-container'>
-
 
                 {whishListItem &&
                     whishListItem.map((item, index) => (
@@ -79,7 +78,7 @@ export default function WhishList() {
                             <p className='brand-name'>{item.products.name}</p>
                             <p className='price'>₹{item.products.price}</p>
                             </div>
-                            <div>
+                            <div className='wish-del-btn'>
                                 <button className='del-btn' onClick={() => deletWhishListItems(item.products._id)}
                                     >REMOVE FROM WISHLIST</button>
                             </div>

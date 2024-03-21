@@ -1,0 +1,46 @@
+.main-login-register-ctn{
+   
+    /* padding-top: 10rem; */
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid red;
+    height: 100vh;
+    width: 100vw;
+
+}
+.form-control {
+    display: block;
+    width: 10rem;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+.toggle-btn-container{
+    display: flex;
+    justify-content: center;
+    border: 2px solid purple;
+}
+.form-group{
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+    border: 2px solid green;
+}
+.container{
+    border: 2px solid black;
+    height: 25rem;
+    width: 100%;
+}
+.btn-primary{
+    width: 20rem;
+}

@@ -9,7 +9,7 @@ export default function ProductCart() {
 
   const navigate = useNavigate();
 
-  const { addToWhishList, cartItemToggle, setCartItemToggle, totalAmmount, setTotalAmmount, cartitem, setCartItem, cartItemCount, setCartItemCount } = useUser();
+  const { addToWhishList, storageData, cartItemToggle, setCartItemToggle, totalAmmount, setTotalAmmount, cartitem, setCartItem, cartItemCount, setCartItemCount } = useUser();
 
   // const Cartlocation = useLocation();
   // const cartSerchParams = new URLSearchParams(Cartlocation.search);
@@ -90,7 +90,12 @@ export default function ProductCart() {
       <div className='main-addCart-container flex'>
         <div className='leftCart-container flex' >
           <div className='address-bar flex'>
-            <span className='address-para '>Please select address..</span>
+            {!storageData ? <span className='address-para '>Please select address..</span>
+              :
+              <div className='address-box'>
+                <p>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
+                <p>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
+              </div>}
             <button className='address-btn' onClick={navigateToCart}>ADD</button>
           </div>
           <div className='prd-container flex'>
@@ -105,16 +110,16 @@ export default function ProductCart() {
                     <div className='qty-size flex'>
                       <p>Please select a size.</p>
                       <div className='size-parent'>
-                      <div className='quantity bold'>Size &nbsp;
-                        <select onChange={(event) => selctSizeHandler(event)} value={getSize} name='getSize'>
-                          <option value={"S"}>S</option>
-                          <option value={"M"}>M</option>
-                          <option value={"L"}>L</option>
-                          <option value={"XL"}>XL</option>
-                          <option value={"XXL"}>XXL</option>
-                          <option value={"XXXL"}>XXXL</option>
-                        </select>
-                      </div>
+                        <div className='quantity bold'>Size &nbsp;
+                          <select onChange={(event) => selctSizeHandler(event)} value={getSize} name='getSize'>
+                            <option value={"S"}>S</option>
+                            <option value={"M"}>M</option>
+                            <option value={"L"}>L</option>
+                            <option value={"XL"}>XL</option>
+                            <option value={"XXL"}>XXL</option>
+                            <option value={"XXXL"}>XXXL</option>
+                          </select>
+                        </div>
                       </div>
                       {/* <p className='color bold'>Color: {productDetails.color}</p>
                       <p className='rating bold'>Ratings: {Math.round(productDetails.ratings)}/5</p> */}
@@ -165,7 +170,8 @@ export default function ProductCart() {
 
           <div className='rightCart-container'>
             <div className='cont-btn flex'>
-              <button onClick={navigateToCart} className='order-btn'>PLACE ORDER</button></div>
+              <button onClick={navigateToCart} className='order-btn'>PLACE ORDER</button>
+            </div>
             <p className='bill-heading'>BILLING DETAILS</p>
 
             <div className='bill-details'>

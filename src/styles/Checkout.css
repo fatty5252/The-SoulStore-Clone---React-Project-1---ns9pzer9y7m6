@@ -1,5 +1,34 @@
 .checkout-main{
-    margin-top: 40px;
+    padding-top: 8rem;
     display: flex;
     gap: 20px;
+    border: 2px solid red;
+    width: 98vw;
+    padding: 9rem 2rem;
+    position: relative;
+}
+.add-box{
+display: flex;
+justify-content: space-between;
+border: 2px solid green;
+}
+
+.checkout-main-right{
+    width: 20vw;
+}
+.checkout-main-left{
+width: 60vw;
+}
+.change-btn{
+    display: flex;
+    width: 5rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+}
+.paymentdone{
+    width: 20vw;
+    height: 20vh;
+    background-color: red;
+    position: absolute;
 }

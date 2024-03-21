@@ -12,11 +12,11 @@ export default function ProductsDetails() {
 
   const [getSize, setSize] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [toggleSize, settoggleSize] = useState(false);
 
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   let id = searchParams.get("id");
-  //  console.log(id);
 
   const [productDetails, setProductDetails] = useState('');
   const [toggleBtn, setToggleBtn] = useState(false);
@@ -33,9 +33,8 @@ export default function ProductsDetails() {
           projectId: "rhxg8aczyt09"
         }
       });
-      // console.log(responce.data.data);
       setProductDetails(responce.data.data)
-      console.log(responce.data.data);
+      // console.log(responce.data.data);
     }
     catch (err) {
       console.log("Error shows ", err);
@@ -43,17 +42,17 @@ export default function ProductsDetails() {
   }
   const selctSizeHandler = (size) => {
     setSize(size);
+    settoggleSize(false)
   }
 
   const selctQuantityHandler = (event) => {
     const selectedQuantity = parseInt(event.target.value);
     setQuantity(selectedQuantity);
   };
-  // console.log(quantity);
   const navigate = useNavigate();
 
   const fetchToCartItems = async () => {
-
+    if(getSize && quantity){
     try {
       const response = await axios.patch(
         `https://academics.newtonschool.co/api/v1/ecommerce/cart/${id}`,
@@ -69,20 +68,23 @@ export default function ProductsDetails() {
 
       if (response.data.status === "success"){
       setCartItemCount(response.data.data.items.length);
-       console.log(response.data.data.items.length);
+      //  console.log(response.data.data.items.length);
        localStorage.setItem("cartItem",response.data.data.items.length);
         setToggleBtn(!toggleBtn);
         setCartItemToggle(!cartItemToggle)
+        settoggleSize(false)
       }
       // console.log(response);
     } catch (err) {
      console.log("Error shows ", err);
     }
+  }else if( getSize === ''){
+    settoggleSize(!toggleSize)
   }
+}
   const navigateToCart = () => {
     navigate("/Men/ProductsDetails/ProductCart");
   }
-  // console.log(id);
   return (
 
     <div className='main-container'>
@@ -103,13 +105,14 @@ export default function ProductsDetails() {
         <p>Please select a size.</p>
         <div className='size-parent'>
           {productDetails && productDetails.size.map((itemSize, index) => (
-            <p onClick={() => selctSizeHandler(itemSize)} key={index} className={`size ${getSize == itemSize ? 'activSize' : ""}`}>{itemSize}</p>
+            <p onClick={() => {selctSizeHandler(itemSize)}} key={index} className={`itemsize ${getSize == itemSize ? 'activSize' : ""}`}>{itemSize}</p>
           ))}
+          {toggleSize && <p>Select the Size</p>}
         </div>
         <p className='color bold'>Color: {productDetails.color}</p>
         <p className='rating bold'>Ratings: {Math.round(productDetails.ratings)}/5</p>
         <div className='quantity bold'>Quantity &nbsp;
-          <select onChange={(event) => selctQuantityHandler(event)} value={quantity} name='quantity'>
+          <select onChange={(event) => {selctQuantityHandler(event)}} value={quantity} name='quantity'>
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
@@ -123,7 +126,7 @@ export default function ProductsDetails() {
           </select>
         </div>
         <div className='btn-container'>
-        {!toggleBtn ? <button onClick={fetchToCartItems} className='cart-btn'>ADD TO CART</button>
+        {!toggleBtn ? <button onClick={()=>{fetchToCartItems()}} className='cart-btn'>ADD TO CART</button>
          : <button onClick={navigateToCart} className='cart-btn'>GO TO CART</button> }
           <button onClick={() => {addToWhishList(productDetails._id)}} className='wish-btn'><CiHeart />ADD TO WISHLIST</button>
         </div>

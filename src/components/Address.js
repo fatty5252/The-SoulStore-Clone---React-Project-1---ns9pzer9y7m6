@@ -77,6 +77,7 @@ export default function Address() {
 
   return (
     <div className='head-div'>
+      <div className='left-ctn-address'>
       {storageData &&
         <div className='address-box'>
         <h1>{storageData.name}</h1>
@@ -146,7 +147,8 @@ export default function Address() {
         </form>
         {/* <p>{addData.name}</p> */}
       </div>}
-      <div>
+      </div>
+      <div className='right-ctn-address'>
         <h2>BILLING DETAILS</h2>
         <div>
           <p>CART TOTAL</p>

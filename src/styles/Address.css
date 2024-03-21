@@ -17,6 +17,8 @@
 
 }
 .head-div{
+    display: flex;
+    justify-content: space-between;
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -79,6 +81,10 @@ input{
     width: 100px;
     margin-top: 100px;
 }
-.address-box{
-    margin-top: 100px;
+.left-ctn-address{
+   width: 60vw; 
+}
+.right-ctn-address{
+   padding-top: 10rem;
+   width: 20vw;
 }

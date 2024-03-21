@@ -17,6 +17,7 @@ export default function CheckOut() {
     const [debitdata, setdebitdata] = useState({
         name: "", cardno: "", CVV: "", Expirymonth: "", Expiryyear: ""
     });
+    const [paymentdone, setpaymentdone] = useState(false);
     //   console.log(debitdata.name)
 
     useEffect(() => {
@@ -57,24 +58,56 @@ export default function CheckOut() {
         }
     }
 
+    const handlepaymentfromUpi = () => {
+        if (upi !== '' && upi.includes("@")) {
+            setpaymentdone(!paymentdone)
+            setTimeout(() => {
+                setpaymentdone(false)
+            }, 5000);
+        } else {
+            alert("Enter correct UPI")
+        }
+    }
+
+    const handlepaymentfromdebit = () => {
+        if (debitdata.cardno.length === 16 && debitdata.CVV.length === 3 && debitdata.Expirymonth !== "" && debitdata.Expiryyear !== "") {
+            setpaymentdone(!paymentdone)
+            setTimeout(() => {
+                setpaymentdone(false)
+            }, 5000);
+        }else if ( debitdata.CVV.length !== 3){
+            alert("Enter correct CVV")
+        }else if ( debitdata.cardno.length !== 16){
+            alert("Enter correct Card no.")
+        }
+         else {
+            alert("Enter correct card details")
+        } 
+    }
 
     return (
         <div className='checkout-main'>
-            <div>
-                {storageData &&
-                    <div className='address-box'>
-                        <h1>{storageData.name} {storageData.lastName}, {storageData.pincode}</h1>
-                        <h1>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</h1>
-                    </div>}
+            {paymentdone && <div className='paymentdone'></div>}
+            <div className='checkout-main-left'>
+                <div className='add-box'>
+                    {storageData &&
+                        <div className='address-box'>
+                            <p>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
+                            <p>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
+                        </div>}
+                    <div>
+                        <button className='change-btn'>CHANGE</button>
+                    </div>
+                </div>
 
-                <p onClick={() => setOpenUPI(!openUPI)}>Pay with any UPI App</p>
+                <p onClick={() => {setOpenUPI(!openUPI), setOpendebit(false)}}>Pay with any UPI App</p>
                 {openUPI && <input type='text' onChange={(e) => setupi(e.target.value)} value={upi} placeholder='Enter UPI' />}
 
-                <p onClick={() => setOpendebit(!openDebit)}>Pay with any Debit card</p>
+                <p onClick={() =>{ setOpendebit(!openDebit), setOpenUPI(false)}}>Pay with any Debit card</p>
                 {openDebit &&
                     <>
-                        <input type='text' value={debitdata.cardno} onChange={(e) => AddressInfo("cardno", e.target.value)} placeholder='Card no.' />
-                        <input type='text' value={debitdata.CVV} onChange={(e) => AddressInfo("CVV", e.target.value)} placeholder='CVV' />
+                        <input type='text' maxLength={16} value={debitdata.cardno} onChange={(e) => AddressInfo("cardno", e.target.value)} placeholder='Card no.' />
+                        <input type='text' maxLength={3} value={debitdata.CVV} onChange={(e) => AddressInfo("CVV", e.target.value)} placeholder='CVV' />
                         <input type='text' value={debitdata.Expirymonth} onChange={(e) => AddressInfo("Expirymonth", e.target.value)} placeholder='Expiry month' />
                         <input type='text' value={debitdata.Expiryyear} onChange={(e) => AddressInfo("Expiryyear", e.target.value)} placeholder='Expiry year' />
                         <input type='text' value={debitdata.name} onChange={(e) => AddressInfo("name", e.target.value)} placeholder='Cardholder name' />
@@ -84,7 +117,7 @@ export default function CheckOut() {
                 }
             </div>
 
-            <div className='rightCart-container'>
+            <div className='checkout-main-left'>
                 <div className='cont-btn flex'>
                     <button className='order-btn'>CONFIRM ORDER</button></div>
                 <p className='bill-heading'>BILLING DETAILS</p>
@@ -104,8 +137,9 @@ export default function CheckOut() {
                     </div>
                 </div>
                 <div className='cont-btn flex'>
-                    <button className='order-btn'>CONFIRM ORDER</button></div>
-
+                    {openUPI && <button onClick={() => handlepaymentfromUpi()} className='order-btn'>CONFIRM ORDER</button>}
+                    {openDebit && <button onClick={() => handlepaymentfromdebit()} className='order-btn'>CONFIRM ORDER</button>}
+                </div>
             </div>
         </div>
     )

@@ -98,8 +98,8 @@ export default function Navbar() {
                 {/* <div className="categoryUnderline" /> */}
               </div>
               <div className="categoryParent">
-                <span onClick={()=>navigate('/WhishList')}><FaRegHeart /></span>
-                <p>{wishListCount}</p>
+                <span onClick={()=>localStorage.getItem('token') ? navigate('/WhishList') : navigate('/login')}><FaRegHeart /></span>
+                {localStorage.getItem('token') && <p>{wishListCount}</p>}
               </div>
               {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
               <ul className="navbar-nav mr-auto">
@@ -118,8 +118,8 @@ export default function Navbar() {
               </ul>
               {/* </div> */}
               <div className="categoryParent">
-                <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
-                <p>{cartItemCount}</p>
+                <span onClick={()=> localStorage.getItem('token') ? navigate('/ProductCart') : navigate('/login')}><HiOutlineShoppingBag /></span>
+                {localStorage.getItem('token') && <p>{cartItemCount}</p>}
               </div>
               </div>
             </div>

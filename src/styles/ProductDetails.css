@@ -33,9 +33,10 @@
 
 .size-parent {
     display: flex;
+    gap: 5px;
 }
 
-.size {
+.itemsize {
     border: 2px solid #808080;
     width: 4rem;
     height: 2rem;
@@ -75,7 +76,7 @@
 }
 
 .activSize {
-    border: 2px solid #117A7A;
+    border:2px solid #117A7A;
 }
 
 .btn-container {
