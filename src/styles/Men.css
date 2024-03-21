@@ -69,7 +69,7 @@
    padding-top: 8rem;
    /* border: 2px solid blue; */
 }
-.container{
+.hero-container{
     width: 100%;
     display: flex;
     justify-content: center; 

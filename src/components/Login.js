@@ -14,8 +14,10 @@ function Login() {
 
     const [data, setData] = useState({
         name: 'akash',
+        lastName: '',
         email: 'akash@gmail.com',
         password: '12345',
+        mobno : '',
         appType: 'ecommerce'
     });
 
@@ -94,11 +96,11 @@ function Login() {
     }
 
     return (
-        <>
+        <> <div className="lg-main">
             <div className="main-login-register-ctn">
                 <div className="toggle-btn-container">
-                    <button className="btn btn-toggle global-container" onClick={() => { setToggle(true) }}>Login</button>
-                    <button className="btn btn-toggle global-container" onClick={() => { setToggle(false) }}>Register</button>
+                    <button className="btn-toggle global-container" onClick={() => { setToggle(true) }}>Login</button>
+                    <button className="btn-toggle global-container" onClick={() => { setToggle(false) }}>Register</button>
                 </div>
                 {toggle && <div className="container global-container">
                     <div className="row">
@@ -106,7 +108,6 @@ function Login() {
                             {/* {error && <div class="alert alert-secondary" role="alert">
                                 {error}
                             </div>} */}
-
                             <form >
                                 <div className="form-group">
                                     <label htmlFor="name">User Name</label>
@@ -120,19 +121,17 @@ function Login() {
                                     <label htmlFor="password">Password</label>
                                     <input type="password" className="form-control" onChange={onChangeHandler} value={data.password} name="password" placeholder="Password" />
                                 </div>
+                                <div className="form-group">
                                 <button onClick={(event) => submitLoginHandler(event)} type="button" className="btn btn-primary">Login</button>
+                                </div>
                             </form>
                         </div>
-                        {/* <div className="col-4">
-                    </div> */}
                     </div>
                 </div>}
 
 
-                {!toggle && <div className="container global-container">
+                {!toggle && <div className="rtg-container global-container">
                     <div className="row">
-                        {/* <div className="col-4">
-                    </div> */}
                         <div className="col-4">
                             {error && <div class="alert alert-secondary" role="alert">
                                 {error}
@@ -143,6 +142,10 @@ function Login() {
                                     <input type="text" className="form-control" onChange={onChangeHandler} value={data.name} name="name" autoComplete="off" placeholder="Enter name" />
                                 </div>
                                 <div className="form-group">
+                                    <label htmlFor="lastName">LastName</label>
+                                    <input type="text" className="form-control" onChange={onChangeHandler} value={data.LastName} name="lastName" autoComplete="off" placeholder="Enter Lastname" />
+                                </div>
+                                <div className="form-group">
                                     <label htmlFor="email">Email address</label>
                                     <input type="email" className="form-control" onChange={onChangeHandler} value={data.email} name="email" placeholder="Enter email" />
                                 </div>
@@ -150,14 +153,30 @@ function Login() {
                                     <label htmlFor="password">Password</label>
                                     <input type="password" className="form-control" onChange={onChangeHandler} value={data.password} name="password" placeholder="Password" />
                                 </div>
-
+                                <div className="form-group">
+                                    <label htmlFor="mobno">Mobile No.</label>
+                                    <input type="text" className="form-control" onChange={onChangeHandler} value={data.mobno} name="mobno" autoComplete="off" placeholder="Enter Mob no." />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="gender">Gender</label>
+                                    <input type="checkbox" className="form-control" onChange={onChangeHandler} value={data.mobno} name="male" autoComplete="off"/>
+                                    <label htmlFor="male">Male</label>
+                                    Female<input type="checkbox" className="form-control" onChange={onChangeHandler} value={data.female} name="female" autoComplete="off"/>
+                                    <label htmlFor="female">Female</label>
+                                    Other<input type="checkbox" className="form-control" onChange={onChangeHandler} value={data.other} name="gender" autoComplete="off"/>
+                                    <label htmlFor="other">Other</label>
+                                </div>
+                                
+                                <div className="form-group">
                                 <button type="submit" className="btn btn-primary">Register</button>
+                            </div>
                             </form>
                             {/* </div>
                     <div className="col-4"> */}
                         </div>
                     </div>
                 </div>}
+            </div>
             </div>
         </>
     )
