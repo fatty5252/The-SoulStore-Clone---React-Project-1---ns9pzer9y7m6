@@ -99,10 +99,10 @@ function Login() {
         <> <div className="lg-main">
             <div className="main-login-register-ctn">
                 <div className="toggle-btn-container">
-                    <button className="btn-toggle global-container" onClick={() => { setToggle(true) }}>Login</button>
-                    <button className="btn-toggle global-container" onClick={() => { setToggle(false) }}>Register</button>
+                    <button className="btn-toggle" onClick={() => { setToggle(true) }}>Login</button>
+                    <button className="btn-toggle" onClick={() => { setToggle(false) }}>Register</button>
                 </div>
-                {toggle && <div className="container global-container">
+                {toggle && <div className="container">
                     <div className="row">
                         <div className="col-4">
                             {/* {error && <div class="alert alert-secondary" role="alert">
@@ -122,7 +122,7 @@ function Login() {
                                     <input type="password" className="form-control" onChange={onChangeHandler} value={data.password} name="password" placeholder="Password" />
                                 </div>
                                 <div className="form-group">
-                                <button onClick={(event) => submitLoginHandler(event)} type="button" className="btn btn-primary">Login</button>
+                                <button onClick={(event) => submitLoginHandler(event)} type="button" className="btn btn-pry">Login</button>
                                 </div>
                             </form>
                         </div>
@@ -130,7 +130,9 @@ function Login() {
                 </div>}
 
 
-                {!toggle && <div className="rtg-container global-container">
+                {!toggle &&
+                 <div className="rtg-container">
+                    <h2></h2>
                     <div className="row">
                         <div className="col-4">
                             {error && <div class="alert alert-secondary" role="alert">
@@ -159,16 +161,16 @@ function Login() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="gender">Gender</label>
-                                    <input type="checkbox" className="form-control" onChange={onChangeHandler} value={data.mobno} name="male" autoComplete="off"/>
+                                    <input type="radio" id="male" onChange={onChangeHandler} value={data.mobno} name="male" />
                                     <label htmlFor="male">Male</label>
-                                    Female<input type="checkbox" className="form-control" onChange={onChangeHandler} value={data.female} name="female" autoComplete="off"/>
+                                    <input type="radio" id="female" onChange={onChangeHandler} value={data.female} name="female"/>
                                     <label htmlFor="female">Female</label>
-                                    Other<input type="checkbox" className="form-control" onChange={onChangeHandler} value={data.other} name="gender" autoComplete="off"/>
+                                    <input type="radio" id="other"  onChange={onChangeHandler} value={data.other} name="gender" />
                                     <label htmlFor="other">Other</label>
                                 </div>
                                 
                                 <div className="form-group">
-                                <button type="submit" className="btn btn-primary">Register</button>
+                                <button type="submit" className="btn btn-pry">Register</button>
                             </div>
                             </form>
                             {/* </div>

@@ -108,7 +108,7 @@ export default function ProductCart() {
                     <p className='brand-name'>{item.product.name}</p>
                     <p className='price'>₹{item.product.price}</p>
                     <div className='qty-size flex'>
-                      <p>Please select a size.</p>
+                      {/* <p>Please select a size.</p> */}
                       <div className='size-parent'>
                         <div className='quantity bold'>Size &nbsp;
                           <select onChange={(event) => selctSizeHandler(event)} value={getSize} name='getSize'>
