@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
+import Footer from "../components/Footer";
 
 
 
@@ -61,6 +62,7 @@ const {searchItem, setSearchItem} = useUser();
     }
     </div>  
     </div>
+    <Footer/>
     </>
   )
 }

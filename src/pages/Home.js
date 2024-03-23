@@ -68,10 +68,13 @@ export default function Home() {
 
   return (
     <>
-      <div className='heading'>
+    <div className="home-hero-img-container">
+      <img className="home-hero-img" src="/images/Homepage-Banner_17.webp" alt="herobanner"/>
+    </div>
+      <div className='heading-home'>
         <h1>CATEGORIES</h1>
       </div>
-      <div className="main-cart-container">
+      <div className="main-cart-container-home">
         {getcategory && getcategory.map((item, index) => (
           <div onClick={() => nevigateToProductCategory(item)} key={index} className='cart-container'>
             <img className="cart-img" src={getCategoryImage(item).categorySrc} />           
@@ -82,10 +85,10 @@ export default function Home() {
         ))
         }
         </div>
-        <div className='heading'>
+        <div className='heading-home'>
           <h1>BEST DEALS</h1>
         </div>
-        <div className="main-cart-container bestdeals">
+        <div className="main-cart-container-home bestdeals">
           {bestDeals.map((item, index) =>(
             <div onClick={() => nevigateToProductDetails(item._id)} key={index} 
             className='cart-container'>
@@ -98,7 +101,7 @@ export default function Home() {
           ))
           }
         </div> 
-        {/* <Footer/>    */}
+        <Footer/>   
     </>
   )
 }

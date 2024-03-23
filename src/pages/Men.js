@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
+import Footer from "../components/Footer";
 
 
 
@@ -48,7 +49,7 @@ const {searchItem, setSearchItem} = useUser();
         <div className='men-heading'>
           <h1>PRODUCTS</h1>
         </div>
-        <div className="main-cart-container">
+        <div className="main-cart-container-men">
           {getData.map((item, index) => item.gender === "Men" && (
             <div onClick={() => nevigateToProductDetails(item._id)} key={index} className='cart-container-men'>
               <img className="cart-img" src={item.displayImage} />
@@ -63,6 +64,7 @@ const {searchItem, setSearchItem} = useUser();
           }
         </div>
       </div>
+      <Footer/>
     </>
   )
 }

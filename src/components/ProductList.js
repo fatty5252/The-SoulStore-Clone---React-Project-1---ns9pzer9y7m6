@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
+import Footer from "./Footer";
 
 
 export default function ProductList() {
@@ -64,6 +65,7 @@ export default function ProductList() {
 }
 
   return (
+    <>
     <div className='main-cart-container' >
       {
       products.map(product => (
@@ -76,7 +78,9 @@ export default function ProductList() {
             <p className="price">₹ {product.price}</p>
             </div>
           </div>
-        ))}
+        ))}     
     </div>
+    <Footer/>
+    </>
   )
 }

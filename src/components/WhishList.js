@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import "../styles/WhishList.css";
 import { useUser } from '../providers/UserProvider';
+import Footer from './Footer';
 
 export default function WhishList() {
 
@@ -87,6 +88,7 @@ export default function WhishList() {
                     ))
                 }
             </div>
+            <Footer/>
         </div>
     )
 }
