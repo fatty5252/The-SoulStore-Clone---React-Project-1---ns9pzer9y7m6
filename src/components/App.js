@@ -14,6 +14,7 @@ import { UserProvider } from "../providers/UserProvider";
 import WhishList from "./WhishList";
 import Address from "./Address";
 import CheckOut from "./CheckOut";
+import ComingSoon from "./ComingSoon";
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/ProductCart" element={<ProductCart/>}/>
         <Route path="/Address" element={<Address/>}/>
         <Route path="/Checkout" element={<CheckOut/>}/>
+        <Route path="/ComingSoon" element={<ComingSoon/>}/>
        </Routes>              
       </BrowserRouter>
       </UserProvider>

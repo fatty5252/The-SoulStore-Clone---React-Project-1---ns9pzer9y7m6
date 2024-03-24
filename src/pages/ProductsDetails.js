@@ -67,9 +67,8 @@ export default function ProductsDetails() {
           }});
 
       if (response.data.status === "success"){
-      setCartItemCount(response.data.data.items.length);
+      setCartItemCount(cartItemCount+1);
       //  console.log(response.data.data.items.length);
-       localStorage.setItem("cartItem",response.data.data.items.length);
         setToggleBtn(!toggleBtn);
         setCartItemToggle(!cartItemToggle)
         settoggleSize(false)
@@ -107,7 +106,7 @@ export default function ProductsDetails() {
           {productDetails && productDetails.size.map((itemSize, index) => (
             <p onClick={() => {selctSizeHandler(itemSize)}} key={index} className={`itemsize ${getSize == itemSize ? 'activSize' : ""}`}>{itemSize}</p>
           ))}
-          {toggleSize && <p>Select the Size</p>}
+          {toggleSize && <p style={{color:'red'}}>Select the Size</p>}
         </div>
         <p className='color bold'>Color: {productDetails.color}</p>
         <p className='rating bold'>Ratings: {Math.round(productDetails.ratings)}/5</p>

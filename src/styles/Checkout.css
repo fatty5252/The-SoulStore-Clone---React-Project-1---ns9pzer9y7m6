@@ -14,7 +14,7 @@
     justify-content: space-between;
     border: 1px solid #696969;
     align-items: center;
-    padding: 0 1rem;
+    padding: 1rem;
 }
 
 .checkout-main-right {
@@ -27,6 +27,7 @@
 
 .change-btn {
     display: flex;
+    text-align: end;
     width: 5rem;
     height: 3rem;
     justify-content: center;
@@ -39,10 +40,11 @@
 }
 
 .paymentdone {
-    width: 20vw;
-    height: 20vh;
-    background-color: red;
+    width: 25vw;
+    /* height: 20vh; */
+    background-color: white;
     position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 6px 12px, rgba(0, 0, 0, 0.4) 0px 2px 16px;
 }
 
 .main-atm-ctn {
@@ -114,4 +116,8 @@ height: 3rem;
     background-color: #298E83;
     width: 80%;
     border-radius: 0.8rem;
+}
+
+.paymentPopup img{
+    width:8rem;
 }

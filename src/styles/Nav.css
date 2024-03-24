@@ -66,12 +66,13 @@
   }
   
   .topNavRight { 
+    align-items: center;
     gap:20px;
     font-size: 1rem;
     font-weight: 400;
     margin-right: 4rem;
     color:white;
-    border: 2px solid white;
+    /* border: 2px solid white; */
   }
   
   .bottomNav {
@@ -160,4 +161,12 @@
     border-radius: 5px;
     padding: 0 0.5rem;
     border: none;
+  }
+  .search-icon{
+    position: relative;
+  }
+  .search-bar{
+    position: absolute;
+    right: 30px;
+    width: 300px;
   }

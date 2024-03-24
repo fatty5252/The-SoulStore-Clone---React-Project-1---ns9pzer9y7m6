@@ -58,8 +58,6 @@ export default function WhishList() {
     };
 
 
-
-
     return (
         <div >
             <div className='wish-heading'>

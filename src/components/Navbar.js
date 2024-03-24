@@ -20,6 +20,7 @@ export default function Navbar() {
     searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount } = useUser();
 
   const [isHovered, setIsHovered] = useState(false);
+  const [togglesearch, settogglesearch] = useState(false)
 
 
   const navigate = useNavigate();
@@ -84,11 +85,19 @@ export default function Navbar() {
                 <span>CONTACT US</span>
                 <span><FaMobileScreenButton />DOWNLOAD APP</span> */}
                 <div className=" search-container">
-                  <div className="navbar">
+                  {/* <div className="navbar">
                     <div className="search-icon" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                      {isHovered && (<input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />)}
+                      {isHovered && (
+                      <input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />)}
                       <FaSearch />
                     </div>
+                  </div> */}
+
+                  <div className="navbar">
+                    <div className="search-icon" onClick={()=>settogglesearch(!togglesearch)}>
+                      <FaSearch />
+                    </div>
+                        {togglesearch && <input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />}
                   </div>
 
                   {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>

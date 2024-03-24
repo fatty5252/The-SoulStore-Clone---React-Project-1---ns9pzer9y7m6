@@ -34,6 +34,7 @@ export default function Address() {
       })
     }
   }
+
   const indianStatesArray = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -80,7 +81,7 @@ export default function Address() {
     <div>
     <div className='head-div'>
       <div className='left-ctn-address'>
-      {storageData &&
+      {storageData && !toggleForm &&
         <div className='address-box'>
         <h3>{storageData.name} {storageData.lastName}</h3>
         <h3>{storageData.house} {storageData.street}</h3>
