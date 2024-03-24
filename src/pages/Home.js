@@ -20,6 +20,13 @@ export default function Home() {
     navigate(`/ProductsDetails?id=${value}`);
   }
 
+  const imgages =[
+    "/images/Homepage-Banner_17.webp",
+    "/images/banne1.webp",
+    "/images/homepage_3.webp",
+   " /images/web_4.webp",
+   "/images/web_copy__2.webp"
+  ]
   const [bestDeals, setBestDeals] = useState([]);
 
   useEffect(() => {
@@ -76,7 +83,7 @@ export default function Home() {
       </div>
       <div className="main-cart-container-home">
         {getcategory && getcategory.map((item, index) => (
-          <div onClick={() => nevigateToProductCategory(item)} key={index} className='cart-container'>
+          <div onClick={() => nevigateToProductCategory(item)} key={index} className='home-cart-container'>
             <img className="cart-img" src={getCategoryImage(item).categorySrc} />           
             {/* <div className="p"> */}
               <p className='description'>{item.toUpperCase()}</p>
@@ -88,11 +95,12 @@ export default function Home() {
         <div className='heading-home'>
           <h1>BEST DEALS</h1>
         </div>
-        <div className="main-cart-container-home bestdeals">
+        <div className="bestDeals-container">
+        <div className="bestDeals-cart-container-home bestdeals">
           {bestDeals.map((item, index) =>(
             <div onClick={() => nevigateToProductDetails(item._id)} key={index} 
-            className='cart-container'>
-              <img className="cart-img" src={item.displayImage} />
+            className='bestDeals-cart-container'>
+              <img className="bestdeals-cart-img" src={item.displayImage} />
               <div className="p">
                 <p className='para-description'>{item.name}</p>
                 <p className="price">₹ {item.price}</p>
@@ -101,6 +109,7 @@ export default function Home() {
           ))
           }
         </div> 
+        </div>
         <Footer/>   
     </>
   )

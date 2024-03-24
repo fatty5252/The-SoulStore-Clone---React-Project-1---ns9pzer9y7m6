@@ -4,17 +4,39 @@
     box-sizing: border-box;
 }
 
+.flex{
+    display: flex;
+    gap: 10px;
+}
+
+.list-main{
+    width: 98vw;
+    display: flex;
+    margin-top: 8rem;
+}
+.listsort-sec{
+    width: 18%;
+    padding: 10px;
+    
+}
+.price-input{
+    width: fit-content;
+}
+.price-label{
+    font-size: 0.8rem;
+}
 .main-cart-container{
+    width: 82%;
+    /* border: 1px solid red; */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 8rem;
    
 }
-.cart-container{
-    height: 450px;
+.list-cart-container{
+    height: 550px;
     width: 350px;
 }
 .cart-img{

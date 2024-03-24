@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useUser } from '../providers/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Address.css';
+import Footer from './Footer';
 
 export default function Address() {
 
@@ -76,19 +77,17 @@ export default function Address() {
   }
 
   return (
+    <div>
     <div className='head-div'>
       <div className='left-ctn-address'>
       {storageData &&
         <div className='address-box'>
-        <h1>{storageData.name}</h1>
-        <h1>{storageData.lastName}</h1>
-        <h1>{storageData.house}</h1>
-        <h1>{storageData.street}</h1>
-        <h1>{storageData.landmark}</h1>
-        <h1>{storageData.city}-{storageData.pincode}</h1>
-        <h1>{storageData.state}</h1>
-        <h1>{storageData.country}</h1>
-        <h1>Mobile: {storageData.phnum}</h1>
+        <h3>{storageData.name} {storageData.lastName}</h3>
+        <h3>{storageData.house} {storageData.street}</h3>
+        <h3>{storageData.landmark}</h3>
+        <h3>{storageData.city}-{storageData.pincode}</h3>
+        <h3>{storageData.state} {storageData.country}</h3>
+        <h3>Mobile: {storageData.phnum}</h3>
 
       </div>}
       
@@ -150,22 +149,24 @@ export default function Address() {
       </div>
       <div className='right-ctn-address'>
         <h2>BILLING DETAILS</h2>
-        <div>
+        <div className='crt-dtl'>
           <p>CART TOTAL</p>
           <p>{totalAmmount}</p>
         </div>
-        <div>
+        <div className='crt-dtl'>
           <p>GST</p>
           <p>{(totalAmmount * 18) / 100}</p>
         </div>
-        <div>
+        <div className='crt-dtl'>
           <p>TOTAL AMMOUNT</p>
           <p>{totalAmmount + (totalAmmount * 18) / 100}</p>
         </div>
-        <div className='rightCart-container'>
+        <div className='rt-crt-cnt'>
           <button onClick={() => navigate('/Checkout')} className='order-btn width-100'>CONFIRM ORDER</button>
         </div>
       </div>
+      </div>
+      <Footer/>
     </div>
   )
 }

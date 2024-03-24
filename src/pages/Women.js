@@ -48,7 +48,7 @@ const {searchItem, setSearchItem} = useUser();
       <div className='heading'>
       <h1>PRODUCTS</h1>
       </div>
-      <div className="main-cart-container">
+      <div className="women-cart-container">
     { getData.map((item,index)=>item.gender==="Women" && (
       <div onClick={()=>nevigateToProductDetails(item._id)} key={index} className='cart-container-women'>
       <img className="cart-img" src={item.displayImage}/>

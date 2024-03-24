@@ -18,35 +18,57 @@
     flex-wrap: wrap;
     gap: 20px;
     /* margin-top: 10rem; */
-   
 }
-.cart-container-main{
+.bestDeals-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bestDeals-cart-container-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: scroll;
+
+}
+/* .cart-container-main{
     height: 16rem;
     width: 32rem;
-}
-.cart-container{
-    height: 30px;
+} */
+.home-cart-container{
+    /* height: 30px; */
     width: 350px;
     /* border: 1px solid black; */
      position: relative;
     display: inline-block; 
 }
 
-.cart-img{
+.bestDeals-cart-container{
+    /* height: 30px; */
+    width: 300px;
+    /* border: 1px solid black; */
+     position: relative;
+    display: inline-block; 
+    
+}
+
+.bestdeals-cart-img{
     width: 100%;
     height: 300px;
     border-radius: 3px;  
     margin-bottom: 10px;  
 }
 
-.cart-img:hover{
+.bestdeals-cart-img:hover{
  transform: scale(1.1);
  transition: all 0.5s ease-in-out;
 }
 
 .description{
     position: absolute;
-    bottom: 7.3rem;
+    bottom: 1rem;
     width: 50%;
     left: 6rem;
     font-size: 1rem;
@@ -64,12 +86,12 @@
     white-space: nowrap;
 }
 
-.bestdeals{
+/* .bestdeals{
     display: flex;
     flex-wrap: nowrap;
     width: 95vw;
     overflow-x: scroll;
-}
+} */
 .home-hero-img-container{
     width: 100%;
     display: flex;
