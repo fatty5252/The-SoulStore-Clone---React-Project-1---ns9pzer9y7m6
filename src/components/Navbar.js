@@ -83,7 +83,7 @@ export default function Navbar() {
                 {/* <span>TRACK ORDER</span>
                 <span>CONTACT US</span>
                 <span><FaMobileScreenButton />DOWNLOAD APP</span> */}
-                <div className="categoryParent search-container">
+                <div className=" search-container">
                   <div className="navbar">
                     <div className="search-icon" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                       {isHovered && (<input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />)}

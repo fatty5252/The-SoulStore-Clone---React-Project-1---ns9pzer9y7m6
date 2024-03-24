@@ -83,7 +83,7 @@ export default function ProductCart() {
 
   return (
     <div >
-      <div className='heading'>
+      <div className='crt-heading'>
         <p>MY BAG ----------- ADDRESS ----------- PAYMENT</p>
       </div>
       <hr></hr>
@@ -92,7 +92,7 @@ export default function ProductCart() {
           <div className='address-bar flex'>
             {!storageData ? <span className='address-para '>Please select address..</span>
               :
-              <div className='address-box'>
+              <div className='address-box-crt'>
                 <p>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
                 <p>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
               </div>}

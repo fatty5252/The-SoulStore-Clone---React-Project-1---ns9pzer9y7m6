@@ -71,6 +71,7 @@
     font-weight: 400;
     margin-right: 4rem;
     color:white;
+    border: 2px solid white;
   }
   
   .bottomNav {
@@ -130,7 +131,8 @@
   .search-icon {
     cursor: pointer;
   } */
-  /* .search-bar {
+  /* 
+  .search-bar {
     position: absolute;
     top: 100%;
     left: 0;

@@ -166,7 +166,9 @@ export default function Address() {
         </div>
       </div>
       </div>
+      <div className='address-footer'>
       <Footer/>
+      </div>
     </div>
   )
 }

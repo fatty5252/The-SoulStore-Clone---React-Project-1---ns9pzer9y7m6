@@ -1,34 +1,117 @@
-.checkout-main{
+.checkout-main {
     padding-top: 8rem;
     display: flex;
+    justify-content: space-around;
     gap: 20px;
     border: 2px solid red;
     width: 98vw;
     padding: 9rem 2rem;
     position: relative;
 }
-.add-box{
-display: flex;
-justify-content: space-between;
-border: 2px solid green;
+
+.add-box {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #696969;
+    align-items: center;
+    padding: 0 1rem;
 }
 
-.checkout-main-right{
-    width: 20vw;
+.checkout-main-right {
+    width: 35%;
 }
-.checkout-main-left{
-width: 60vw;
+
+.checkout-main-left {
+    width: 50%;
 }
-.change-btn{
+
+.change-btn {
     display: flex;
     width: 5rem;
     height: 3rem;
     justify-content: center;
     align-items: center;
+    background-color: #298E83;
+    border-radius: 0.5rem;
+    color: white;
+    border: none;
+    padding: 0 3rem;
 }
-.paymentdone{
+
+.paymentdone {
     width: 20vw;
     height: 20vh;
     background-color: red;
     position: absolute;
+}
+
+.main-atm-ctn {
+    width: 26rem;
+    /* border: 1px solid black; */
+    border-radius: 1rem;
+    padding: 2rem 2.5rem 1rem;
+    /* box-shadow: -10px -10px 30px 4px rgba(0, 0, 0, 0.1), 10px 10px 30px 4px rgba(45, 78, 255, 0.15); */
+    border: none;
+    background-color: #F9F9F9;
+}
+
+.debit-input {
+    height: 2.5rem;
+    border: 1px solid grey;
+    opacity: 0.5;
+    box-shadow: 0 25px 50px -12px #3b82f620;
+    margin-bottom: 0.5rem;
+}
+
+.exp-cv-ctn {
+    display: grid;
+    grid-template-columns: 30% 30% 20%;
+    gap: 10px;
+}
+
+.cvv-inp {
+    margin-left: 2.8rem;
+}
+
+.img-debit-ctn {
+    display: flex;
+    justify-content: end;
+}
+
+.upi-ctn {
+    width: 25rem;
+    height: 2.5rem;
+    padding: 1rem;
+    /* border: 1px solid grey; */
+    box-shadow: -10px -10px 30px 4px rgba(0,0,0,0.1), 10px 10px 30px 4px rgba(45,78,255,0.15);
+    border: none;
+}
+.atm-head{
+border: 1px solid #6969692a;
+margin-top: 1.5rem;
+height: 3rem;
+}
+.upi-head{
+    border: 1px solid #6969692a;
+margin-top: 1.5rem;
+height: 3rem;
+
+
+
+}
+.checkout-main-left{
+    /* border: 1px solid #696969; */
+    padding: 1rem;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem; */
+}
+.cfrm-order-btn{
+    padding: 0.5rem;
+    text-align: center;
+    color: white;
+    background-color: #298E83;
+    width: 80%;
+    border-radius: 0.8rem;
 }
