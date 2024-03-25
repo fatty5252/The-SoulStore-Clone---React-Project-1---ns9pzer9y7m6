@@ -16,8 +16,8 @@ import WhishList from "./WhishList";
 
 export default function Navbar() {
 
-  const { getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
-    searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount } = useUser();
+  const { whishListItem, getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
+    searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem } = useUser();
 
   const [isHovered, setIsHovered] = useState(false);
   const [togglesearch, settogglesearch] = useState(false)
@@ -42,6 +42,8 @@ export default function Navbar() {
     NameHandler(null);
     localStorage.removeItem("token");
     localStorage.removeItem("name");
+    localStorage.removeItem("wishList");
+    localStorage.removeItem("cartItem");
     setNewToken("")
   }
 
@@ -106,9 +108,9 @@ export default function Navbar() {
                     <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
                   {/* <div className="categoryUnderline" /> */}
                 </div>
-                <div className="categoryParent">
-                  <span onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : navigate('/login')}><FaRegHeart /></span>
-                  {localStorage.getItem('token') && <p>{wishListCount}</p>}
+                <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : navigate('/login')} className="categoryParent">
+                  <span ><FaRegHeart /></span>
+                  {localStorage.getItem('token') && <p>{whishListItem.length}</p>}
                 </div>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
                 <ul className="navbar-nav mr-auto">
@@ -126,9 +128,9 @@ export default function Navbar() {
                   </li>
                 </ul>
                 {/* </div> */}
-                <div className="categoryParent">
-                  <span onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : navigate('/login')}><HiOutlineShoppingBag /></span>
-                  {localStorage.getItem('token') && <p>{cartItemCount}</p>}
+                <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : navigate('/login')} className="categoryParent">
+                  <span ><HiOutlineShoppingBag /></span>
+                  {localStorage.getItem('token') && <p>{cartitem.length}</p>}
                 </div>
               </div>
             </div>

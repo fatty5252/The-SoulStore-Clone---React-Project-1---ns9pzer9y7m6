@@ -7,7 +7,7 @@ import "../styles/Login.css";
 
 function Login() {
 
-    const { TokenHandler, NameHandler, token } = useUser();
+    const { TokenHandler, NameHandler, token, cartItemToggle, setCartItemToggle } = useUser();
     // console.log(token);
 
     const [toggle, setToggle] = useState(true);
@@ -23,7 +23,7 @@ function Login() {
         // gender: '',
         appType: 'ecommerce'
     });
-   console.log(data.gender);
+    console.log(data.gender);
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
@@ -57,6 +57,7 @@ function Login() {
             NameHandler(result.data.data.name);
             localStorage.setItem("token", result.data.token);
             localStorage.setItem("name", result.data.data.name);
+            setCartItemToggle(!cartItemToggle)
             // console.log(result.data.token);
             console.log(result);
 
@@ -86,7 +87,7 @@ function Login() {
         else if (!data.password) {
             setError("Pasword can not be empty")
             return;
-        }else if(gendertoggle){
+        } else if (gendertoggle) {
             setError("Please select gender")
             return;
         }
@@ -98,12 +99,13 @@ function Login() {
         }).then((result) => {
             // console.log(result)
             // navigate('/login')
-            if(result.data.status === 'success'){
+            if (result.data.status === 'success') {
                 setToggle(!toggle)
+                setCartItemToggle(!cartItemToggle)
             }
         }).catch((err) => {
             console.log(err.message ? err.message : "Internal Server Error")
-            if( err.message ? err.message : "User already exists"){
+            if (err.message ? err.message : "User already exists") {
                 alert("User already exists")
             }
         });
@@ -138,7 +140,7 @@ function Login() {
                                 <div className="form-group">
                                     <button onClick={(event) => submitLoginHandler(event)} type="button" className="btn btn-pry">Login</button>
                                 </div>
-                                <p  onClick={() => { setToggle(false) }} className="signup-user">Not an existing user. Sign up</p>
+                                <p onClick={() => { setToggle(false) }} className="signup-user">Not an existing user. Sign up</p>
                             </form>
                         </div>
                     </div>
@@ -172,22 +174,22 @@ function Login() {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="mobno">Mobile No.</label>
-                                        <input type="text" maxLength={10} minLength={10}className="form-control" onChange={onChangeHandler} value={data.mobno} name="mobno" autoComplete="off" placeholder="Enter Mob no." />
+                                        <input type="text" maxLength={10} minLength={10} className="form-control" onChange={onChangeHandler} value={data.mobno} name="mobno" autoComplete="off" placeholder="Enter Mob no." />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="gender">Gender</label>
-                                        <input type="radio" id="male" onClick={()=>setgendertoggle(!gendertoggle)} name="gender" />
+                                        <input type="radio" id="male" onClick={() => setgendertoggle(!gendertoggle)} name="gender" />
                                         <label htmlFor="male">Male</label>
-                                        <input type="radio" id="female"  onClick={()=>setgendertoggle(!gendertoggle)}  name="gender" />
+                                        <input type="radio" id="female" onClick={() => setgendertoggle(!gendertoggle)} name="gender" />
                                         <label htmlFor="female">Female</label>
-                                        <input type="radio" id="other" onClick={()=>setgendertoggle(!gendertoggle)} name="gender" />
+                                        <input type="radio" id="other" onClick={() => setgendertoggle(!gendertoggle)} name="gender" />
                                         <label htmlFor="other">Other</label>
                                     </div>
 
                                     <div className="form-group">
                                         <button type="submit" className="btn btn-pry">Register</button>
                                     </div>
-                                <p  onClick={() => { setToggle(!toggle) }} className="signup-user">Already a user. Login</p>
+                                    <p onClick={() => { setToggle(!toggle) }} className="signup-user">Already a user. Login</p>
 
                                 </form>
                                 {/* </div>

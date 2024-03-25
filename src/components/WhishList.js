@@ -5,39 +5,40 @@ import { useUser } from '../providers/UserProvider';
 import Footer from './Footer';
 
 export default function WhishList() {
+    const { setWishListCount, cartItemToggle, whishListItem } = useUser();
 
-    const { setWishListCount, cartItemToggle } = useUser();
+    
+    // const { setWishListCount, cartItemToggle } = useUser();
+    // const [wishListToggle, setwishListToggle] = useState(true);
+    
+    
+    // const [whishListItem, setWhishListItem] = useState([]);
+    // useEffect(() => {
+    //     const fetchWhishListItems = async () => {
+    //         try {
+    //             const response = await axios.get(
+    //                 `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/`,
+    //                 {
+    //                     headers: {
+    //                         projectID: "rhxg8aczyt09",
+    //                         Authorization: `Bearer ${localStorage.getItem("token")}`
+    //                     }
+    //                 }
+    //             );
+    //             if (response.data.status === "success") {
+    //                 setWhishListItem(response.data.data.items)
+    //                 setWishListCount(response.data.data.items.length);
+    //                 // console.log(response.data.data.items.length);
+    //                 localStorage.setItem("wishList", response.data.data.items.length)
 
-    const [whishListItem, setWhishListItem] = useState([]);
-    const [wishListToggle, setwishListToggle] = useState(true);
-
-
-    useEffect(() => {
-        const fetchWhishListItems = async () => {
-            try {
-                const response = await axios.get(
-                    `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/`,
-                    {
-                        headers: {
-                            projectID: "rhxg8aczyt09",
-                            Authorization: `Bearer ${localStorage.getItem("token")}`
-                        }
-                    }
-                );
-                if (response.data.status === "success") {
-                    setWhishListItem(response.data.data.items)
-                    setWishListCount(response.data.data.items.length);
-                    // console.log(response.data.data.items.length);
-                    localStorage.setItem("wishList", response.data.data.items.length)
-
-                }
-                // console.log(response);
-            } catch (err) {
-                console.log("Error shows ", err);
-            }
-        };
-        fetchWhishListItems();
-    }, [wishListToggle, cartItemToggle]);
+    //             }
+    //             // console.log(response);
+    //         } catch (err) {
+    //             console.log("Error shows ", err);
+    //         }
+    //     };
+    //     fetchWhishListItems();
+    // }, [wishListToggle, cartItemToggle]);
 
     const deletWhishListItems = async (id) => {
         try {

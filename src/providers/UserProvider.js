@@ -56,6 +56,38 @@ export const UserProvider = ({ children }) => {
     setName(data);
   }
 
+  // --------------WishlistItems-------------------------
+  const [wishListToggle, setwishListToggle] = useState(true);
+
+
+  const [whishListItem, setWhishListItem] = useState([]);
+  useEffect(() => {
+    const fetchWhishListItems = async () => {
+      try {
+        const response = await axios.get(
+          `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/`,
+          {
+            headers: {
+              projectID: "rhxg8aczyt09",
+              Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+          }
+        );
+        if (response.data.status === "success") {
+          setWhishListItem(response.data.data.items)
+          setWishListCount(response.data.data.items.length);
+          // console.log(response.data.data.items.length);
+          localStorage.setItem("wishList", response.data.data.items.length)
+
+        }
+        // console.log(response);
+      } catch (err) {
+        console.log("Error shows ", err);
+      }
+    };
+    fetchWhishListItems();
+  }, [wishListToggle, cartItemToggle]);
+
   const addToWhishList = async (id) => {
     try {
       const response = await axios.patch(
@@ -107,7 +139,7 @@ export const UserProvider = ({ children }) => {
     token,
     categoryToggle,
     setCategoryToggle, getCategoryImage,
-    searchItem, wishListCount, setWishListCount,
+    searchItem, wishListCount, setWishListCount, whishListItem,
     setSearchItem, cartItemCount, setCartItemCount,
     setNewToken, storageData, setStorageData,
     TokenHandler,
