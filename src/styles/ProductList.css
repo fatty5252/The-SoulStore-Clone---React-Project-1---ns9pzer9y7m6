@@ -8,6 +8,11 @@
     display: flex;
     gap: 10px;
 }
+.flexXY{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .list-main{
     width: 98vw;
@@ -16,8 +21,17 @@
 }
 .listsort-sec{
     width: 18%;
-    padding: 10px;
-    
+    padding: 15px;
+    border-right: 1px solid #8080802a;
+}
+.pricesort-sec{
+    margin-bottom: 20px;
+}
+.pricesort-sec h5, .ratingsort-sec h5{
+    font-size: 20px;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #8080802a;
 }
 .price-input{
     width: fit-content;
@@ -36,8 +50,12 @@
    
 }
 .list-cart-container{
-    height: 550px;
-    width: 350px;
+    height: 28rem;
+    width: 19rem;
+    /* background-color: black; */
+}
+.list-details p{
+    padding: .3rem;
 }
 .cart-img{
     width: 100%;
@@ -59,8 +77,18 @@
 }
 .listName{
     margin-bottom: 0;
+    border-bottom: 1px solid #8080807e;
 }
 .title{
     margin-bottom: 0;
+    text-transform: capitalize;
 }
 
+.price-cut{
+    text-decoration: line-through;
+    color: #80808069;
+}
+.listbrand{
+    font-size: 14px;
+    color: #80808069;
+}

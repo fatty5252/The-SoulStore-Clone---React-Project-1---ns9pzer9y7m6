@@ -4,6 +4,14 @@
     box-sizing: border-box;
     /* overflow-x: hidden; */
   }
+
+  .topNavLeft a{
+    text-decoration: none;
+  }
+
+  .active{
+    background-color: #D8F1FD;
+  }
   
   .nav {
     display: flex;
@@ -38,9 +46,7 @@
     gap: 10px;
 
   }
-  Navlink{
-    text-decoration: none;
-  }
+  
   .topNavLeft {
     display: flex;
     margin-left: 120px;
@@ -54,7 +60,7 @@
     color: black;
     font-weight: 700;
     border-right: 1px solid black;
-    padding: 12px;
+    padding: 13px;
   }
   .topNavLeftItem:nth-child(1){
     border-left: 1px solid black;
@@ -62,7 +68,7 @@
   .topNavLeftItem:hover{
     /* background-color: #E11B23; */
     /* opacity: 0.2; */
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.507);
   }
   
   .topNavRight { 

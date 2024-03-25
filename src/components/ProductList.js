@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
 import Footer from "./Footer";
+import { CiStar } from "react-icons/ci";
 
 
 export default function ProductList() {
@@ -145,11 +146,17 @@ export default function ProductList() {
               <div onClick={() => nevigateToProductDetails(product._id)} key={product._id
               } className="list-cart-container">
                 <img className="cart-img" src={product.displayImage} alt={product.name} />
-                <div className="p">
-                  <p className="price"> {Math.floor(product.ratings)}</p>
+                <div className="list-details">
                   <p className="listName">{product.name}</p>
+                  <p className="listbrand">{product.brand}</p>
+                  <div className="flex">
                   <p className='title'>{product.subCategory}</p>
-                  <p className="price">₹ {product.price}</p>
+                  <div className="flexXY"><p><CiStar/></p><p className="price"> {Math.floor(product.ratings)}/5</p></div>
+                  </div>
+                  <div className="flex">
+                    <p className="price">₹ {product.price}</p>
+                    <p className="price-cut">₹ {product.price + 100}</p>
+                  </div>
 
                 </div>
               </div>
