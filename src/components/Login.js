@@ -87,10 +87,11 @@ function Login() {
         else if (!data.password) {
             setError("Pasword can not be empty")
             return;
-        } else if (gendertoggle) {
-            setError("Please select gender")
-            return;
         }
+        // else if (gendertoggle) {
+        //     setError("Please select gender")
+        //     return;
+        // }
         // console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/signup', data, {
             headers: {

@@ -17,7 +17,8 @@ export const UserProvider = ({ children }) => {
   const [wishListCount, setWishListCount] = useState(parseInt(localStorage.getItem("wishList")));
   const [cartItemCount, setCartItemCount] = useState(parseInt(localStorage.getItem("cartItem")));
   const [storageData, setStorageData] = useState(JSON.parse(localStorage.getItem("addData")));
-
+  const [wishListToggle, setwishListToggle] = useState(true);
+  const [whishListItem, setWhishListItem] = useState([]);
 
 
   const fetchCartItems = async () => {
@@ -57,10 +58,7 @@ export const UserProvider = ({ children }) => {
   }
 
   // --------------WishlistItems-------------------------
-  const [wishListToggle, setwishListToggle] = useState(true);
 
-
-  const [whishListItem, setWhishListItem] = useState([]);
   useEffect(() => {
     const fetchWhishListItems = async () => {
       try {
@@ -139,7 +137,7 @@ export const UserProvider = ({ children }) => {
     token,
     categoryToggle,
     setCategoryToggle, getCategoryImage,
-    searchItem, wishListCount, setWishListCount, whishListItem,
+    searchItem, wishListCount, setWishListCount, whishListItem, wishListToggle, setwishListToggle,
     setSearchItem, cartItemCount, setCartItemCount,
     setNewToken, storageData, setStorageData,
     TokenHandler,
