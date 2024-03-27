@@ -52,6 +52,7 @@ export default function ProductList() {
       setlowhigh("")
     }
     else {
+      setlowhighrating("")
       setlowhigh(val);
     }
   }
@@ -61,6 +62,7 @@ export default function ProductList() {
       setlowhighrating("")
     }
     else {
+      setlowhigh("")
       setlowhighrating(val);
     }
   }

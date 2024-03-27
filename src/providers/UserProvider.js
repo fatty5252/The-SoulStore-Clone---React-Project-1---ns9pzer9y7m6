@@ -74,7 +74,7 @@ export const UserProvider = ({ children }) => {
         if (response.data.status === "success") {
           setWhishListItem(response.data.data.items)
           setWishListCount(response.data.data.items.length);
-          // console.log(response.data.data.items.length);
+          // console.log(response.data.data.items);
           localStorage.setItem("wishList", response.data.data.items.length)
 
         }
@@ -137,7 +137,7 @@ export const UserProvider = ({ children }) => {
     token,
     categoryToggle,
     setCategoryToggle, getCategoryImage,
-    searchItem, wishListCount, setWishListCount, whishListItem, wishListToggle, setwishListToggle,
+    searchItem, wishListCount, setWishListCount, whishListItem,setWhishListItem, wishListToggle, setwishListToggle,
     setSearchItem, cartItemCount, setCartItemCount,
     setNewToken, storageData, setStorageData,
     TokenHandler,

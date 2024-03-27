@@ -8,7 +8,8 @@
     width: 98vw;
     display: flex;
     justify-content: space-between;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
+    margin-top: 8rem;
 
 }
 
@@ -29,11 +30,19 @@
 .img-container {
     width: 97%;
     margin-bottom: 0.6rem;
+    cursor: pointer;
+    height: fit-conten;
 }
+.img-container:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+   }
 
 .size-parent {
     display: flex;
     gap: 5px;
+    cursor: pointer;
 }
 
 .itemsize {
@@ -58,8 +67,9 @@
     font-weight: 500;
 }
 
-.quantity {
+.quantity select{
     margin: 20px 0;
+    cursor: pointer;
 }
 
 .wish-btn{
@@ -79,7 +89,7 @@
 }
 
 .activSize {
-    border:2px solid #117A7A;
+    border:3px solid #117A7A;
 }
 
 .btn-container {

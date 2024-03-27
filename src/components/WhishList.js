@@ -3,11 +3,11 @@ import axios from 'axios';
 import "../styles/WhishList.css";
 import { useUser } from '../providers/UserProvider';
 import Footer from './Footer';
+import { useNavigate } from 'react-router-dom';
 
 export default function WhishList() {
-    const { setWishListCount, cartItemToggle, whishListItem } = useUser();
-
-    
+    const { setWishListCount, cartItemToggle, whishListItem, setWhishListItem } = useUser();
+    const navigate = useNavigate()
     // const { setWishListCount, cartItemToggle } = useUser();
     // const [wishListToggle, setwishListToggle] = useState(true);
     
@@ -51,7 +51,9 @@ export default function WhishList() {
                     }
                 }
             );
-            setwishListToggle(!wishListToggle);
+            // setwishListToggle(!wishListToggle);
+            setWhishListItem(response.data.items);
+            console.log(whishListItem);
 
         } catch (err) {
             console.log("Error shows ", err);
@@ -65,9 +67,9 @@ export default function WhishList() {
                 <p>MY WISHLIST</p>
             </div>
             <hr></hr>
-            <div className='main-wishList-container'>
+            <div className='main-wishList-container'>  
 
-                {whishListItem &&
+                {whishListItem && whishListItem.length > 0 ?
                     whishListItem.map((item, index) => (
                         <>
                         <div className='whishlist-items>'>
@@ -85,6 +87,16 @@ export default function WhishList() {
                             </div>
                         </>
                     ))
+                    :
+                    <div className="wishlistprod">
+                    <div>
+                      {/* <div className="flexXY">{notrainsfound}</div> */}
+                      <img src='https://www.thesouledstore.com/static/img/wishList-empty-icon.fd2a993.png'/>
+                      <h3>Your wishlist is lonely and looking for love.</h3>
+                      <p>Add products to your wishlist, review them anytime and easily move to cart.</p>
+                      <button onClick={()=>navigate('/')}>Continue shopping</button>
+                    </div>
+                  </div>
                 }
             </div>
             <Footer/>

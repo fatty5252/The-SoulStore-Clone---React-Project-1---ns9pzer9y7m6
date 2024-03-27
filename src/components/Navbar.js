@@ -110,7 +110,7 @@ export default function Navbar() {
                 </div>
                 <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : navigate('/login')} className="categoryParent">
                   <span ><FaRegHeart /></span>
-                  {localStorage.getItem('token') && <p>{whishListItem.length}</p>}
+                  {localStorage.getItem('token') && <p>{whishListItem ? whishListItem.length : 0}</p>}
                 </div>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
                 <ul className="navbar-nav mr-auto">
@@ -137,7 +137,7 @@ export default function Navbar() {
             <div className="bottomNav">
               <div className="bottomNavLeft">
                 <div className="logoNav">
-                  <img src="https://www.thesouledstore.com/static/img/300x157-twitter.png" onClick={() => navigate('/')} />
+                  <img className="nav-img-logo" src="https://www.thesouledstore.com/static/img/300x157-twitter.png" onClick={() => navigate('/')} />
                 </div>
                 {
                   getData.map((item, index) => {

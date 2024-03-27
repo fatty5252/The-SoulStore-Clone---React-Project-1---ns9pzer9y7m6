@@ -77,15 +77,15 @@ export default function ProductCart() {
   };
 
   const navigateToCart = () => {
-    navigate("/Address");
+    cartitem.length > 0 ? navigate("/Address") : alert('No items in the cart');
   }
 
 
   return (
     <div >
-      <div className='crt-heading'>
+     {cartitem.length > 0 && <div className='crt-heading'>
         <p>MY BAG ----------- ADDRESS ----------- PAYMENT</p>
-      </div>
+      </div>}
       <hr></hr>
       <div className='main-addCart-container flex'>
         <div className='leftCart-container flex' >
@@ -98,8 +98,8 @@ export default function ProductCart() {
               </div>}
             <button className='address-btn' onClick={navigateToCart}>ADD</button>
           </div>
-          <div className='prd-container flex'>
-            {cartitem &&
+          <div className={`${cartitem.length > 0 ? "prd-container" : "productcart-nf"} flex`}>
+            {cartitem.length > 0 ?
               cartitem.map((item, index) => (
                 <> <div className='subLeft flex'>
                   <img className='addCart-img' src={item.product.displayImage} />
@@ -149,9 +149,19 @@ export default function ProductCart() {
                 </div>
                 </>
               ))
+              :
+              // <div className="productcart-nf">
+                <div>
+                  {/* <div className="flexXY">{notrainsfound}</div> */}
+                  <img src='https://www.thesouledstore.com/static/img/wishList-empty-icon.fd2a993.png'/>
+                  <h3>Your Cart is lonely and looking for love.</h3>
+                  <p>Add products to your Cart, review them anytime and easily move to cart.</p>
+                  <button onClick={()=>navigate('/')}>Continue shopping</button>
+                </div>
+              // </div>
             }
           </div>
-          <button className='clear-cart-btn' onClick={() => { clearCartItems() }} >CLEAR CART </button>
+          {cartitem.length > 0 && <button className='clear-cart-btn' onClick={() => { clearCartItems() }} >CLEAR CART </button>}
 
         </div>
 
@@ -166,7 +176,7 @@ export default function ProductCart() {
 
           </div>
         </div> */}
-        <div className='main-rtg'>
+       {cartitem.length > 0 && <div className='main-rtg'>
 
           <div className='rightCart-container'>
             <div className='cont-btn flex'>
@@ -192,7 +202,7 @@ export default function ProductCart() {
               <button onClick={navigateToCart} className='order-btn'>PLACE ORDER</button></div>
 
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   )
