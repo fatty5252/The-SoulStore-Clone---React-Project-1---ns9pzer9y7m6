@@ -34,6 +34,10 @@ export default function Address() {
       })
     }
   }
+//  const [toggleaddress, settoggleaddress] = useState(false)
+//   useEffect(()=>{
+//     settoggleaddress(!toggleaddress)
+//   }, [toggleForm])
 
   const indianStatesArray = [
     "Andhra Pradesh",
@@ -92,7 +96,7 @@ export default function Address() {
 
       </div>}
       
-      {!toggleForm && <button className='tgl-btn' onClick={() => setToggleForm(!toggleForm)}>+</button>}
+      {!toggleForm && <button className='tgl-btn' style={{color:"black", opacity:"0.5"}} onClick={() => setToggleForm(!toggleForm)}>+<br/>Add New Address</button>}
       {toggleForm && <div className='form-parent'>
         <form className='form-main'>
         <div className='form-heading'>ADD NEW ADRESS</div>

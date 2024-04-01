@@ -19,6 +19,9 @@ export const UserProvider = ({ children }) => {
   const [storageData, setStorageData] = useState(JSON.parse(localStorage.getItem("addData")));
   const [wishListToggle, setwishListToggle] = useState(true);
   const [whishListItem, setWhishListItem] = useState([]);
+  const [toggleheart, settoggleheart] = useState(false)
+  const [togglewishlistpop, settogglewishlistpop] = useState(false)
+
 
 
   const fetchCartItems = async () => {
@@ -86,6 +89,7 @@ export const UserProvider = ({ children }) => {
     fetchWhishListItems();
   }, [wishListToggle, cartItemToggle]);
 
+
   const addToWhishList = async (id) => {
     try {
       const response = await axios.patch(
@@ -100,10 +104,12 @@ export const UserProvider = ({ children }) => {
           }
         }
       );
-      // console.log(response);
+      console.log(response);
       if (response.data.status === 'success') {
         setCartItemToggle(!cartItemToggle);
+        settoggleheart(!toggleheart)
         setWishListCount(wishListCount + 1);
+        settogglewishlistpop(!togglewishlistpop)
       }
     } catch (err) {
       console.log("Error shows ", err);
@@ -137,8 +143,8 @@ export const UserProvider = ({ children }) => {
     token,
     categoryToggle,
     setCategoryToggle, getCategoryImage,
-    searchItem, wishListCount, setWishListCount, whishListItem,setWhishListItem, wishListToggle, setwishListToggle,
-    setSearchItem, cartItemCount, setCartItemCount,
+    searchItem, wishListCount, setWishListCount, whishListItem,setWhishListItem, wishListToggle, setwishListToggle, toggleheart, settoggleheart,
+    setSearchItem, cartItemCount, setCartItemCount, togglewishlistpop, settogglewishlistpop,
     setNewToken, storageData, setStorageData,
     TokenHandler,
     NameHandler,

@@ -20,7 +20,7 @@ const {searchItem, setSearchItem} = useUser();
 
   const mensList = async () => {
     try {
-      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"subCategory":"${searchItem}"}&limit=50`, {
+      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"subCategory":"${searchItem},"gender":"Men"}&limit=50`, {
         headers: {
           projectId: "rhxg8aczyt09"
         }

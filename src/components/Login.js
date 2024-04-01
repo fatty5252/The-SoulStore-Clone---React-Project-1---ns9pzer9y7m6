@@ -35,19 +35,19 @@ function Login() {
     const submitLoginHandler = (event) => {
         event.preventDefault();
         setError(null);
-        // if (!data.name) {
-        //     setError("User name is Mandatory");
-        //     return;
-        // }
-        // else if (!data.email) {
-        //     setError("Email is Mandatory")
-        //     return;
-        // }
-        // else if (!data.password) {
-        //     setError("Pasword can not be empty")
-        //     return;
-        // }
-        // console.log(data);
+        if (!data.name) {
+            setError("User name is Mandatory");
+            return;
+        }
+        else if (!data.email) {
+            setError("Email is Mandatory")
+            return;
+        }
+        else if (!data.password) {
+            setError("Pasword can not be empty")
+            return;
+        }
+        console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/login', data, {
             headers: {
                 projectID: "l2uaz7omaxbe"
@@ -58,7 +58,7 @@ function Login() {
             localStorage.setItem("token", result.data.token);
             localStorage.setItem("name", result.data.data.name);
             setCartItemToggle(!cartItemToggle)
-            // console.log(result.data.token);
+            console.log(result.data.token);
             console.log(result);
 
             navigate('/');

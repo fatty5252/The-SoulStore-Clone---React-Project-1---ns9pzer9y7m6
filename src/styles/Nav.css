@@ -76,6 +76,7 @@
     align-items: center;
     gap:20px;
     font-size: 1rem;
+    text-transform: capitalize;
     font-weight: 400;
     margin-right: 4rem;
     color:white;
@@ -112,11 +113,12 @@
     position: relative;
     align-items: center;
     font-weight: 700;
-    font-size: medium;
+    font-size: large;
+    text-transform: capitalize;
     height: 3rem;
     margin-right:20px;
     cursor: pointer;
-
+    position: relative;
   }
   /* .categoryUnderline { */
   .categoryParent::after {
@@ -186,6 +188,18 @@
 
   .search-bar{
     position: absolute;
-    right: 30px;
+    right: 40px;
     width: 300px;
+  }
+
+  .login-warning{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 300px;
+    right: 30px;
+    top: 0px;
+    padding: 3px;
+    z-index: 1;
   }

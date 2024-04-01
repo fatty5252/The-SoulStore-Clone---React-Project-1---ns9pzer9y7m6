@@ -7,6 +7,7 @@ import { FaRegUser } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { MdCancel } from "react-icons/md";
 import { useUser } from "../providers/UserProvider";
 import { Link } from 'react-router-dom';
 import WhishList from "./WhishList";
@@ -21,7 +22,7 @@ export default function Navbar() {
 
   const [isHovered, setIsHovered] = useState(false);
   const [togglesearch, settogglesearch] = useState(false)
-
+  const [loginFirst, setLoginFirst] = useState(false)
 
   const navigate = useNavigate();
 
@@ -44,13 +45,14 @@ export default function Navbar() {
     localStorage.removeItem("name");
     localStorage.removeItem("wishList");
     localStorage.removeItem("cartItem");
+    localStorage.removeItem("addData");
     setNewToken("")
   }
 
   const [getData, setData] = useState([]);
 
   useEffect(() => {
-    const mensList = async () => {
+    const categoryList = async () => {
 
       try {
         const responce = await axios.get("https://academics.newtonschool.co/api/v1/ecommerce/clothes/categories", {
@@ -65,8 +67,14 @@ export default function Navbar() {
         console.log("Error shows ", err);
       }
     }
-    mensList();
+    categoryList();
   }, []);
+
+  // useEffect(()=>{
+  //   setTimeout(() => {
+  //     setLoginFirst(true)
+  //   }, 2000);
+  // }, [])
 
   return (
     <>
@@ -96,10 +104,10 @@ export default function Navbar() {
                   </div> */}
 
                   <div className="navbar">
-                    <div className="search-icon" onClick={()=>settogglesearch(!togglesearch)}>
+                    <div className="search-icon" onClick={() => settogglesearch(!togglesearch)}>
                       <FaSearch />
                     </div>
-                        {togglesearch && <input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />}
+                    {togglesearch && <input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />}
                   </div>
 
                   {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>
@@ -108,15 +116,18 @@ export default function Navbar() {
                     <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
                   {/* <div className="categoryUnderline" /> */}
                 </div>
-                <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : navigate('/login')} className="categoryParent">
+                <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : setLoginFirst(!loginFirst)} className="categoryParent">
                   <span ><FaRegHeart /></span>
-                  {localStorage.getItem('token') && <p>{whishListItem ? whishListItem.length : 0}</p>}
+                  {localStorage.getItem('token') && <sup>{whishListItem ? whishListItem.length : 0}</sup>}
+                 {loginFirst && <div class="alert alert-warning login-warning" role="alert">
+                   <p>Please Login First!</p> <MdCancel onClick={()=>setLoginFirst(false)}/>
+                  </div>}
                 </div>
                 {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
                 <ul className="navbar-nav mr-auto">
                   <li className="nav-item dropdown my-2 my-lg-0 left-nav" >
                     <div className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
-                      {localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name").toUpperCase()}</span> : <span><FaRegUser /></span>}
+                      {localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name")}</span> : <span><FaRegUser /></span>}
                     </div>
                     <div className="dropdown-menu">
                       {localStorage.getItem("token") && <><Link className="dropdown-item" onClick={logOutHandler} to="/login">Logout</Link></>}
@@ -128,9 +139,9 @@ export default function Navbar() {
                   </li>
                 </ul>
                 {/* </div> */}
-                <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : navigate('/login')} className="categoryParent">
+                <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : setLoginFirst(!loginFirst)} className="categoryParent">
                   <span ><HiOutlineShoppingBag /></span>
-                  {localStorage.getItem('token') && <p>{cartitem.length}</p>}
+                  {localStorage.getItem('token') && <sup>{cartitem.length}</sup>}
                 </div>
               </div>
             </div>
@@ -142,7 +153,7 @@ export default function Navbar() {
                 {
                   getData.map((item, index) => {
                     return <div onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle) }} key={index} className="categoryParent">
-                      {item.toUpperCase()}
+                      {item}
                       <div className="categoryUnderline" />
                     </div>
                   })

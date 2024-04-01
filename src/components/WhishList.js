@@ -6,7 +6,7 @@ import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 
 export default function WhishList() {
-    const { setWishListCount, cartItemToggle, whishListItem, setWhishListItem } = useUser();
+    const { setWishListCount, cartItemToggle, whishListItem, setWhishListItem, setwishListToggle, wishListToggle } = useUser();
     const navigate = useNavigate()
     // const { setWishListCount, cartItemToggle } = useUser();
     // const [wishListToggle, setwishListToggle] = useState(true);
@@ -51,8 +51,8 @@ export default function WhishList() {
                     }
                 }
             );
-            // setwishListToggle(!wishListToggle);
-            setWhishListItem(response.data.items);
+            setwishListToggle(!wishListToggle);
+            // setWhishListItem(response.data.items);
             console.log(whishListItem);
 
         } catch (err) {
