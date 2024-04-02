@@ -71,7 +71,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${category}"}`, {
+        const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${category}","gender":"${localStorage.getItem("GENDER")}"}`, {
           headers: {
             projectId: "rhxg8aczyt09"
           }
@@ -83,10 +83,11 @@ export default function ProductList() {
       }
       catch (err) {
         console.log("Error shows ", err);
+        alert(`This Product is not available ${localStorage.getItem("GENDER")}`)
       }
     }
     fetchProducts();
-  }, [categoryToggle, lowhigh, lowrating]);
+  }, [categoryToggle, lowhigh, lowrating,category]);
 
   // for filter Sidebar=====================================================================
 

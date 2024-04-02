@@ -4,6 +4,7 @@ import axios from 'axios';
 import { CiHeart } from "react-icons/ci";
 import "../styles/ProductCart.css";
 import { useUser } from '../providers/UserProvider';
+import Footer from './Footer';
 
 export default function ProductCart() {
 
@@ -82,6 +83,7 @@ export default function ProductCart() {
 
 
   return (
+    <>
     <div >
      {cartitem.length > 0 && <div className='crt-heading'>
         <p>MY BAG ----------- ADDRESS ----------- PAYMENT</p>
@@ -205,5 +207,7 @@ export default function ProductCart() {
         </div>}
       </div>
     </div>
+    <Footer/>
+    </>
   )
 }

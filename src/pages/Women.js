@@ -14,44 +14,27 @@ export default function Women() {
   const [getData, setData] = useState([]);
 
   useEffect(() => {
-    mensList();
+    WomenList();
   }, [searchItem])
 
-  const mensList = async () => {
+  const WomenList = async () => {
     try {
-
-      const responce = "";
-
       if (searchItem) {
-
-        responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"subCategory":"${searchItem}"}&limit=100`, {
-
+      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"subCategory":"${searchItem}"}&limit=100`, {
           headers: {
-
             projectId: "rhxg8aczyt09"
-
           }
-
         });
-
+        setData(responce.data.data)
       } else {
-
-        responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"gender":"Women","subCategory":"shirt"}&limit=100`, {
-
+        const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"gender":"Women","subCategory":"shirt"}&limit=100`, {
           headers: {
-
             projectId: "rhxg8aczyt09"
-
           }
-
         });
-
+        setData(responce.data.data)
       }
-
       // console.log(responce.data.data);
-
-      setData(responce.data.data)
-
     }
     catch (err) {
       console.log("Error shows ", err);

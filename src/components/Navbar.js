@@ -68,6 +68,7 @@ export default function Navbar() {
       }
     }
     categoryList();
+    localStorage.setItem("GENDER","Women");
   }, []);
 
   // useEffect(()=>{
@@ -75,7 +76,8 @@ export default function Navbar() {
   //     setLoginFirst(true)
   //   }, 2000);
   // }, [])
-
+ 
+  
   return (
     <>
       <nav>
@@ -84,10 +86,10 @@ export default function Navbar() {
             <div className="topNav">
               <ul className="topNavLeft">
                 <NavLink to='/Women'>
-                  <li className="topNavLeftItem">WOMEN</li>
+                  <li className="topNavLeftItem" onClick={()=>localStorage.setItem("GENDER", "Women")}>WOMEN</li>
                 </NavLink>
                 <NavLink to='/Men'>
-                  <li className="topNavLeftItem">MEN</li>
+                  <li className="topNavLeftItem" onClick={()=>localStorage.setItem("GENDER", "Men")}>MEN</li>
                 </NavLink>
               </ul>
               <div className="topNavRight flex">
@@ -153,7 +155,7 @@ export default function Navbar() {
                 {
                   getData.map((item, index) => {
                     return <div onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle) }} key={index} className="categoryParent">
-                      {item}
+                      {item}                     
                       <div className="categoryUnderline" />
                     </div>
                   })

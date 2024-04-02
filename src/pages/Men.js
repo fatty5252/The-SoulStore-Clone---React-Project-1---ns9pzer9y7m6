@@ -20,13 +20,22 @@ const {searchItem, setSearchItem} = useUser();
 
   const mensList = async () => {
     try {
-      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"subCategory":"${searchItem},"gender":"Men"}&limit=50`, {
-        headers: {
-          projectId: "rhxg8aczyt09"
-        }
-      });
+      if (searchItem) {
+      const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"subCategory":"${searchItem}"}&limit=100`, {
+          headers: {
+            projectId: "rhxg8aczyt09"
+          }
+        });
+        setData(responce.data.data)
+      } else {
+        const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"gender":"Men","subCategory":"shirt"}&limit=100`, {
+          headers: {
+            projectId: "rhxg8aczyt09"
+          }
+        });
+        setData(responce.data.data)
+      }
       // console.log(responce.data.data);
-      setData(responce.data.data)
     }
     catch (err) {
       console.log("Error shows ", err);
