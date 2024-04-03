@@ -194,11 +194,11 @@ export default function ProductCart() {
               </div>
               <div className='ct flex'>
                 <p>GST</p>
-                <p>{(totalAmmount * 18) / 100}</p>
+                <p>{Math.round((totalAmmount * 18) / 100)}</p>
               </div>
               <div className='ct flex'>
                 <p>TOTAL AMMOUNT</p>
-                <p>{(totalAmmount + (totalAmmount * 18) / 100)}</p>
+                <p>{Math.round((totalAmmount + (totalAmmount * 18) / 100))}</p>
               </div>
             </div>
             <div className='cont-btn flex'>

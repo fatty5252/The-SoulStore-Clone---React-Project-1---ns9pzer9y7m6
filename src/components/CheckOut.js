@@ -87,6 +87,34 @@ export default function CheckOut() {
         else {
             alert("Enter correct card details")
         }
+        //regex pattern for month of expiry
+        let monthExp = /^(0[1-9]|1[0-2])$/;
+        let resultExp = monthExp.test(debitdata.Expirymonth);
+        if (resultExp == false){
+            alert("Invalid Month of Expiry");
+            return;
+        }
+        //regex pattern for Year of Expiry
+        let yearExp = /^(20[2-9][0-9]|2[1-9][0-9]{2}|30[0-5][0-9]|3060)$/;
+        let resultExpYear = yearExp.test(debitdata.Expiryyear);
+        if (resultExpYear == false){
+            alert("Invalid Year of Expiry");
+            return;
+        }
+        //regex patter for card number 
+        let cardNum = /^(4[0-9]{12}(?:[0-9]{3})?|[25][1-9][0-9]{14})$/;
+        let resultCardNum = cardNum.test(debitdata.cardno);
+        if (resultCardNum == false){
+            alert("Invalid Card Number");
+            return;
+        }
+        // regex pattern for cvv
+        let cvv = /^[0-9]{3}$/;
+        let resultCVV = cvv.test(debitdata.CVV);
+        if (resultCVV == false){
+            alert("Invalid CVV");
+            return;
+        }
     }
 
     return (
@@ -127,12 +155,12 @@ export default function CheckOut() {
                 {openDebit &&
                     <><div className='main-atm-ctn'>
                         <div className='card-num-ctn'>
-                            <input className='debit-input' type='text' maxLength={16} value={debitdata.cardno} onChange={(e) => AddressInfo("cardno", e.target.value)} placeholder='Card no.' />
+                            <input className='debit-input' type='text' maxLength={16} value={debitdata.cardno} onChange={(e) => AddressInfo("cardno", e.target.value)} placeholder='xxxx xxxx xxxx' />
                         </div>
                         <div className='exp-cv-ctn'>
-                            <input className='debit-input' type='text' value={debitdata.Expirymonth} onChange={(e) => AddressInfo("Expirymonth", e.target.value)} placeholder='Expiry month' />
-                            <input className='debit-input' type='text' value={debitdata.Expiryyear} onChange={(e) => AddressInfo("Expiryyear", e.target.value)} placeholder='Expiry year' />
-                            <input className='debit-input cvv-inp' type='text' maxLength={3} value={debitdata.CVV} onChange={(e) => AddressInfo("CVV", e.target.value)} placeholder='CVV' />
+                            <input className='debit-input' type='text' value={debitdata.Expirymonth} onChange={(e) => AddressInfo("Expirymonth", e.target.value)} placeholder='xx' />
+                            <input className='debit-input' type='text' value={debitdata.Expiryyear} onChange={(e) => AddressInfo("Expiryyear", e.target.value)} placeholder='xxxx' />
+                            <input className='debit-input cvv-inp' type='text' value={debitdata.CVV} onChange={(e) => AddressInfo("CVV", e.target.value)} placeholder='xxx' />
                         </div>
                         <div className='atm-card-name'>
                             <input className='debit-input' type='text' value={debitdata.name} onChange={(e) => AddressInfo("name", e.target.value)} placeholder='Cardholder name' />
@@ -161,11 +189,11 @@ export default function CheckOut() {
                     </div>
                     <div className='ct flex'>
                         <p>GST</p>
-                        <p>{(totalAmmount * 18) / 100}</p>
+                        <p>{Math.round((totalAmmount * 18) / 100)}</p>
                     </div>
                     <div className='ct flex'>
                         <p>TOTAL AMMOUNT</p>
-                        <p>{(totalAmmount + (totalAmmount * 18) / 100)}</p>
+                        <p>{Math.round((totalAmmount + (totalAmmount * 18) / 100))}</p>
                     </div>
                 </div>
                 <div className='cont-btn flex'>

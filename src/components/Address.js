@@ -161,11 +161,11 @@ export default function Address() {
         </div>
         <div className='crt-dtl'>
           <p>GST</p>
-          <p>{(totalAmmount * 18) / 100}</p>
+          <p>{Math.round((totalAmmount * 18) / 100)}</p>
         </div>
         <div className='crt-dtl'>
           <p>TOTAL AMMOUNT</p>
-          <p>{totalAmmount + (totalAmmount * 18) / 100}</p>
+          <p>{Math.round(totalAmmount + (totalAmmount * 18) / 100)}</p>
         </div>
         <div className='rt-crt-cnt'>
           <button onClick={() => navigate('/Checkout')} className='order-btn width-100'>CONFIRM ORDER</button>

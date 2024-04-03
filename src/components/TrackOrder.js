@@ -2,16 +2,32 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import "../styles/TrackOrder.css"
 import Footer from './Footer';
+import { useNavigate } from 'react-router-dom';
 
 export default function TrackOrder() {
 
     // ======================== for List Product fetching API==============================
 
+    const navigate = useNavigate();
+
     const [getData,setData] =useState("");
+    const [getTimsap, setTimesap] = useState("")
+//     const [date, setDate] = useState(null);
+//   const [month, setMonth] = useState(null);
+//   const [year, setYear] = useState(null);
 
     useEffect(()=>{
         TrackOrder();
-    },[])
+    },[]);
+
+    // useEffect(() => {
+    //     const timeAt = getTimsap;
+    //     const dateObj = new Date(timeAt);
+    //     setDate(dateObj.getDate());
+    //     setMonth(dateObj.getMonth() + 1); // Months are zero-based
+    //     setYear(dateObj.getFullYear());
+    //   }, []);
+      
 
     const TrackOrder = async () => {
        
@@ -25,11 +41,12 @@ export default function TrackOrder() {
                 });
                 setData(responce.data.data);
                 console.log(responce.data.data);
+                // setTimesap(responce.createdAt);
+                // console.log(responce.createdAt)
         }
         catch (err) {
             console.log("Error shows ", err)
         }
-
     }
 
     return (
@@ -38,18 +55,34 @@ export default function TrackOrder() {
        Hey! Please note that The Souled Store team will never ask you to disclose any financial information or for payment regarding any contest. For COD orders we do not collect money before the order delivery. Do not share any such sensitive details. Stay secure and stay safe.
        </div>
        <div className='orderHeading'>MY ORDERS</div>
-       {getData && getData.map((item, index)=>(
-        <div key={index}>
-            <p>{item.order.items[0].product.name}</p>
-            <p>{item.order.items[0].product.price}</p>
+       <div className='order-container'>
+       {getData && getData.length > 0 ? getData.map((item, index)=>( 
+        <>
+        <div className='order-card-ctn' key={index}>
+             {/* <p>{date} {month} {year}</p> */}
+            <p className='oredr-item'>{item.order.items[0].product.name}</p>
+            <p className='oredr-item'>{item.order.items[0].product.price}</p>
             {item.order.items.map((image, index)=>(
-                <img key={index} src={image.product.displayImage}/>
+                <img className='order-img' key={index} src={image.product.displayImage}/>
             ))}
 
-            <p>{item.order.shipmentDetails.address.street}, {item.order.shipmentDetails.address.city}, {item.order.shipmentDetails.address.state}, {item.order.shipmentDetails.address.country}</p>
+            <p className='oredr-item'><span style={{color:"green"}}>Deliver to:</span> {item.order.shipmentDetails.address.street}, {item.order.shipmentDetails.address.city}, {item.order.shipmentDetails.address.state}, {item.order.shipmentDetails.address.country}</p>
 
         </div>
-       ))}
+        </>
+        ))
+        :
+        <div className="wishlistprod">
+                    <div>
+                      {/* <div className="flexXY">{notrainsfound}</div> */}
+                      <img src='https://www.thesouledstore.com/static/img/wishList-empty-icon.fd2a993.png'/>
+                      <h3>Your Order History is Lonely</h3>
+                      <p>Do Shopping to track your History</p>
+                      <button onClick={()=>navigate('/')}>Continue shopping</button>
+                    </div>
+                  </div>
+       }
+       </div>
        <Footer/>
         </div>     
     )
