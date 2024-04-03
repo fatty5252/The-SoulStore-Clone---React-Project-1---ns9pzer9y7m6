@@ -47,6 +47,7 @@ function Login() {
             setError("Pasword can not be empty")
             return;
         }
+        
         console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/login', data, {
             headers: {
@@ -88,6 +89,15 @@ function Login() {
             setError("Pasword can not be empty")
             return;
         }
+        let regex = /^[0-9]{10}$/;
+        let result = regex.test(data.mobno);
+        console.log(data.mobno);
+        console.log(result);
+        if (result == false){
+            setError("Invalid MobileNo.");
+            return;
+        }
+        
         // else if (gendertoggle) {
         //     setError("Please select gender")
         //     return;

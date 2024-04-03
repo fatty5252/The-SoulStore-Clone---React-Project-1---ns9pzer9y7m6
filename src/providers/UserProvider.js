@@ -23,6 +23,7 @@ export const UserProvider = ({ children }) => {
   const [togglewishlistpop, settogglewishlistpop] = useState(false)
 
 
+const [productID, setproductID] = useState('')
 
   const fetchCartItems = async () => {
     try {
@@ -35,8 +36,11 @@ export const UserProvider = ({ children }) => {
           }
         }
       );
+      console.log(response)
       if (response.data.status === "success") {
         setCartItem(response.data.data.items);
+        setproductID(response.data.data.items[0].product._id);
+        console.log(response.data.data);
         setTotalAmmount(response.data.data.totalPrice)
         localStorage.setItem("cartItem", response.data.data.items.length);
 
@@ -146,7 +150,7 @@ export const UserProvider = ({ children }) => {
     setCategoryToggle, getCategoryImage,
     searchItem, wishListCount, setWishListCount, whishListItem,setWhishListItem, wishListToggle, setwishListToggle, toggleheart, settoggleheart,
     setSearchItem, cartItemCount, setCartItemCount, togglewishlistpop, settogglewishlistpop,
-    setNewToken, storageData, setStorageData,
+    setNewToken, storageData, setStorageData, productID,
     TokenHandler,
     NameHandler,
     addToWhishList

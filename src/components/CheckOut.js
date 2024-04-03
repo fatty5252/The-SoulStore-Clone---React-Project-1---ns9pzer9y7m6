@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export default function CheckOut() {
 
     // const {addData} = useUser();
-    const { storageData, setStorageData, totalAmmount } = useUser();
+    const { storageData, setStorageData, totalAmmount, productID } = useUser();
     const [addData, setAddData] = useState(JSON.parse(localStorage.getItem("addData")));
     // console.log(addData);
 
@@ -34,7 +34,7 @@ export default function CheckOut() {
         try {
             const responce = await axios.post("https://academics.newtonschool.co/api/v1/ecommerce/order",
                 {
-                    "productId": "652675cddaf00355a7838161",
+                    "productId": `${productID}`,
                     "quantity": 2,
                     "addressType": "HOME",
                     "address": {
@@ -71,6 +71,7 @@ export default function CheckOut() {
             alert("Enter correct UPI")
         }
     }
+    
 
     const handlepaymentfromdebit = () => {
         if (debitdata.cardno.length === 16 && debitdata.CVV.length === 3 && debitdata.Expirymonth !== "" && debitdata.Expiryyear !== "") {

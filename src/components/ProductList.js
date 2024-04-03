@@ -72,7 +72,7 @@ export default function ProductList() {
     const fetchProducts = async () => {
       try {
         if(searchItem){
-          const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"name":"${searchItem}","gender":"${localStorage.getItem("GENDER")}"}`, {
+          const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"name":"${searchItem}"}`, {
           headers: {
             projectId: "rhxg8aczyt09"
           }

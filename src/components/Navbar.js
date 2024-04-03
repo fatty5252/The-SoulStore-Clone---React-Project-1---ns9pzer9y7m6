@@ -73,10 +73,12 @@ export default function Navbar() {
   }, []);
   
   const searchMethod=async(searchValue)=>{
-    if (searchValue !== "" &&  searchValue !== null && searchItem!== undefined ){
     setSearchItem(searchValue);
+    if (searchValue !== ""  && searchValue !== null && searchItem!== undefined ){
+   
     navigate(`/ProductList?category=${searchValue}`)
     }
+    
   }
   // useEffect(()=>{
   //   setTimeout(() => {
