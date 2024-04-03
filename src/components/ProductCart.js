@@ -31,7 +31,7 @@ export default function ProductCart() {
     setQuantity(selectedQuantity);
   };
 
-
+  console.log(localStorage.getItem("token"));
   // Delet Item API
 
   const deleteCartItems = async (itemId) => {
@@ -69,6 +69,7 @@ export default function ProductCart() {
       );
       setCartItemToggle(!cartItemToggle);
       setCartItemCount(0);
+     
 
       // console.log(response);
       //   setProductDetails(response.data.data)

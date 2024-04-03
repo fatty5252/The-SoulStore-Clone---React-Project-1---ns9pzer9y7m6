@@ -34,6 +34,7 @@ export default function Address() {
       })
     }
   }
+  // window.location.reload();
 //  const [toggleaddress, settoggleaddress] = useState(false)
 //   useEffect(()=>{
 //     settoggleaddress(!toggleaddress)
@@ -87,12 +88,12 @@ export default function Address() {
       <div className='left-ctn-address'>
       {storageData && !toggleForm &&
         <div className='address-box'>
-        <h3>{storageData.name} {storageData.lastName}</h3>
-        <h3>{storageData.house} {storageData.street}</h3>
-        <h3>{storageData.landmark}</h3>
-        <h3>{storageData.city}-{storageData.pincode}</h3>
-        <h3>{storageData.state} {storageData.country}</h3>
-        <h3>Mobile: {storageData.phnum}</h3>
+        <p className='add-name'>{storageData.name} {storageData.lastName}</p>
+        <p>{storageData.house} {storageData.street}</p>
+        <p>{storageData.landmark}</p>
+        <p>{storageData.city}-{storageData.pincode}</p>
+        <p>{storageData.state} {storageData.country}</p>
+        <p>Mobile: {storageData.phnum}</p>
 
       </div>}
       

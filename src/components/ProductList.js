@@ -10,7 +10,7 @@ import { CiStar } from "react-icons/ci";
 
 export default function ProductList() {
 
-  const { categoryToggle, setCategoryToggle } = useUser();
+  const { categoryToggle, setCategoryToggle,searchItem, setSearchItem }= useUser();
   // console.log(categoryToggle);
 
   const categoryLocation = useLocation();
@@ -71,7 +71,8 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${category}","gender":"${localStorage.getItem("GENDER")}"}`, {
+        if(searchItem){
+          const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"name":"${searchItem}","gender":"${localStorage.getItem("GENDER")}"}`, {
           headers: {
             projectId: "rhxg8aczyt09"
           }
@@ -79,11 +80,24 @@ export default function ProductList() {
         console.log(responce.data.data);
         setProduct(sortingincreaseordecrease(responce.data.data));
         setProduct(sortinratinggincreaseordecrease(responce.data.data));
-
+        }
+        else{
+          const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${category}","gender":"${localStorage.getItem("GENDER")}"}`, {
+            headers: {
+              projectId: "rhxg8aczyt09"
+            }
+          });
+          console.log(responce.data.data);
+        setProduct(sortingincreaseordecrease(responce.data.data));
+        setProduct(sortinratinggincreaseordecrease(responce.data.data));
+        }
+      
       }
       catch (err) {
         console.log("Error shows ", err);
+        if (!searchItem){
         alert(`This Product is not available ${localStorage.getItem("GENDER")}`)
+        }
       }
     }
     fetchProducts();

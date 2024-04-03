@@ -11,6 +11,7 @@ import { MdCancel } from "react-icons/md";
 import { useUser } from "../providers/UserProvider";
 import { Link } from 'react-router-dom';
 import WhishList from "./WhishList";
+import TrackOrder from "./TrackOrder";
 
 
 
@@ -70,7 +71,13 @@ export default function Navbar() {
     categoryList();
     localStorage.setItem("GENDER","Women");
   }, []);
-
+  
+  const searchMethod=async(searchValue)=>{
+    if (searchValue !== "" &&  searchValue !== null && searchItem!== undefined ){
+    setSearchItem(searchValue);
+    navigate(`/ProductList?category=${searchValue}`)
+    }
+  }
   // useEffect(()=>{
   //   setTimeout(() => {
   //     setLoginFirst(true)
@@ -109,7 +116,8 @@ export default function Navbar() {
                     <div className="search-icon" onClick={() => settogglesearch(!togglesearch)}>
                       <FaSearch />
                     </div>
-                    {togglesearch && <input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />}
+                    {/* setSearchItem(e.target.value) */}
+                    {togglesearch && <input type="text" value={searchItem} onChange={(e) => searchMethod(e.target.value)} placeholder="Search..." className="search-bar" />}
                   </div>
 
                   {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>
@@ -160,6 +168,9 @@ export default function Navbar() {
                     </div>
                   })
                 }
+              </div>
+              <div className="bottomNavRight flex ">
+                <span className="bottomRightNavItem categoryParent" onClick={()=>navigate('/TrackOrder')}>Track Order</span>
               </div>
               {/* <div className="bottomNavRight flex">
                 <div className="categoryParent search-container">

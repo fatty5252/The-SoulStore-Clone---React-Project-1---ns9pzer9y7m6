@@ -1,0 +1,14 @@
+.toTopBox{
+    border: 1px solid #94876C;
+    border-radius: 1px;
+    margin-top: 8rem;
+    padding: 1rem;
+    width: 98vw;
+    background-color: #FCF8E3;
+}
+.orderHeading{
+    text-align: center;
+    font-weight: 800;
+    font-size: large;
+    padding: 2rem;
+}

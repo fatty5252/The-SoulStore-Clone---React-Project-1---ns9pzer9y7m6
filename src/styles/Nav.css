@@ -103,6 +103,16 @@
     align-items: center;
     margin-left: 0px;
   }
+
+  .bottomRightNavItem{
+   
+    font-weight: 700;
+    color: grey;
+  }
+  .bottomNavRight{
+    margin-right: 1.2rem;
+  }
+    
   .nav-img-logo :hover{
     cursor: pointer;
   }

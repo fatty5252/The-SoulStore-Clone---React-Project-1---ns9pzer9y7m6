@@ -111,7 +111,8 @@ export const UserProvider = ({ children }) => {
         setWishListCount(wishListCount + 1);
         settogglewishlistpop(!togglewishlistpop)
       }
-    } catch (err) {
+    } 
+    catch (err) {
       console.log("Error shows ", err);
     }
   };
