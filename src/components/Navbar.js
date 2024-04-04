@@ -75,7 +75,6 @@ export default function Navbar() {
   const searchMethod=async(searchValue)=>{
     setSearchItem(searchValue);
     if (searchValue !== ""  && searchValue !== null && searchItem!== undefined ){
-   
     navigate(`/ProductList?category=${searchValue}`)
     }
     

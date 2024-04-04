@@ -77,6 +77,16 @@ export default function Address() {
     "Delhi",
     "Puducherry"
   ];
+  const AddFormSubmithandler=()=>{
+    let regex = /^[0-9]{10}$/;
+        let result = regex.test(addData.phnum);
+        console.log(e.target.value);
+        console.log(result);
+        if (result == false){
+           alert("Invalid MobileNo.");
+            return;
+        }
+  }
 
   function AddressInfo(key, value) {
     setAddData((prev) => ({ ...prev, [key]: value }));
@@ -99,7 +109,7 @@ export default function Address() {
       
       {!toggleForm && <button className='tgl-btn' style={{color:"black", opacity:"0.5"}} onClick={() => setToggleForm(!toggleForm)}>+<br/>Add New Address</button>}
       {toggleForm && <div className='form-parent'>
-        <form className='form-main'>
+        <form className='form-main' onSubmit={()=>AddFormSubmithandler()}>
         <div className='form-heading'>ADD NEW ADRESS</div>
           <div className='common-forfirst-last'>
             <div className='item-form'>
@@ -146,8 +156,8 @@ export default function Address() {
             <input onChange={(e) => AddressInfo("phnum", `${e.target.value}`)} type="tel" placeholder='Phone No.' value={addData.phnum} />
           </div>
           <div className='fr-btn'>
-          <button type="button" onClick={() => closeForm()} class="btn-primary">Cancel</button>
-          <button type="button" onClick={() => saveAdd()} class="btn-primary">Save</button>
+          <button type="button" onClick={() => closeForm()} className="btn-primary">Cancel</button>
+          <button type="button" onClick={() => saveAdd()} className="btn-primary">Save</button>
           </div>
         </form>
         {/* <p>{addData.name}</p> */}
@@ -168,7 +178,7 @@ export default function Address() {
           <p>{Math.round(totalAmmount + (totalAmmount * 18) / 100)}</p>
         </div>
         <div className='rt-crt-cnt'>
-          <button onClick={() => navigate('/Checkout')} className='order-btn width-100'>CONFIRM ORDER</button>
+          {addData && <button onClick={() => navigate('/Checkout')} className='order-btn width-100'>CONFIRM ORDER</button>}
         </div>
       </div>
       </div>

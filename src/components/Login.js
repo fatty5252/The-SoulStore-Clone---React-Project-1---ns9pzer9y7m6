@@ -23,7 +23,7 @@ function Login() {
         // gender: '',
         appType: 'ecommerce'
     });
-    console.log(data.gender);
+    // console.log(data.gender);
     const [error, setError] = useState(null);
 
     const navigate = useNavigate();
@@ -132,7 +132,7 @@ function Login() {
                 {toggle && <div className="container">
                     <div className="row">
                         <div className="col-4">
-                            {error && <div class="alert alert-secondary" role="alert">
+                            {error && <div className="alert alert-secondary" role="alert">
                                 {error}
                             </div>}
                             <form >
