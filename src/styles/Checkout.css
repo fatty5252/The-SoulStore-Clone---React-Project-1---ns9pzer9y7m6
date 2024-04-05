@@ -15,6 +15,7 @@
     border: 1px solid #696969;
     align-items: center;
     padding: 1rem;
+    border-radius: 0.5rem;
 }
 
 .checkout-main-right {
@@ -85,23 +86,28 @@
     height: 2.5rem;
     padding: 1rem;
     /* border: 1px solid grey; */
-    box-shadow: -10px -10px 30px 4px rgba(0,0,0,0.1), 10px 10px 30px 4px rgba(45,78,255,0.15);
+    box-shadow: -10px -10px 30px 4px rgba(0, 0, 0, 0.1), 10px 10px 30px 4px rgba(45, 78, 255, 0.15);
     border: none;
 }
-.atm-head{
-border: 1px solid #6969692a;
-margin-top: 1.5rem;
-height: 3rem;
-}
-.upi-head{
-    border: 1px solid #6969692a;
-margin-top: 1.5rem;
-height: 3rem;
 
-
+.atm-head {
+    border: 1px solid #6969695b;
+    margin-top: 1.5rem;
+    height: 3rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 
 }
-.checkout-main-left{
+
+.upi-head {
+    border: 1px solid #6969695b;
+    margin-top: 1.5rem;
+    height: 3rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.checkout-main-left {
     /* border: 1px solid #696969; */
     padding: 1rem;
     /* display: flex;
@@ -109,7 +115,8 @@ height: 3rem;
     justify-content: center;
     gap: 2rem; */
 }
-.cfrm-order-btn{
+
+.cfrm-order-btn {
     padding: 0.5rem;
     text-align: center;
     color: white;
@@ -118,6 +125,6 @@ height: 3rem;
     border-radius: 0.8rem;
 }
 
-.paymentPopup img{
-    width:8rem;
+.paymentPopup img {
+    width: 8rem;
 }

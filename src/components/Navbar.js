@@ -114,11 +114,11 @@ export default function Navbar() {
                   </div> */}
 
                   <div className="navbar">
-                    <div className="search-icon" onClick={() => settogglesearch(!togglesearch)}>
+                    <div className="search-icon" >
                       <FaSearch />
                     </div>
                     {/* setSearchItem(e.target.value) */}
-                    {togglesearch && <input type="text" value={searchItem} onChange={(e) => searchMethod(e.target.value)} placeholder="Search..." className="search-bar" />}
+                    {<input type="text" value={searchItem} onChange={(e) => searchMethod(e.target.value)} placeholder="Search..." className="search-bar" />}
                   </div>
 
                   {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>

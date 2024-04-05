@@ -74,19 +74,7 @@ export default function CheckOut() {
     
 
     const handlepaymentfromdebit = () => {
-        if (debitdata.cardno.length === 16 && debitdata.CVV.length === 3 && debitdata.Expirymonth !== "" && debitdata.Expiryyear !== "") {
-            setpaymentdone(!paymentdone)
-            setTimeout(() => {
-                setpaymentdone(false)
-            }, 5000);
-        } else if (debitdata.CVV.length !== 3) {
-            alert("Enter correct CVV")
-        } else if (debitdata.cardno.length !== 16) {
-            alert("Enter correct Card no.")
-        }
-        else {
-            alert("Enter correct card details")
-        }
+        
         //regex pattern for month of expiry
         let monthExp = /^(0[1-9]|1[0-2])$/;
         let resultExp = monthExp.test(debitdata.Expirymonth);
@@ -101,8 +89,8 @@ export default function CheckOut() {
             alert("Invalid Year of Expiry");
             return;
         }
-        //regex patter for card number 
-        let cardNum = /^(4[0-9]{12}(?:[0-9]{3})?|[25][1-9][0-9]{14})$/;
+       // regex patter for card number 
+        let cardNum = /^[0-9]{16}$/;
         let resultCardNum = cardNum.test(debitdata.cardno);
         if (resultCardNum == false){
             alert("Invalid Card Number");
@@ -115,6 +103,13 @@ export default function CheckOut() {
             alert("Invalid CVV");
             return;
         }
+
+        if (resultCardNum === true && resultCVV === true && resultExp === true){
+            setpaymentdone(!paymentdone)
+            setTimeout(() => {
+                setpaymentdone(false)
+            }, 3000);
+        } 
     }
 
     return (
