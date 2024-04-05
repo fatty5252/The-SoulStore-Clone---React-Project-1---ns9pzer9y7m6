@@ -69,7 +69,7 @@ export default function Navbar() {
       }
     }
     categoryList();
-    localStorage.setItem("GENDER","Women");
+    localStorage.setItem("GENDER","Men");
   }, []);
   
   const searchMethod=async(searchValue)=>{

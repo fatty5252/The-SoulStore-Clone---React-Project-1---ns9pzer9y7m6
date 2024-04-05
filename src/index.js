@@ -10,5 +10,4 @@ root.render(
     <UserProvider>
     <App />
     </UserProvider>
-  
 );

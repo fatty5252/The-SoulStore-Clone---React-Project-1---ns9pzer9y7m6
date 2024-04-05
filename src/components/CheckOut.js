@@ -143,14 +143,14 @@ export default function CheckOut() {
                     </div> */}
                 </div>
 
-
+ {/* ===================UPI DETAILS======================= */}
                 <div className='main-upi-ctn'>
                     <p className='upi-head' onClick={() => { setOpenUPI(!openUPI), setOpendebit(false) }}>Pay with UPI</p>
 
                     {openUPI && <input className='upi-ctn' type='text' onChange={(e) => setupi(e.target.value)} value={upi} placeholder='Enter UPI' />}
 
                 </div>
-
+{/*  ======================DEBIT CARD DETAILS================ */}
                 <p className='atm-head' onClick={() => { setOpendebit(!openDebit), setOpenUPI(false) }}>Pay with any Debit card</p>
                 {openDebit &&
                     <><div className='main-atm-ctn'>

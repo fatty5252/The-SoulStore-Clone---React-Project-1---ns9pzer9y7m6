@@ -33,8 +33,9 @@ export default function Address() {
         pincode: "", city: "", state: "", country: "", phnum: ""
       })
     }
+     window.location.reload();
   }
-  // window.location.reload();
+  
 //  const [toggleaddress, settoggleaddress] = useState(false)
 //   useEffect(()=>{
 //     settoggleaddress(!toggleaddress)
@@ -80,7 +81,6 @@ export default function Address() {
   const AddFormSubmithandler=()=>{
     let regex = /^[0-9]{10}$/;
         let result = regex.test(addData.phnum);
-        console.log(e.target.value);
         console.log(result);
         if (result == false){
            alert("Invalid MobileNo.");

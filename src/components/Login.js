@@ -51,7 +51,7 @@ function Login() {
         console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/login', data, {
             headers: {
-                projectID: "l2uaz7omaxbe"
+                projectID: "rhxg8aczyt09"
             }
         }).then((result) => {
             TokenHandler(result.data.token);
@@ -105,7 +105,7 @@ function Login() {
         // console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/signup', data, {
             headers: {
-                projectID: "l2uaz7omaxbe"
+                projectID: "rhxg8aczyt09"
             }
         }).then((result) => {
             // console.log(result)

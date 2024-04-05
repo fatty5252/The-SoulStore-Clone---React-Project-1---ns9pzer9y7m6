@@ -25,7 +25,7 @@ export default function ProductsDetails() {
   const [toggleadd, settoggleadd] = useState(false)
 
   useEffect(() => {
-    fetchIdDetails();
+    fetchIdDetails();git 
   }, [])
 
   const fetchIdDetails = async () => {

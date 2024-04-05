@@ -11,7 +11,7 @@ export default function TrackOrder() {
     const navigate = useNavigate();
 
     const [getData,setData] =useState("");
-    const [getTimsap, setTimesap] = useState("")
+    // const [getTimsap, setTimesap] = useState("")
 //     const [date, setDate] = useState(null);
 //   const [month, setMonth] = useState(null);
 //   const [year, setYear] = useState(null);
@@ -42,7 +42,7 @@ export default function TrackOrder() {
                 setData(responce.data.data);
                 console.log(responce.data.data);
                 // setTimesap(responce.createdAt);
-                // console.log(responce.createdAt)
+                // console.log(responce.createdAt);
         }
         catch (err) {
             console.log("Error shows ", err)

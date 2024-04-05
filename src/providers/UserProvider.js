@@ -36,17 +36,17 @@ const [productID, setproductID] = useState('')
           }
         }
       );
-      console.log(response)
+      // console.log(response)
       if (response.data.status === "success") {
         setCartItem(response.data.data.items);
         setproductID(response.data.data.items[0].product._id);
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setTotalAmmount(response.data.data.totalPrice)
         localStorage.setItem("cartItem", response.data.data.items.length);
 
       }
 
-      console.log(response);
+      // console.log(response);
       //   setProductDetails(response.data.data)
     } catch (err) {
       console.log("Error shows ", err);

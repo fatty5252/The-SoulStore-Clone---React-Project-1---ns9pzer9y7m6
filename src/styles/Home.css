@@ -68,9 +68,9 @@
 
 .description{
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 0rem;
     width: 50%;
-    left: 6rem;
+    left: 5rem;
     font-size: 1rem;
     text-align: center;
     color: white;
