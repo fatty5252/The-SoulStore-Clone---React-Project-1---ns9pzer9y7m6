@@ -217,3 +217,16 @@
     padding: 3px;
     z-index: 1;
   }
+
+  @media (max-width: 768px) {
+   .bottomNavLeft{
+    flex-wrap: wrap;
+    height: auto;
+   }
+   .bottomNav{
+    flex-wrap: wrap;
+    height: auto;
+    margin: 0;
+    padding: 5px;
+   }
+  }

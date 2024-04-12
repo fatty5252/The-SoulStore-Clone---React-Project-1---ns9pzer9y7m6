@@ -10,7 +10,7 @@ import { CiStar } from "react-icons/ci";
 
 export default function ProductList() {
 
-  const { categoryToggle, setCategoryToggle,searchItem, setSearchItem }= useUser();
+  const { categoryToggle, setCategoryToggle, searchItem, setSearchItem } = useUser();
   // console.log(categoryToggle);
 
   const categoryLocation = useLocation();
@@ -71,37 +71,37 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        if(searchItem){
+        if (searchItem) {
           const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?search={"name":"${searchItem}"}`, {
-          headers: {
-            projectId: "rhxg8aczyt09"
-          }
-        });
-        console.log(responce.data.data);
-        setProduct(sortingincreaseordecrease(responce.data.data));
-        setProduct(sortinratinggincreaseordecrease(responce.data.data));
+            headers: {
+              projectId: "rhxg8aczyt09"
+            }
+          });
+          console.log(responce.data.data);
+          setProduct(sortingincreaseordecrease(responce.data.data));
+          setProduct(sortinratinggincreaseordecrease(responce.data.data));
         }
-        else{
+        else {
           const responce = await axios.get(`https://academics.newtonschool.co/api/v1/ecommerce/clothes/products?filter={"subCategory":"${category}","gender":"${localStorage.getItem("GENDER")}"}`, {
             headers: {
               projectId: "rhxg8aczyt09"
             }
           });
           console.log(responce.data.data);
-        setProduct(sortingincreaseordecrease(responce.data.data));
-        setProduct(sortinratinggincreaseordecrease(responce.data.data));
+          setProduct(sortingincreaseordecrease(responce.data.data));
+          setProduct(sortinratinggincreaseordecrease(responce.data.data));
         }
-      
+
       }
       catch (err) {
         console.log("Error shows ", err);
-        if (!searchItem){
-        alert(`This Product is not available ${localStorage.getItem("GENDER")}`)
+        if (!searchItem) {
+          alert(`This Product is not available ${localStorage.getItem("GENDER")}`);       
         }
       }
     }
     fetchProducts();
-  }, [categoryToggle, lowhigh, lowrating,category]);
+  }, [categoryToggle, lowhigh, lowrating, category]);
 
   // for filter Sidebar=====================================================================
 
@@ -167,8 +167,8 @@ export default function ProductList() {
                   <p className="listName">{product.name}</p>
                   <p className="listbrand">{product.brand}</p>
                   <div className="flex">
-                  <p className='title'>{product.subCategory}</p>
-                  <div className="flexXY"><p><CiStar/></p><p className="price"> {Math.floor(product.ratings)}/5</p></div>
+                    <p className='title'>{product.subCategory}</p>
+                    <div className="flexXY"><p><CiStar /></p><p className="price"> {Math.floor(product.ratings)}/5</p></div>
                   </div>
                   <div className="flex">
                     <p className="price">₹ {product.price}</p>

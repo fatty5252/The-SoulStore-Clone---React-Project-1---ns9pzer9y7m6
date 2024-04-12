@@ -5,6 +5,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUser } from '../providers/UserProvider';
 import Footer from "../components/Footer";
+import { Button } from 'primereact/button';
+import { Carousel } from 'primereact/carousel';
+import { Tag } from 'primereact/tag';
+// import { ProductService } from './service/ProductService';
 
 export default function Home() {
 

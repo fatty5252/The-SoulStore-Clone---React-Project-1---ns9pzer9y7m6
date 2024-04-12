@@ -14,8 +14,6 @@ import WhishList from "./WhishList";
 import TrackOrder from "./TrackOrder";
 
 
-
-
 export default function Navbar() {
 
   const { whishListItem, getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,

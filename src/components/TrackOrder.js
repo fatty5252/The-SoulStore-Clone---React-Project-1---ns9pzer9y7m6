@@ -11,23 +11,13 @@ export default function TrackOrder() {
     const navigate = useNavigate();
 
     const [getData,setData] =useState("");
-    // const [getTimsap, setTimesap] = useState("")
-//     const [date, setDate] = useState(null);
-//   const [month, setMonth] = useState(null);
-//   const [year, setYear] = useState(null);
+
 
     useEffect(()=>{
         TrackOrder();
     },[]);
 
-    // useEffect(() => {
-    //     const timeAt = getTimsap;
-    //     const dateObj = new Date(timeAt);
-    //     setDate(dateObj.getDate());
-    //     setMonth(dateObj.getMonth() + 1); // Months are zero-based
-    //     setYear(dateObj.getFullYear());
-    //   }, []);
-      
+     
 
     const TrackOrder = async () => {
        
@@ -41,7 +31,6 @@ export default function TrackOrder() {
                 });
                 setData(responce.data.data);
                 console.log(responce.data.data);
-                // setTimesap(responce.createdAt);
                 // console.log(responce.createdAt);
         }
         catch (err) {
@@ -59,7 +48,7 @@ export default function TrackOrder() {
        {getData && getData.length > 0 ? getData.map((item, index)=>( 
         <>
         <div className='order-card-ctn' key={index}>
-             {/* <p>{date} {month} {year}</p> */}
+            <p className='oredr-item'>Ordered At: {new Date(item.createdAt).toLocaleDateString('en-GB')}</p>
             <p className='oredr-item'>{item.order.items[0].product.name}</p>
             <p className='oredr-item'>{item.order.items[0].product.price}</p>
             {item.order.items.map((image, index)=>(

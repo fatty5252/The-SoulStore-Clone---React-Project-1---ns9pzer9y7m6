@@ -72,8 +72,15 @@ export default function CheckOut() {
         }
     }
     
-
     const handlepaymentfromdebit = () => {
+
+        // regex patter for card number 
+        let cardNum = /^[0-9]{16}$/;
+        let resultCardNum = cardNum.test(debitdata.cardno);
+        if (resultCardNum == false){
+            alert("Invalid Card Number");
+            return;
+        }
         
         //regex pattern for month of expiry
         let monthExp = /^(0[1-9]|1[0-2])$/;
@@ -89,13 +96,7 @@ export default function CheckOut() {
             alert("Invalid Year of Expiry");
             return;
         }
-       // regex patter for card number 
-        let cardNum = /^[0-9]{16}$/;
-        let resultCardNum = cardNum.test(debitdata.cardno);
-        if (resultCardNum == false){
-            alert("Invalid Card Number");
-            return;
-        }
+       
         // regex pattern for cvv
         let cvv = /^[0-9]{3}$/;
         let resultCVV = cvv.test(debitdata.CVV);

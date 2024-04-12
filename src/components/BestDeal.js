@@ -48,12 +48,15 @@
 // export default BestDealsSection;
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const BestDealsSection = () => {
   const [bestDeals, setBestDeals] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -90,15 +93,26 @@ const BestDealsSection = () => {
     }
   };
 
+  const nevigateToProductDetails = (value) => {
+    navigate(`/ProductsDetails?id=${value}`);
+  }
+
+
   return (
-    <div className="best-deals-section">
-      <h2>Best Deals</h2>
+    <>
+    <div className="heading-home">
+      <h1>Best Deals</h1>
+      </div>
+      <div className="bestDeals-cart-container-home bestdeals">
       <div className="slider-container">
         <div className={`slider ${isAnimating ? 'animating' : ''}`}>
-          {bestDeals.map((product, index) => (
-            <div key={index} className={`slide ${currentSlide === index ? 'active' : ''}`}>
-              <p>Product: {product.name}</p>
-              <p>Price: {product.price}</p>
+          {bestDeals.map((item, index) => (
+            <div onClick={() => nevigateToProductDetails(item._id)} key={index} className={`slide ${currentSlide === index ? 'active' : ''} bestDeals-cart-container`}>
+              <img className="bestdeals-cart-img" src={item.displayImage} />
+              <div className="p">
+                <p className='para-description'>{item.name}</p>
+                <p className="price">₹ {item.price}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -106,6 +120,7 @@ const BestDealsSection = () => {
         <button className="next-btn" onClick={handleNextSlide}>Next</button>
       </div>
     </div>
+    </>
   );
 };
 

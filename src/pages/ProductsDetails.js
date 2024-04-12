@@ -8,6 +8,7 @@ import { FaHeart } from "react-icons/fa";
 import { useUser } from '../providers/UserProvider';
 import { MdCancel } from 'react-icons/md';
 
+
 export default function ProductsDetails() {
 
   const { addToWhishList, setWishListCount, cartItemCount, setCartItemCount, setCartItemToggle, cartItemToggle, toggleheart, settoggleheart, togglewishlistpop, settogglewishlistpop } = useUser();
