@@ -106,7 +106,6 @@
 .prd-container{
     /* border: 2px solid purple; */
     /* width: 70vw; */
-    justify-content: space-between;
     align-items: center;
     flex-direction: column;
     /* border: 1px solid red; */
