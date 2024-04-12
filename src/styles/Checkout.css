@@ -8,6 +8,9 @@
     padding: 9rem 2rem;
     position: relative;
 }
+.add-p{
+    margin: 0;
+}
 
 .add-box {
     display: flex;

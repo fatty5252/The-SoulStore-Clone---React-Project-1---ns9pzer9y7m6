@@ -131,8 +131,9 @@ export default function CheckOut() {
                 <div className='add-box'>
                     {storageData &&
                         <div className='checkout-address-box'>
-                            <p>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
-                            <p>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
+                           <p className='add-p' style={{color:"blue"}}>Delivered to:</p>
+                            <p className='add-p'>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
+                            <p className='add-p'>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
                         </div>}
                     {/* <div>
                         <button onClick={() => localStorage.removeItem('addData')} className='change-btn'>Remove Address</button>
