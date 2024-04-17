@@ -204,4 +204,7 @@ margin: 0;
     border: 1px solid #3b70da;
     padding: 5px;
    }
-  
+  .bagaddpay{
+    justify-content: center;
+    align-items: center;
+  }

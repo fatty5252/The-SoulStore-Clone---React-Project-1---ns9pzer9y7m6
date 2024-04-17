@@ -15,12 +15,18 @@
     /* color: #58595b; */
 
 }
+.add-opt{
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+    /* border: 1px solid red; */
+}
 
 .head-div {
     display: flex;
     justify-content: center;
     /* position: relative; */
-    margin-top: 10rem;
+    margin-top: 1rem;
     width: 98vw;
     /* height: 100vh; */
 }

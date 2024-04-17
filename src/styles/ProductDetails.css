@@ -34,11 +34,11 @@
     cursor: pointer;
     height: fit-conten;
 }
-.img-container:hover{
+/* .img-container:hover{
     transform: scale(1.1);
     transition: all 0.5s ease-in-out;
     cursor: pointer;
-   }
+   } */
 
 .size-parent {
     display: flex;

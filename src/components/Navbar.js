@@ -112,11 +112,12 @@ export default function Navbar() {
                   </div> */}
 
                   <div className="navbar">
-                    <div className="search-icon" >
+                  
+                    {/* setSearchItem(e.target.value) */}
+                    {<input type="text" value={searchItem} onChange={(e) => searchMethod(e.target.value)} placeholder="Search..." className="search-bar"  />}
+                    <div style={{color:"red"}} className="search-icon" >
                       <FaSearch />
                     </div>
-                    {/* setSearchItem(e.target.value) */}
-                    {<input type="text" value={searchItem} onChange={(e) => searchMethod(e.target.value)} placeholder="Search..." className="search-bar" />}
                   </div>
 
                   {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>

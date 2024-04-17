@@ -186,22 +186,22 @@
   /* .search-container:hover .search-bar {
     display: block;
   } */
-  .search-icon:active{
+  /* .search-icon:active{
     transition: all 1s ease-in-out;
     border-radius: 5px;
     padding: 0 0.5rem;
     border: none;
-  }
-  .search-icon{
+  } */
+  .search-bar{
     position: relative; 
   }
   .logoNav :hover{
     cursor: pointer;
   }
 
-  .search-bar{
+  .search-icon{
     position: absolute;
-    right: 40px;
+    right: -250px;
     width: 300px;
     outline: none;
   }

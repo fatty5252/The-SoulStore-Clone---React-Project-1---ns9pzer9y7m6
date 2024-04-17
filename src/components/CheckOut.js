@@ -114,6 +114,8 @@ export default function CheckOut() {
     }
 
     return (
+        <>
+        <div className='flex pay-opt'> <p style={{color:'blue'}}>MY BAG</p><p style={{color:'blue'}}> ----------- ADDRESS</p><p style={{color:'blue'}}> ----------- PAYMENT</p></div>
         <div className='checkout-main'>
             {paymentdone && <div className='paymentdone'>
                 <div className='paymentPopup'>
@@ -199,5 +201,6 @@ export default function CheckOut() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
