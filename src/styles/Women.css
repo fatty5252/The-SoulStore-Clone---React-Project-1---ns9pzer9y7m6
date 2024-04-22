@@ -16,16 +16,10 @@
     gap: 20px; 
 }
 .cart-container-women{
-    height: 400px;
+    height: 430px;
     width: 300px;
 }
-.cart-container{
-    height: 300px;
-    width: 350px;
-    /* border: 1px solid black; */
-    /* position: relative;
-    display: inline-block; */
-}
+
 /* .description{
     position: absolute;
     bottom: -1rem;

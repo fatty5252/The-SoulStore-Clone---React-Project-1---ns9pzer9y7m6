@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
 import Footer from "../components/Footer";
 import BannerCrausal from "./bannersCrausal"
+import { Rating } from "@mui/material";
 
 
 
@@ -100,6 +101,7 @@ export default function Women() {
               <div className="p" style={{marginBottom:"0"}}>
                 <p className='para-description'>{item.description}</p>
                 <p className='title'>{item.subCategory}</p>
+                <Rating name="read-only" value={item.ratings} readOnly />
                 <div className="flex">
                 <p className="price">₹ {item.price}</p>
                 <p className="price-cut">₹ {item.price + 100}</p>

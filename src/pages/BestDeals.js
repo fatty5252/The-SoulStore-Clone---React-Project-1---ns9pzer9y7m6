@@ -3,6 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { useNavigate } from 'react-router-dom';
+import { Rating } from '@mui/material';
 const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -46,6 +47,7 @@ const BestDealsCarousel = ({ deals }) => {
               <img onClick={() => nevigateToProductDetails(product._id)} key={index} style={{ width: '95%' }} className="bestdeals-cart-img" src={product.displayImage} alt={product.name} />
               <div>
                 <p>{product.name}</p>
+                <Rating name="read-only" value={product.ratings} readOnly />
                 <div className="flex">
                 <p className="price">₹ {product.price}</p>
                 <p className="price-cut">₹ {product.price + 100}</p>

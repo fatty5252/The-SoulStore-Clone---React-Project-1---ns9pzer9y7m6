@@ -109,3 +109,85 @@
     padding: 3px;
     z-index: 0;
 }
+
+/* Media query for mobile and tablet screens */
+@media (max-width: 768px) {
+    /* Adjust .main-container styling */
+    .main-container {
+        flex-direction: column; /* Stack elements vertically */
+        width: 100vw;
+        margin-top: 6rem; /* Adjust margin to maintain space from top */
+        padding: 0 10px; /* Add padding for small screens */
+    }
+
+    /* Adjust .left-container styling */
+    .left-container {
+        width: 100%; /* Full width on smaller screens */
+        grid-template-columns: 1fr; /* Single column layout */
+        padding: 0 10px; /* Add padding for smaller screens */
+    }
+
+    /* Adjust .right-container styling */
+    .right-container {
+        width: 100%; /* Full width on smaller screens */
+        margin-top: 20px; /* Add margin between left and right containers */
+        padding: 0 10px; /* Add padding for smaller screens */
+    }
+
+    /* Adjust .img-container styling */
+    .img-container {
+        width: 100%; /* Full width on smaller screens */
+        height: auto; /* Adjust height to fit content */
+    }
+
+    /* Adjust .size-parent styling */
+    .size-parent {
+        flex-wrap: wrap; /* Wrap items to fit screen */
+        justify-content: flex-start; /* Align items to start */
+    }
+
+    /* Adjust .itemsize styling */
+    .itemsize {
+        width: 3rem; /* Adjust width for smaller screens */
+        height: 1.5rem; /* Adjust height for smaller screens */
+        margin-bottom: 5px; /* Add spacing between items */
+    }
+
+    /* Adjust .name styling */
+    .name {
+        font-size: 24px; /* Reduce font size */
+        margin-top: 20px; /* Adjust margin */
+    }
+
+    /* Adjust .bold styling */
+    .bold {
+        font-size: 16px; /* Reduce font size */
+    }
+
+    /* Adjust .quantity styling */
+    .quantity select {
+        width: 100%; /* Full width */
+        padding: 5px; /* Add padding for small screens */
+    }
+
+    /* Adjust button styling */
+    .wish-btn,
+    .cart-btn {
+        width: 100%; /* Full width on smaller screens */
+        margin: 10px 0; /* Add margin between buttons */
+    }
+
+    /* Adjust .btn-container styling */
+    .btn-container {
+        justify-content: center; /* Center buttons */
+    }
+
+    /* Adjust .addedsuccessfully styling */
+    .addedsuccessfully {
+        width: 100%; /* Full width on smaller screens */
+        right: 0; /* Align to right */
+        top: auto;
+        bottom: 0; /* Align to bottom */
+        padding: 10px; /* Add padding for smaller screens */
+    }
+}

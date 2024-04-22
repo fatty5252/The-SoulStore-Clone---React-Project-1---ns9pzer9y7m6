@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
 import Footer from "./Footer";
 import { CiStar } from "react-icons/ci";
+import { Pagination, Rating } from "@mui/material";
 
 
 export default function ProductList() {
@@ -166,18 +167,19 @@ export default function ProductList() {
                 <div className="list-details">
                   <p className="listName">{product.name}</p>
                   <p className="listbrand">{product.brand}</p>
-                  <div className="flex">
+                  {/* <div className="flex"> */}
                     <p className='title'>{product.subCategory}</p>
-                    <div className="flexXY"><p><CiStar /></p><p className="price"> {Math.round(product.ratings)}/5</p></div>
-                  </div>
+                    <Rating name="read-only" value={product.ratings} readOnly />
+                    {/* <div className="flexXY"><p><CiStar /></p><p className="price"> {Math.round(product.ratings)}/5</p></div> */}
+                  {/* </div> */}
                   <div className="flex">
                     <p className="price">₹ {product.price}</p>
                     <p className="price-cut">₹ {product.price + 100}</p>
                   </div>
-
                 </div>
               </div>
             ))}
+        {/* <Pagination count={10} variant="outlined" color="primary" /> */}
         </div>
       </div>
       <Footer />

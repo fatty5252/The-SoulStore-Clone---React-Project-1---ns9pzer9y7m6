@@ -6,6 +6,7 @@ import { useUser } from "../providers/UserProvider";
 import Footer from "../components/Footer";
 import BannerCrausal from "./bannersCrausal";
 import { CiStar } from "react-icons/ci";
+import { Rating } from "@mui/material";
 
 
 export default function Men() {
@@ -101,10 +102,8 @@ const {searchItem, setSearchItem} = useUser();
               <img className="cart-img" src={item.displayImage} />
               <div className="p">
                 <p className='para-description'>{item.description}</p>
-                <div className="flex">
                     <p className='title'>{item.subCategory}</p>
-                    <div className="flexXY"><p><CiStar /></p><p className="price"> {Math.round(item.ratings)}/5</p></div>
-                  </div>
+                    <Rating name="read-only" value={item.ratings} readOnly />
                 {/* <p className='title'>{item.sellerTag}</p> */}
                 <div className="flex">
                 <p className="price">₹ {item.price}</p>
