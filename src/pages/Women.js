@@ -97,7 +97,7 @@ export default function Women() {
           {getData.map((item, index) => item.gender === "Women" && (
             <div onClick={() => nevigateToProductDetails(item._id)} key={index} className='cart-container-women'>
               <img className="cart-img" src={item.displayImage} />
-              <div className="p">
+              <div className="p" style={{marginBottom:"0"}}>
                 <p className='para-description'>{item.description}</p>
                 <p className='title'>{item.subCategory}</p>
                 <div className="flex">
