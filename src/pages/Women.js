@@ -100,7 +100,10 @@ export default function Women() {
               <div className="p">
                 <p className='para-description'>{item.description}</p>
                 <p className='title'>{item.subCategory}</p>
+                <div className="flex">
                 <p className="price">₹ {item.price}</p>
+                <p className="price-cut">₹ {item.price + 100}</p>
+                </div>
               </div>
             </div>
           ))

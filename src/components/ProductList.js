@@ -168,7 +168,7 @@ export default function ProductList() {
                   <p className="listbrand">{product.brand}</p>
                   <div className="flex">
                     <p className='title'>{product.subCategory}</p>
-                    <div className="flexXY"><p><CiStar /></p><p className="price"> {Math.floor(product.ratings)}/5</p></div>
+                    <div className="flexXY"><p><CiStar /></p><p className="price"> {Math.round(product.ratings)}/5</p></div>
                   </div>
                   <div className="flex">
                     <p className="price">₹ {product.price}</p>

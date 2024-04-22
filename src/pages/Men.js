@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
 import Footer from "../components/Footer";
 import BannerCrausal from "./bannersCrausal";
+import { CiStar } from "react-icons/ci";
 
 
 export default function Men() {
@@ -100,9 +101,15 @@ const {searchItem, setSearchItem} = useUser();
               <img className="cart-img" src={item.displayImage} />
               <div className="p">
                 <p className='para-description'>{item.description}</p>
-                <p className='title'>{item.subCategory}</p>
+                <div className="flex">
+                    <p className='title'>{item.subCategory}</p>
+                    <div className="flexXY"><p><CiStar /></p><p className="price"> {Math.round(item.ratings)}/5</p></div>
+                  </div>
                 {/* <p className='title'>{item.sellerTag}</p> */}
+                <div className="flex">
                 <p className="price">₹ {item.price}</p>
+                <p className="price-cut">₹ {item.price + 100}</p>
+                </div>
               </div>
             </div>
           ))

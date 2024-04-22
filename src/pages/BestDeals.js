@@ -41,12 +41,15 @@ const BestDealsCarousel = ({ deals }) => {
     <div style={{ margin: '30px' }} className="app-container">
       <Slider {...settings}>
         {deals.length > 0 ? (
-          deals.map((song,index) => (
-            <div key={song.id}> {/* Adding key prop for each child in a list */}
-              <img onClick={() => nevigateToProductDetails(song._id)} key={index} style={{ width: '95%' }} className="bestdeals-cart-img" src={song.displayImage} alt={song.name} />
+          deals.map((product,index) => (
+            <div key={product.id}> {/* Adding key prop for each child in a list */}
+              <img onClick={() => nevigateToProductDetails(product._id)} key={index} style={{ width: '95%' }} className="bestdeals-cart-img" src={product.displayImage} alt={product.name} />
               <div>
-                <p>{song.name}</p>
-                <p>₹ {song.price}</p>
+                <p>{product.name}</p>
+                <div className="flex">
+                <p className="price">₹ {product.price}</p>
+                <p className="price-cut">₹ {product.price + 100}</p>
+                </div>
               </div>
             </div>
           ))
