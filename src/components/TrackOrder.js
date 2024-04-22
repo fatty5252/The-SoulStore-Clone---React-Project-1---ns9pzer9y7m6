@@ -39,6 +39,7 @@ export default function TrackOrder() {
     }
 
     return (
+        <>
         <div>
        <div className='toTopBox'>
        Hey! Please note that The Souled Store team will never ask you to disclose any financial information or for payment regarding any contest. For COD orders we do not collect money before the order delivery. Do not share any such sensitive details. Stay secure and stay safe.
@@ -62,8 +63,7 @@ export default function TrackOrder() {
         ))
         :
         <div className="wishlistprod">
-                    <div>
-                      {/* <div className="flexXY">{notrainsfound}</div> */}
+                    <div>                   
                       <img src='https://www.thesouledstore.com/static/img/wishList-empty-icon.fd2a993.png'/>
                       <h3>Your Order History is Lonely</h3>
                       <p>Do Shopping to track your History</p>
@@ -74,5 +74,6 @@ export default function TrackOrder() {
        </div>
        <Footer/>
         </div>     
+        </>
     )
 }

@@ -105,3 +105,37 @@
 }
 
 
+
+
+@media screen and (max-width: 768px) {
+    .heading-home {
+        padding: 1rem;
+    }
+
+    .main-cart-container-home {
+        margin-top: 5rem;
+    }
+
+    .bestDeals-cart-container-home {
+        gap: 10px;
+    }
+
+    .home-cart-container,
+    .bestDeals-cart-container {
+        width: 250px;
+    }
+
+    .description {
+        width: 70%;
+        left: 3rem;
+        font-size: 0.8rem;
+    }
+
+    .para-description {
+        max-width: 60%;
+    }
+
+    .home-hero-img-container {
+        margin-top: 3rem;
+    }
+}

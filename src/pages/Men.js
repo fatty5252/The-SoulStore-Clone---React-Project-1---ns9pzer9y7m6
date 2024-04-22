@@ -4,11 +4,46 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
 import Footer from "../components/Footer";
-
-
+import BannerCrausal from "./bannersCrausal";
 
 
 export default function Men() {
+ 
+
+  const CAROUSEL_DATA = {
+    slides: [
+      {
+        src: '/images/slider1.webp',
+        alt: "Image 1 for carousel",
+        href: "/subCategory/audio",
+      },
+      {
+        src: '/images/slider2.webp',
+        alt: "Image 2 for carousel",
+        href: "/subCategory/refrigerator",
+      },
+      {
+        src: '/images/slider3.webp',
+        alt: "Image 3 for carousel",
+        href: "/subCategory/kitchenappliances",
+      },
+      {
+        src: '/images/slider4.webp',
+        alt: "Image 4 for carousel",
+        href: "/subCategory/audio",
+      },
+      {
+        src: '/images/slider5.webp',
+        alt: "Image 5 for carousel",
+        href: "/subCategory/refrigerator",
+      },
+      {
+        src: '/images/slider6.webp',
+        alt: "Image 6 for carousel",
+        href: "/subCategory/mobile",
+      },
+    ],
+  };
 
 const [getData, setData] = useState([]);
 const {searchItem, setSearchItem} = useUser();
@@ -52,9 +87,10 @@ const {searchItem, setSearchItem} = useUser();
   return (
     <>
       <div className='men-container'>
-        <div className='hero-container' >
+        {/* <div className='hero-container' >
           <img className="hero-img" src='/images/banne1.webp' />
-        </div>
+        </div> */}
+         <BannerCrausal data={CAROUSEL_DATA.slides} />
         <div className='men-heading'>
           <h1>PRODUCTS</h1>
         </div>

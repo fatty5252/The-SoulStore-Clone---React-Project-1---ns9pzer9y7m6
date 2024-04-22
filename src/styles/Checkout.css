@@ -6,7 +6,7 @@
     /* border: 2px solid red; */
     width: 98vw;
     /* padding: 9rem 2rem; */
-    position: relative;
+
 }
 .add-p{
     margin: 0;
@@ -48,13 +48,6 @@
     padding: 0 3rem;
 }
 
-.paymentdone {
-    width: 25vw;
-    /* height: 20vh; */
-    background-color: white;
-    position: absolute;
-    box-shadow: rgba(0, 0, 0, 0.6) 0px 6px 12px, rgba(0, 0, 0, 0.4) 0px 2px 16px;
-}
 
 .main-atm-ctn {
     width: 26rem;
@@ -132,6 +125,20 @@
     border-radius: 0.8rem;
 }
 
-.paymentPopup img {
-    width: 8rem;
+.paymentdone {
+    width: 25vw;
+    height: 50vh;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.6) 0px 6px 12px, rgba(0, 0, 0, 0.4) 0px 2px 16px;
+}
+
+.paymentdone{
+    margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.payment-main{
+    border: 1px solid red;
+    justify-content: center;
 }

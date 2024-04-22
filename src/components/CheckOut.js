@@ -4,8 +4,11 @@ import axios from 'axios';
 import { useUser } from '../providers/UserProvider';
 import "../styles/Checkout.css";
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 
 export default function CheckOut() {
+
+    const navigate = useNavigate();
 
     // const {addData} = useUser();
     const { storageData, setStorageData, totalAmmount, productID } = useUser();
@@ -20,7 +23,6 @@ export default function CheckOut() {
     });
     const [paymentdone, setpaymentdone] = useState(false);
     //   console.log(debitdata.name)
-    const navigate = useNavigate()
 
     useEffect(() => {
         checkOutList();
@@ -53,8 +55,6 @@ export default function CheckOut() {
                 });
             // console.log(responce);
         }
-
-
         catch (err) {
             console.log("Error shows ", err);
         }
@@ -62,11 +62,9 @@ export default function CheckOut() {
 
     const handlepaymentfromUpi = () => {
         if (upi !== '' && upi.includes("@")) {
-            setpaymentdone(!paymentdone)
-            setTimeout(() => {
+            setpaymentdone(!paymentdone)        
                 setpaymentdone(false)
-                navigate('/')
-            }, 5000);
+                navigate('/SuccessPayment')          
         } else {
             alert("Enter correct UPI")
         }
@@ -117,18 +115,16 @@ export default function CheckOut() {
         <>
         <div className='flex pay-opt'> <p style={{color:'blue'}}>MY BAG</p><p style={{color:'blue'}}> ----------- ADDRESS</p><p style={{color:'blue'}}> ----------- PAYMENT</p></div>
         <div className='checkout-main'>
-            {paymentdone && <div className='paymentdone'>
+            {/* {paymentdone && <div className='paymentdone'>
                 <div className='paymentPopup'>
                     <div className='flexc g20'>
-                        {/* <div className='flexBet'>{logo}</div> */}
                         <img src='https://www.thesouledstore.com/static/img/300x157-twitter.png'/>
                         <h2 style={{ color: 'green', textAlign: 'center' }}>Payment Successful</h2>
                         <h2 style={{ textAlign: 'center' }}>Dear </h2>
                         <p style={{ textAlign: 'center' }}>Order Confirmed 🙂</p>
                     </div>
-                    <div style={{ marginTop: '50px', textAlign: 'center', borderTop: '1px dashed #808080', paddingTop: '10px' }}>The booking details is been sent to your email.</div>
                 </div>
-            </div>}
+            </div>} */}
             <div className='checkout-main-left'>
                 <div className='add-box'>
                     {storageData &&
@@ -201,6 +197,7 @@ export default function CheckOut() {
                 </div>
             </div>
         </div>
+        <Footer/>
         </>
     )
 }
