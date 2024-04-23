@@ -14,19 +14,19 @@ export default function Women() {
   const CAROUSEL_DATA = {
     slides: [
       {
-        src: '/images/slider1.webp',
+        src: '/images/slider7.webp',
         alt: "Image 1 for carousel",
-        href: "/subCategory/audio",
+        href: '/images/slider7.webp',
       },
       {
-        src: '/images/slider2.webp',
+        src: '/images/slider8.webp',
         alt: "Image 2 for carousel",
-        href: "/subCategory/refrigerator",
+        href: '/images/slide8.webp',
       },
       {
-        src: '/images/slider3.webp',
+        src: '/images/womenslider10.webp',
         alt: "Image 3 for carousel",
-        href: "/subCategory/kitchenappliances",
+        href: '/images/womenslider10.webp',
       },
       {
         src: '/images/slider4.webp',

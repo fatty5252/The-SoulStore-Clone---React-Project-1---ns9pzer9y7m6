@@ -7,6 +7,7 @@ import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { useUser } from '../providers/UserProvider';
 import { MdCancel } from 'react-icons/md';
+import { Rating } from '@mui/material';
 
 
 export default function ProductsDetails() {
@@ -25,6 +26,8 @@ export default function ProductsDetails() {
   const [toggleBtn, setToggleBtn] = useState(false);
   const [toggleadd, settoggleadd] = useState(false)
 
+  const [desc, setdes] = useState([])
+
   useEffect(() => {
     fetchIdDetails();
   }, [])
@@ -37,7 +40,7 @@ export default function ProductsDetails() {
         }
       });
       setProductDetails(responce.data.data)
-      // console.log(responce.data.data);
+      console.log(responce);
     }
     catch (err) {
       console.log("Error shows ", err);
@@ -89,6 +92,27 @@ export default function ProductsDetails() {
   const navigateToCart = () => {
     navigate("/Men/ProductsDetails/ProductCart");
   }
+
+  
+  const removeBTags = () => {
+    const description =  productDetails.description && productDetails.description.split('<br>');
+
+    const cleanedParts = description && description.map(part => part.replace(/<\/?b[^>]*>/g, ''));
+    setdes(cleanedParts)
+    console.log(cleanedParts)
+    
+    // return cleanedParts;
+};
+
+useEffect(()=>{
+  removeBTags()
+}, [productDetails.description, productDetails])
+
+// const separatedText = removeBTags(productDetails.description && productDetails.description);
+
+// Log the cleaned array of separated text
+// console.log(separatedText);
+
   return (
 
     <div className='main-container'>
@@ -102,10 +126,10 @@ export default function ProductsDetails() {
 
       </div>
       <div className='right-container'>
-      {toggleadd && <div class="alert alert-warning addedsuccessfully" role="alert">
+      {toggleadd && <div style={{background:"green", color:"white"}} class="alert alert-warning addedsuccessfully" role="alert">
         <p>Product added to cart succesfully.</p> <MdCancel onClick={()=>settoggleadd(false)}/>
       </div>}
-      {togglewishlistpop && <div class="alert alert-warning addedsuccessfully" role="alert">
+      {togglewishlistpop && <div style={{background:"green", color:"white"}} class="alert alert-warning addedsuccessfully" role="alert">
         <p>Product added to your wishlist.</p> <MdCancel onClick={()=>settogglewishlistpop(false)}/>
       </div>}
         <p className='name'>{productDetails.name}</p>
@@ -118,9 +142,10 @@ export default function ProductsDetails() {
           {productDetails && productDetails.size.map((itemSize, index) => (
             <p onClick={() => { selctSizeHandler(itemSize) }} key={index} className={`itemsize ${getSize == itemSize ? 'activSize' : ""}`}>{itemSize}</p>
           ))}
-          {toggleSize && <p style={{ color: 'red' }}>Select the Size</p>}
+          {toggleSize && <p style={{ color: 'white', background:"red", borderRadius:"3px"  }}>Please select the Size!</p>}
         </div>
         <p className='color bold'>Color: {productDetails.color}</p>
+        <Rating name="read-only" value={productDetails.ratings} readOnly />
         <p className='rating bold'>Ratings: {Math.round(productDetails.ratings)}/5</p>
         <div className='quantity bold'>Quantity &nbsp;
           <select onChange={(event) => { selctQuantityHandler(event) }} value={quantity} name='quantity'>
@@ -141,8 +166,25 @@ export default function ProductsDetails() {
             : <button onClick={navigateToCart} className='cart-btn'>GO TO CART</button>}
           <button onClick={() => { addToWhishList(productDetails._id) }} className='wish-btn'>{!toggleheart ? <CiHeart /> : <FaHeart />}ADD TO WISHLIST</button>
         </div>
-
-
+        
+        <div className='product-description-main'>
+        <p>Product Details:</p>
+        <div className='product-description'>
+          {desc && desc[0]}
+        </div>
+        <div className='product-description'>
+          {desc && desc[1]}
+        </div>
+        <div className='product-description'>
+          {desc && desc[3]}
+        </div>
+        <div className='product-description'>
+          {desc && desc[5]}
+        </div>
+        <div className='product-description'>
+          {desc && desc[7]}
+        </div>
+        </div>
       </div>
     </div>
   )

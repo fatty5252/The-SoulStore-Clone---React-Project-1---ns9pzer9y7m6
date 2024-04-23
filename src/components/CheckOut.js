@@ -107,6 +107,7 @@ export default function CheckOut() {
             setpaymentdone(!paymentdone)
             setTimeout(() => {
                 setpaymentdone(false)
+                navigate('/SuccessPayment') 
             }, 3000);
         } 
     }
@@ -115,16 +116,7 @@ export default function CheckOut() {
         <>
         <div className='flex pay-opt'> <p style={{color:'blue'}}>MY BAG</p><p style={{color:'blue'}}> ----------- ADDRESS</p><p style={{color:'blue'}}> ----------- PAYMENT</p></div>
         <div className='checkout-main'>
-            {/* {paymentdone && <div className='paymentdone'>
-                <div className='paymentPopup'>
-                    <div className='flexc g20'>
-                        <img src='https://www.thesouledstore.com/static/img/300x157-twitter.png'/>
-                        <h2 style={{ color: 'green', textAlign: 'center' }}>Payment Successful</h2>
-                        <h2 style={{ textAlign: 'center' }}>Dear </h2>
-                        <p style={{ textAlign: 'center' }}>Order Confirmed 🙂</p>
-                    </div>
-                </div>
-            </div>} */}
+           
             <div className='checkout-main-left'>
                 <div className='add-box'>
                     {storageData &&

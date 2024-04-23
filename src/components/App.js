@@ -17,6 +17,7 @@ import CheckOut from "./CheckOut";
 import ComingSoon from "./ComingSoon";
 import TrackOrder from "./TrackOrder";
 import SuccessPayment from "../pages/SuccessPayment";
+import Footer from "./Footer";
 
 
 
@@ -49,7 +50,8 @@ function App() {
         <Route path="/Checkout" element={<CheckOut/>}/>
         <Route path="/ComingSoon" element={<ComingSoon/>}/>
         <Route path='/SuccessPayment' element={<SuccessPayment/>}/>
-       </Routes>              
+       </Routes>   
+       <Footer/>           
       </BrowserRouter>
       </UserProvider>
     </div>

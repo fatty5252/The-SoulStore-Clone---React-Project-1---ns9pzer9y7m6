@@ -182,7 +182,6 @@ export default function ProductList() {
         {/* <Pagination count={10} variant="outlined" color="primary" /> */}
         </div>
       </div>
-      <Footer />
     </>
   )
 }

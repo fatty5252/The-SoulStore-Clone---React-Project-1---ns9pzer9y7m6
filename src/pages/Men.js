@@ -15,14 +15,14 @@ export default function Men() {
   const CAROUSEL_DATA = {
     slides: [
       {
-        src: '/images/slider1.webp',
+        src: '/images/menslider9.webp',
         alt: "Image 1 for carousel",
-        href: "/subCategory/audio",
+        href: '/images/menslider9.webp',
       },
       {
-        src: '/images/slider2.webp',
+        src: '/images/menslider11.webp',
         alt: "Image 2 for carousel",
-        href: "/subCategory/refrigerator",
+        href: '/images/menslider11.webp',
       },
       {
         src: '/images/slider3.webp',
@@ -35,14 +35,14 @@ export default function Men() {
         href: "/subCategory/audio",
       },
       {
-        src: '/images/slider5.webp',
+        src: '/images/slider1.webp',
         alt: "Image 5 for carousel",
-        href: "/subCategory/refrigerator",
+        href: '/images/slider1.webp',
       },
       {
-        src: '/images/slider6.webp',
+        src: '/images/slider2.webp',
         alt: "Image 6 for carousel",
-        href: "/subCategory/mobile",
+        href: '/images/slider2.webp',
       },
     ],
   };

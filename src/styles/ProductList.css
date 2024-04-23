@@ -46,12 +46,12 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 30px;
    
 }
 .list-cart-container{
     height: 28rem;
-    width: 19rem;
+    width: 16rem;
     /* background-color: black; */
 }
 .list-details p{
