@@ -79,6 +79,14 @@ export default function Address() {
     "Puducherry"
   ];
   const AddFormSubmithandler=()=>{
+    // regex pattern for pincode
+    let cvv = /^[0-9]{6}$/;
+    let resultCVV = cvv.test(addData.pincode);
+    if (resultCVV == false){
+        alert("Invalid CVV");
+        return;
+    }
+    //regex pattern for phnumber
     let regex = /^[0-9]{10}$/;
         let result = regex.test(addData.phnum);
         console.log(result);

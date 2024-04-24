@@ -115,7 +115,6 @@ const {searchItem, setSearchItem} = useUser();
           }
         </div>
       </div>
-      <Footer/>
     </>
   )
 }

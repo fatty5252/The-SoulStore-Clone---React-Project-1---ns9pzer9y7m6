@@ -10,6 +10,7 @@ import { MdCancel } from 'react-icons/md';
 import { Rating } from '@mui/material';
 
 
+
 export default function ProductsDetails() {
 
   const { addToWhishList, setWishListCount, cartItemCount, setCartItemCount, setCartItemToggle, cartItemToggle, toggleheart, settoggleheart, togglewishlistpop, settogglewishlistpop } = useUser();
@@ -93,30 +94,30 @@ export default function ProductsDetails() {
     navigate("/Men/ProductsDetails/ProductCart");
   }
 
-  
+
   const removeBTags = () => {
-    const description =  productDetails.description && productDetails.description.split('<br>');
+    const description = productDetails.description && productDetails.description.split('<br>');
 
     const cleanedParts = description && description.map(part => part.replace(/<\/?b[^>]*>/g, ''));
     setdes(cleanedParts)
     console.log(cleanedParts)
-    
+
     // return cleanedParts;
-};
+  };
 
-useEffect(()=>{
-  removeBTags()
-}, [productDetails.description, productDetails])
+  useEffect(() => {
+    removeBTags()
+  }, [productDetails.description, productDetails])
 
-// const separatedText = removeBTags(productDetails.description && productDetails.description);
+  // const separatedText = removeBTags(productDetails.description && productDetails.description);
 
-// Log the cleaned array of separated text
-// console.log(separatedText);
+  // Log the cleaned array of separated text
+  // console.log(separatedText);
 
   return (
 
     <div className='main-container'>
-      
+
       <div className='left-container'>
         {productDetails &&
           productDetails.images.map((itemImage, index) => (
@@ -126,26 +127,27 @@ useEffect(()=>{
 
       </div>
       <div className='right-container'>
-      {toggleadd && <div style={{background:"green", color:"white"}} class="alert alert-warning addedsuccessfully" role="alert">
-        <p>Product added to cart succesfully.</p> <MdCancel onClick={()=>settoggleadd(false)}/>
-      </div>}
-      {togglewishlistpop && <div style={{background:"green", color:"white"}} class="alert alert-warning addedsuccessfully" role="alert">
-        <p>Product added to your wishlist.</p> <MdCancel onClick={()=>settogglewishlistpop(false)}/>
-      </div>}
+        {toggleadd && <div style={{ background: "green", color: "white" }} class="alert alert-warning addedsuccessfully" role="alert">
+          <p>Product added to cart succesfully.</p> <MdCancel onClick={() => settoggleadd(false)} />
+        </div>}
+        {togglewishlistpop && <div style={{ background: "green", color: "white" }} class="alert alert-warning addedsuccessfully" role="alert">
+          <p>Product added to your wishlist.</p> <MdCancel onClick={() => settogglewishlistpop(false)} />
+        </div>}
         <p className='name'>{productDetails.name}</p>
         <p className='category'>{productDetails.subCategory}</p>
         <hr></hr>
         <p className='brand bold'>Brand: {productDetails.brand}</p>
         <p className='price bold'>₹ {productDetails.price}</p>
+        <p>MRP incl. of all taxes</p>
         <p>Please select a size.</p>
         <div className='size-parent'>
           {productDetails && productDetails.size.map((itemSize, index) => (
             <p onClick={() => { selctSizeHandler(itemSize) }} key={index} className={`itemsize ${getSize == itemSize ? 'activSize' : ""}`}>{itemSize}</p>
           ))}
-          {toggleSize && <p style={{ color: 'white', background:"red", borderRadius:"3px"  }}>Please select the Size!</p>}
+          {toggleSize && <p style={{ color: 'white', background: "red", borderRadius: "3px" }}>Please select the Size!</p>}
         </div>
         <p className='color bold'>Color: {productDetails.color}</p>
-        <Rating name="read-only" value={productDetails.ratings} readOnly />
+        {/* <Rating name="read-only" value={productDetails.ratings} readOnly /> */}
         <p className='rating bold'>Ratings: {Math.round(productDetails.ratings)}/5</p>
         <div className='quantity bold'>Quantity &nbsp;
           <select onChange={(event) => { selctQuantityHandler(event) }} value={quantity} name='quantity'>
@@ -167,23 +169,27 @@ useEffect(()=>{
           <button onClick={() => { addToWhishList(productDetails._id) }} className='wish-btn'>{!toggleheart ? <CiHeart /> : <FaHeart />}ADD TO WISHLIST</button>
         </div>
         
+        <div className='return-policy'>
+        <img data-v-9294f528="" data-src="https://tss-static-images.gumlet.io/icons/return-icon.png" width="27" height="27" alt="Return Policy" class="return-icon-pdp img-auto gm-observing gm-observing-cb" src="https://tss-static-images.gumlet.io/icons/return-icon.png"/>
+          Return Policy
+          This product is eligible for return or exchange under our 30-day return or exchange policy. No questions asked.</div>
         <div className='product-description-main'>
-        <p>Product Details:</p>
-        <div className='product-description'>
-          {desc && desc[0]}
-        </div>
-        <div className='product-description'>
-          {desc && desc[1]}
-        </div>
-        <div className='product-description'>
-          {desc && desc[3]}
-        </div>
-        <div className='product-description'>
-          {desc && desc[5]}
-        </div>
-        <div className='product-description'>
-          {desc && desc[7]}
-        </div>
+          <p>Product Details:</p>
+          <div className='product-description'>
+            {desc && desc[0]}
+          </div>
+          <div className='product-description'>
+            {desc && desc[1]}
+          </div>
+          <div className='product-description'>
+            {desc && desc[3]}
+          </div>
+          <div className='product-description'>
+            {desc && desc[5]}
+          </div>
+          <div className='product-description'>
+            {desc && desc[7]}
+          </div>
         </div>
       </div>
     </div>

@@ -99,7 +99,6 @@ export default function WhishList() {
                   </div>
                 }
             </div>
-            <Footer/>
         </div>
     )
 }

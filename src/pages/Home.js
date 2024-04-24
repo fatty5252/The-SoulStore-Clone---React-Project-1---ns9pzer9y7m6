@@ -107,7 +107,6 @@ export default function Home() {
           <h1>BEST DEALS</h1>
         </div>
         {bestDeals ? (<BestDealscarausal deals={bestDeals} />):('')}
-        <Footer/>
     </>
   )
 }

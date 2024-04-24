@@ -23,6 +23,7 @@
 
 .right-container {
     width: 40vw;
+    color: #58595B;
     /* border: 1px solid black; */
     position: relative;
 
@@ -34,6 +35,7 @@
     cursor: pointer;
     height: fit-conten;
 }
+
 /* .img-container:hover{
     transform: scale(1.1);
     transition: all 0.5s ease-in-out;
@@ -58,9 +60,11 @@
 }
 
 .name {
-    font-size: 30px;
+    font-size: 1.8rem;
+    font-family: sans-serif,'Source Sans Pro';
     font-weight: 700;
     margin-top: 30px;
+    color:"black";
 }
 
 .bold {
@@ -68,12 +72,12 @@
     font-weight: 500;
 }
 
-.quantity select{
+.quantity select {
     margin: 20px 0;
     cursor: pointer;
 }
 
-.wish-btn{
+.wish-btn {
     width: 200px;
     height: 40px;
     margin: 0 20px;
@@ -90,7 +94,7 @@
 }
 
 .activSize {
-    border:3px solid #117A7A;
+    border: 3px solid #117A7A;
 }
 
 .btn-container {
@@ -98,7 +102,7 @@
     justify-content: left;
 }
 
-.addedsuccessfully{
+.addedsuccessfully {
     width: 380px;
     display: flex;
     justify-content: space-between;
@@ -110,95 +114,134 @@
     z-index: 0;
 }
 
-.product-description-main{
+.product-description-main {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-top: 2rem;
     border: 1px solid grey;
     padding: 1rem;
+    color: grey;
     border-radius: 5px;
     background-color: rgba(128, 128, 128, 0.137);
 }
 
+.return-policy {
+    margin-top: 1.5rem;
+    color: grey;
+    /* box-shadow: rgba(0, 0, 0, 0.6) 0px 6px 12px, rgba(0, 0, 0, 0.4) 0px 2px 16px; */
+    padding: 1rem;
+    border: 0.5px solid #808080;
+    border-radius: 5px;
+}
+
 /* Media query for mobile and tablet screens */
 @media (max-width: 768px) {
+
     /* Adjust .main-container styling */
     .main-container {
-        flex-direction: column; /* Stack elements vertically */
+        flex-direction: column;
+        /* Stack elements vertically */
         width: 100vw;
-        margin-top: 6rem; /* Adjust margin to maintain space from top */
-        padding: 0 10px; /* Add padding for small screens */
+        margin-top: 6rem;
+        /* Adjust margin to maintain space from top */
+        padding: 0 10px;
+        /* Add padding for small screens */
     }
 
     /* Adjust .left-container styling */
     .left-container {
-        width: 100%; /* Full width on smaller screens */
-        grid-template-columns: 1fr; /* Single column layout */
-        padding: 0 10px; /* Add padding for smaller screens */
+        width: 100%;
+        /* Full width on smaller screens */
+        grid-template-columns: 1fr;
+        /* Single column layout */
+        padding: 0 10px;
+        /* Add padding for smaller screens */
     }
 
     /* Adjust .right-container styling */
     .right-container {
-        width: 100%; /* Full width on smaller screens */
-        margin-top: 20px; /* Add margin between left and right containers */
-        padding: 0 10px; /* Add padding for smaller screens */
+        width: 100%;
+        /* Full width on smaller screens */
+        margin-top: 20px;
+        /* Add margin between left and right containers */
+        padding: 0 10px;
+        /* Add padding for smaller screens */
     }
 
     /* Adjust .img-container styling */
     .img-container {
-        width: 100%; /* Full width on smaller screens */
-        height: auto; /* Adjust height to fit content */
+        width: 100%;
+        /* Full width on smaller screens */
+        height: auto;
+        /* Adjust height to fit content */
     }
 
     /* Adjust .size-parent styling */
     .size-parent {
-        flex-wrap: wrap; /* Wrap items to fit screen */
-        justify-content: flex-start; /* Align items to start */
+        flex-wrap: wrap;
+        /* Wrap items to fit screen */
+        justify-content: flex-start;
+        /* Align items to start */
     }
 
     /* Adjust .itemsize styling */
     .itemsize {
-        width: 3rem; /* Adjust width for smaller screens */
-        height: 1.5rem; /* Adjust height for smaller screens */
-        margin-bottom: 5px; /* Add spacing between items */
+        width: 3rem;
+        /* Adjust width for smaller screens */
+        height: 1.5rem;
+        /* Adjust height for smaller screens */
+        margin-bottom: 5px;
+        /* Add spacing between items */
     }
 
     /* Adjust .name styling */
     .name {
-        font-size: 24px; /* Reduce font size */
-        margin-top: 20px; /* Adjust margin */
+        font-size: 24px;
+        /* Reduce font size */
+        margin-top: 20px;
+        /* Adjust margin */
     }
 
     /* Adjust .bold styling */
     .bold {
-        font-size: 16px; /* Reduce font size */
+        font-size: 16px;
+        /* Reduce font size */
     }
 
     /* Adjust .quantity styling */
     .quantity select {
-        width: 100%; /* Full width */
-        padding: 5px; /* Add padding for small screens */
+        width: 100%;
+        /* Full width */
+        padding: 5px;
+        /* Add padding for small screens */
     }
 
     /* Adjust button styling */
     .wish-btn,
     .cart-btn {
-        width: 100%; /* Full width on smaller screens */
-        margin: 10px 0; /* Add margin between buttons */
+        width: 100%;
+        /* Full width on smaller screens */
+        margin: 10px 0;
+        /* Add margin between buttons */
     }
 
     /* Adjust .btn-container styling */
     .btn-container {
-        justify-content: center; /* Center buttons */
+        justify-content: center;
+        /* Center buttons */
     }
 
     /* Adjust .addedsuccessfully styling */
     .addedsuccessfully {
-        width: 100%; /* Full width on smaller screens */
-        right: 0; /* Align to right */
+        width: 100%;
+        /* Full width on smaller screens */
+        right: 0;
+        /* Align to right */
         top: auto;
-        bottom: 0; /* Align to bottom */
-        padding: 10px; /* Add padding for smaller screens */
+        bottom: 0;
+        /* Align to bottom */
+        padding: 10px;
+        /* Add padding for smaller screens */
     }
 }

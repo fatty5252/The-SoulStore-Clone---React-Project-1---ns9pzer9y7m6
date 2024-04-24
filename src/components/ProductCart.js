@@ -208,7 +208,6 @@ export default function ProductCart() {
         </div>}
       </div>
     </div>
-    <Footer/>
     </>
   )
 }
