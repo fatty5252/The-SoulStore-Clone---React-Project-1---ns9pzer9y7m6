@@ -20,18 +20,6 @@
     width: 300px;
 }
 
-/* .description{
-    position: absolute;
-    bottom: -1rem;
-    width: 50%;
-    left: 6rem;
-    font-size: 1rem;
-    text-align: center;
-    color: white;
-    background-color: #808080;
-    padding: 5px 10px;
-    border-radius: 0.3rem;
-} */
 .cart-img{
     width: 100%;
     height: 300px;
@@ -63,4 +51,87 @@
     display: flex;
     justify-content: center; 
 }
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+}
+
+.women-cart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cart-container-women {
+    height: 430px;
+    width: 300px;
+}
+
+.cart-img {
+    width: 100%;
+    height: 300px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.cart-img:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.para-description {
+    margin: 0;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.women-container {
+    width: 98vw;
+    margin-top: 7rem;
+}
+
+.women-container-main {
+    width: 98vw;
+    display: flex;
+    justify-content: center;
+}
+
+/* Media Queries */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    /* Adjust the women cart container */
+    .women-cart-container {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Adjust the cart container for women */
+    .cart-container-women {
+        width: 250px;
+    }
+
+    /* Adjust the women container */
+    .women-container,
+    .women-container-main {
+        width: 100vw;
+    }
+}
+
 

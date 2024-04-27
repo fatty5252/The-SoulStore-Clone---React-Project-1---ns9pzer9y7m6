@@ -18,7 +18,7 @@ import ComingSoon from "./ComingSoon";
 import TrackOrder from "./TrackOrder";
 import SuccessPayment from "../pages/SuccessPayment";
 import Footer from "./Footer";
-
+import ResponNav from "./ResponNav"
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
     <div>
     <UserProvider>
       <BrowserRouter>
+      
       <Navbar/>
       <Outlet/>        
        <Routes>  
@@ -51,7 +52,8 @@ function App() {
         <Route path="/ComingSoon" element={<ComingSoon/>}/>
         <Route path='/SuccessPayment' element={<SuccessPayment/>}/>
        </Routes>   
-       <Footer/>           
+       <Footer/>  
+             
       </BrowserRouter>
       </UserProvider>
     </div>

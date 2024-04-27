@@ -105,15 +105,9 @@
 }
 
 
-
-
 @media screen and (max-width: 768px) {
     .heading-home {
         padding: 1rem;
-    }
-
-    .main-cart-container-home {
-        margin-top: 5rem;
     }
 
     .bestDeals-cart-container-home {

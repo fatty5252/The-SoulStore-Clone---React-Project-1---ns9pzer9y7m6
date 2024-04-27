@@ -57,7 +57,7 @@ function Login() {
             TokenHandler(result.data.token);
             NameHandler(result.data.data.name);
             localStorage.setItem("token", result.data.token);
-            localStorage.setItem("name", result.data.data.name);
+            localStorage.setItem("name", result.data.data.user.name);
             setCartItemToggle(!cartItemToggle)
             console.log(result.data.token);
             console.log(result);

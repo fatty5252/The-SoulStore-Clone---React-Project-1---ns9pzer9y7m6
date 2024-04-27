@@ -50,3 +50,83 @@
         -ms-flex-direction: column;
             flex-direction: column;
 }
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.top-footer-heading {
+    background-color: red;
+    padding: 0.5rem;
+    color: white;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.bottom-footer-heading {
+    text-align: center;
+    color: black;
+    padding: 1rem;
+    font-size: 2.5rem;
+}
+
+.heading-sub {
+    font-weight: 1000;
+    font-size: 2.5rem;
+}
+
+.red-head {
+    color: red;
+    padding: 2rem 0.7rem 1rem;
+}
+
+.main-footer {
+    display: flex;
+    justify-content: space-around;
+    background-color: #E6E7E8;
+}
+
+.sub-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Media Queries */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bottom-footer-heading {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .main-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .sub-footer {
+        /* margin: 1rem 0; */
+        padding: 0.5rem;
+    }
+    
+    .bottom-footer-heading {
+        font-size: 1.5rem;
+    }
+    
+    .top-footer-heading,
+    .bottom-footer-heading {
+        padding: 0.5rem;
+    }
+}

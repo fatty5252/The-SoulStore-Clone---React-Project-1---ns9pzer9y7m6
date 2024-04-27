@@ -108,3 +108,129 @@ border: none;
         border: 1px solid #3b70da;
         padding: 5px;
        }
+
+       /* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.main-wishList-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.whishlist-items {
+    width: 16rem;
+    margin-bottom: 2rem;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    border: none;
+}
+
+.price {
+    font-weight: 600;
+}
+
+.wishCart-img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.sub-container {
+    justify-content: space-around;
+    height: 17rem;
+    flex-direction: column;
+}
+
+.sub-container-items {
+    width: 15.7rem;
+    overflow-x: hidden;
+    padding: 0.7rem 0.9rem;
+}
+
+.wish-del-btn {
+    display: flex;
+    width: 100%;
+    align-self: end;
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.del-btn {
+    width: 100%;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 1rem;
+    color: #117A7A;
+    border: none;
+}
+
+.wish-heading {
+    font-size: large;
+    font-weight: 700;
+    color: #117A7A;
+    margin-top: 8.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.wishlistprod {
+    height: 100vh;
+}
+
+.wishlistprod img {
+    width: 10rem;
+}
+
+.wishlistprod h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.wishlistprod p {
+    font-size: 16px;
+    color: #808080;
+}
+
+.wishlistprod div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wishlistprod button {
+    color: #3b70da;
+    border: 1px solid #3b70da;
+    padding: 5px;
+}
+
+/* Media Queries */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    /* Adjust main wish list container */
+    .main-wishList-container {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    /* Adjust whishlist items */
+    .whishlist-items {
+        width: calc(33.33% - 1rem);
+    }
+
+    /* Adjust sub container */
+    .sub-container {
+        height: auto;
+    }
+}
+

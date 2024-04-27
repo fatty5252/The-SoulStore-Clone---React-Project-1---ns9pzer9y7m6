@@ -187,7 +187,7 @@ export default function Address() {
           <p>{Math.round(totalAmmount + (totalAmmount * 18) / 100)}</p>
         </div>
         <div className='rt-crt-cnt'>
-          {addData && <button onClick={() => navigate('/Checkout')} className='order-btn width-100'>CONFIRM ORDER</button>}
+          {localStorage.getItem('addData') && <button onClick={() => navigate('/Checkout')} className='order-btn width-100'>CONFIRM ORDER</button>}
         </div>
       </div>
       </div>

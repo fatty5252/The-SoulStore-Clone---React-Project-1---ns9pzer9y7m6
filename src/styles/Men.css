@@ -21,25 +21,7 @@
     height: 430px;
     width: 300px;
 }
-/* .cart-container{
-    height: 300px;
-    width: 350px;
-    border: 1px solid black;
-    position: relative;
-    display: inline-block;
-} */
-/* .description{
-    position: absolute;
-    bottom: -1rem;
-    width: 50%;
-    left: 6rem;
-    font-size: 1rem;
-    text-align: center;
-    color: white;
-    background-color: #808080;
-    padding: 5px 10px;
-    border-radius: 0.3rem;
-} */
+
 .cart-img{
     width: 100%;
     height: 300px;
@@ -79,4 +61,123 @@
 }
 .hero-img{
     width: 100%;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.men-heading {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.main-cart-container-men {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    /* border: 2px solid red; */
+}
+
+.cart-container-men {
+    height: 430px;
+    width: 300px;
+}
+
+.cart-img {
+    width: 100%;
+    height: 300px;
+    border-radius: 3px;  
+    margin-bottom: 10px;  
+}
+
+.cart-img:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.para-description {
+    margin: 0;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.title {
+    margin-bottom: 0;
+}
+
+.men-container {
+    width: 98.5vw;
+    margin-top: 7rem;
+    /* padding-top: 8rem; */
+    /* border: 2px solid blue; */
+}
+
+.hero-container {
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    /* border: 1px solid black; */
+    padding: 0;
+}
+
+.hero-img {
+    width: 100%;
+}
+
+/* Media Queries */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    /* Adjust the main cart container */
+    .main-cart-container-men {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Adjust the cart container for men */
+    .cart-container-men {
+        width: 250px;
+    }
+
+    /* Adjust the men container */
+    .men-container {
+        width: 100vw;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    /* Adjust the main cart container */
+    .main-cart-container-men {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Adjust the cart container for men */
+    .cart-container-men {
+        width: 100vw;
+        height: auto;
+    }
+
+    /* Adjust the hero container */
+    .hero-container {
+        width: 100%;
+    }
+
+    /* Adjust the hero image */
+    .hero-img {
+        width: 100%;
+        height: auto;
+    }
 }

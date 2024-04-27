@@ -7,6 +7,7 @@ import { useUser } from "../providers/UserProvider";
 import Footer from "./Footer";
 import { CiStar } from "react-icons/ci";
 import { Pagination, Rating } from "@mui/material";
+import ResponNav from "./ResponNav";
 
 
 export default function ProductList() {
@@ -182,6 +183,7 @@ export default function ProductList() {
         {/* <Pagination count={10} variant="outlined" color="primary" /> */}
         </div>
       </div>
+      <ResponNav/> 
     </>
   )
 }

@@ -5,6 +5,7 @@ import { useUser } from '../providers/UserProvider';
 import "../styles/Checkout.css";
 import { useNavigate } from 'react-router-dom';
 import Footer from './Footer';
+import ToggleNav from './ToggleNav';
 
 export default function CheckOut() {
 
@@ -121,8 +122,7 @@ export default function CheckOut() {
                 <div className='add-box'>
                     {storageData &&
                         <div className='checkout-address-box'>
-                           <p className='add-p' style={{color:"blue"}}>Delivered to:</p>
-                            <p className='add-p'>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
+                            <p className='add-p' style={{color:"#117A7A"}}>Delivered to: {storageData.name} {storageData.lastName}, {storageData.pincode}</p>
                             <p className='add-p'>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
                         </div>}
                     {/* <div>
@@ -189,7 +189,7 @@ export default function CheckOut() {
                 </div>
             </div>
         </div>
-        <Footer/>
+        <ToggleNav/>
         </>
     )
 }
