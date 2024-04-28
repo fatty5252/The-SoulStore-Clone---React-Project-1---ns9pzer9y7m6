@@ -1,22 +1,89 @@
-import { React, useState, useEffect } from 'react'
-import { MdMenu } from "react-icons/md";
-import Button from '@mui/material/Button';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
+import "../styles/Nav.css";
+import axios from 'axios';
+import { useUser } from '../providers/UserProvider';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FaRegUser } from "react-icons/fa";
+import { capitalize } from '@mui/material';
+import { FaBold } from 'react-icons/fa6';
 
 
-export default function ResponNav() {
+
+const pages = ['Products', 'Pricing', 'Blog'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+function ResponsiveAppBar() {
+    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseNavMenu = () => {
+        setAnchorElNav(null);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
+    const { whishListItem, getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
+        searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem } = useUser();
+
+    const [isHovered, setIsHovered] = useState(false);
+    const [togglesearch, settogglesearch] = useState(false)
+    const [loginFirst, setLoginFirst] = useState(false)
+    const [toggelNav, setToggleNav] = useState(false)
+
+    const navigate = useNavigate();
+
+    const toggeleNavBar = () => {
+        setToggleNav(!toggelNav);
+
+        console.log("clicked")
+    }
+
+    const nevigateToProductCategory = (value) => {
+        navigate(`/ProductList?category=${value}`);
+    }
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+    const handleMouseLeave = () => {
+        setIsHovered(false);
+    };
+
+    const logOutHandler = () => {
+        TokenHandler(null);
+        NameHandler(null);
+        localStorage.removeItem("token");
+        localStorage.removeItem("name");
+        localStorage.removeItem("wishList");
+        localStorage.removeItem("cartItem");
+        localStorage.removeItem("addData");
+        setNewToken("")
+    }
 
     const [getData, setData] = useState([]);
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
 
     useEffect(() => {
         const categoryList = async () => {
@@ -27,7 +94,7 @@ export default function ResponNav() {
                         projectId: "rhxg8aczyt09"
                     }
                 });
-                // console.log(responce.data.data);
+                console.log(responce.data.data);
                 setData(responce.data.data)
             }
             catch (err) {
@@ -35,60 +102,205 @@ export default function ResponNav() {
             }
         }
         categoryList();
-        localStorage.setItem("GENDER", "Men");
+        // localStorage.setItem("GENDER", "Men");
     }, []);
 
-    const onCLickHandler = () => {
+    const searchMethod = async (searchValue) => {
+        setSearchItem(searchValue);
+        if (searchValue !== "" && searchValue !== null && searchItem !== undefined) {
+            navigate(`/ProductList?category=${searchValue}`)
+        }
+
 
     }
 
-
     return (
-        <div>
-            <div>
-                <Button
-                    id="demo-positioned-button"
-                    aria-controls={open ? 'demo-positioned-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                >
-                    <MdMenu />
-                </Button>
-                <Menu
-                    id="demo-positioned-menu"
-                    aria-labelledby="demo-positioned-button"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                    transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                    }}
-                >
-                    {getData.map((item, index) => (
-                        <MenuItem key={index} onClick={handleClose}>
-                            {item} data
-                        </MenuItem>
-                    ))}
-                    {
-                        getData.map((item, index) => {
-                            return <div onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod(""), handleClose }} key={index} className="categoryParent">
-                                {item}
-                                <div className="categoryUnderline" />
-                            </div>
-                        })
-                    }
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <AppBar position="static" sx={{ background: "white" }}>
+            <Container maxWidth="xl">
+                <Toolbar disableGutters sx={{ background: "white" }}>
+                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="#app-bar-with-responsi
+                        ve-menu"
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        <div className="logoNav">
+                            <img className="nav-img-logo" src="https://www.thesouledstore.com/static/img/300x157-twitter.png" onClick={() => navigate('/')} />
+                        </div>
+                    </Typography>
 
-                </Menu>
-            </div>
-        </div>
-    )
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                        <IconButton
+                            size="large"
+                            aria-label="account of current user"
+                            aria-controls="menu-appbar"
+                            aria-haspopup="true"
+                            onClick={handleOpenNavMenu}
+                            color="red"
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Menu
+                            id="menu-appbar"
+                            anchorEl={anchorElNav}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                            open={Boolean(anchorElNav)}
+                            onClose={handleCloseNavMenu}
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                            }}
+                        >
+                            <MenuItem onClick={handleCloseNavMenu}>
+                                <NavLink to='/Men'>
+                                    <Typography onClick={() => localStorage.setItem("GENDER", "Men")} textAlign="center">Men</Typography>
+                                </NavLink>
+
+                                <NavLink to='/Women'>
+                                    <Typography sx={{ marginLeft: "0.5rem" }} onClick={() => localStorage.setItem("GENDER", "Women")} textAlign="center">Women</Typography>
+                                </NavLink>
+                            </MenuItem>
+                            
+                           
+                            {getData.map((item, index) => (
+                                <MenuItem key={index} onClick={handleCloseNavMenu} >
+                                    <Typography
+                                     onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod(""), handleCloseNavMenu() }} textAlign="center">{item}</Typography>
+                                </MenuItem>
+                            ))}
+                             <MenuItem>
+                                {
+                                    !localStorage.getItem('token') && <>
+                                        <Typography sx={{color:'blue'}} onClick={() => navigate('/Login')}>Login</Typography>
+                                    </>
+                                }
+                            </MenuItem>
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                {
+                                    localStorage.getItem('token') && <div style={{ display: "flex", flexDirection: "column" }}><MenuItem onClick={handleCloseUserMenu}>
+                                        <Typography onClick={() => logOutHandler}>
+                                            Logout
+                                        </Typography>
+                                    </MenuItem>
+                                        <MenuItem onClick={handleCloseUserMenu}>
+                                            <Typography onClick={() => navigate('/TrackOrder')}>
+                                                TrackOrder
+                                            </Typography>
+                                        </MenuItem>
+                                    </div>
+                                }
+                            </MenuItem>
+                            
+                        </Menu>
+                    </Box>
+                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <Typography
+                        variant="h5"
+                        noWrap
+                        component="a"
+                        href="#app-bar-with-responsive-menu"
+                        sx={{
+                            mr: 2,
+                            display: { xs: 'flex', md: 'none' },
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        <div className="logoNav">
+                            <img className="nav-img-logo" src="https://www.thesouledstore.com/static/img/300x157-twitter.png" onClick={() => navigate('/')} />
+                        </div>
+                    </Typography>
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        {getData.map((item, index) => (
+                            <Button
+                                key={index}
+                                className="categoryParent"
+                                onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod(""), handleCloseNavMenu() }}
+                                sx={{ color: 'black', display: 'block' }}
+                            >
+                                {item}
+                            </Button>
+                        ))}
+                    </Box>
+
+                    {/* <Box sx={{ flexGrow: 0 }}>
+                        <Tooltip title="Open settings">
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                {
+                                    localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name")}</span> : <FaRegUser />
+                                }
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {getData.map((setting,index) => (
+                <MenuItem key={index} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+                            <MenuItem onClick={handleCloseUserMenu}>
+                                {
+                                    localStorage.getItem('token') && <div style={{ display: "flex", flexDirection: "column" }}><MenuItem onClick={handleCloseUserMenu}>
+                                        <Typography onClick={() => logOutHandler}>
+                                            Logout
+                                        </Typography>
+                                    </MenuItem>
+                                        <MenuItem onClick={handleCloseUserMenu}>
+                                            <Typography onClick={() => navigate('/TrackOrder')}>
+                                                TrackOrder
+                                            </Typography>
+                                        </MenuItem>
+                                    </div>
+                                }
+                            </MenuItem>
+                            <MenuItem>
+                                {
+                                    !localStorage.getItem('token') && <>
+                                        <Typography onClick={() => navigate('/Login')}>Login</Typography>
+                                    </>
+                                }
+                            </MenuItem>
+                        </Menu>
+                    </Box> */}
+                </Toolbar>
+            </Container>
+        </AppBar>
+    );
 }
+export default ResponsiveAppBar;

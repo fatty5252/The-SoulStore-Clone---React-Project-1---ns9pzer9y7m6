@@ -87,7 +87,7 @@ export default function ProductCart() {
     <>
     <div >
      {cartitem.length > 0 && <div className='crt-heading'>
-       <div className='flex bagaddpay'> <p style={{color:'blue'}}>MY BAG</p><p> ----------- ADDRESS</p><p> ----------- PAYMENT</p></div>
+       <div className='flex bagaddpay'> <p style={{color:'#298E83'}}>MY BAG</p><p> ----------- ADDRESS</p><p> ----------- PAYMENT</p></div>
       </div>}
       <hr></hr>
       <div className='main-addCart-container flex'>

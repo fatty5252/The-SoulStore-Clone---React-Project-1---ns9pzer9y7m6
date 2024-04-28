@@ -14,252 +14,206 @@ import WhishList from "./WhishList";
 import TrackOrder from "./TrackOrder";
 import { MdMenu } from "react-icons/md";
 import ToggleNav from "./ToggleNav";
+import ResponNav from './ResponNav';
 
 
 
 export default function Navbar() {
 
-  const { whishListItem, getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
-    searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem } = useUser();
+const { whishListItem, getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
+searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem } = useUser();
 
-  const [isHovered, setIsHovered] = useState(false);
-  const [togglesearch, settogglesearch] = useState(false)
-  const [loginFirst, setLoginFirst] = useState(false)
-  const [toggelNav, setToggleNav] = useState(false)
+const [isHovered, setIsHovered] = useState(false);
+const [togglesearch, settogglesearch] = useState(false)
+const [loginFirst, setLoginFirst] = useState(false)
+const [toggelNav, setToggleNav] = useState(false)
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
-  const toggeleNavBar = () => {
-    setToggleNav(!toggelNav);
+// const toggeleNavBar = () => {
+// setToggleNav(!toggelNav);
 
-    console.log("clicked")
-  }
+// console.log("clicked")
+// }
 
-  const nevigateToProductCategory = (value) => {
-    navigate(`/ProductList?category=${value}`);
-  }
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 1100);
-
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsScreenSmall(window.innerWidth < 1100);
-    };
-
-    window.addEventListener("resize", checkScreenSize);
-
-    return () => window.removeEventListener("resize", checkScreenSize);
-  }, []);
-
-
-  const logOutHandler = () => {
-    TokenHandler(null);
-    NameHandler(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("name");
-    localStorage.removeItem("wishList");
-    localStorage.removeItem("cartItem");
-    localStorage.removeItem("addData");
-    setNewToken("")
-  }
-
-  const [getData, setData] = useState([]);
-
-  useEffect(() => {
-    const categoryList = async () => {
-
-      try {
-        const responce = await axios.get("https://academics.newtonschool.co/api/v1/ecommerce/clothes/categories", {
-          headers: {
-            projectId: "rhxg8aczyt09"
-          }
-        });
-        // console.log(responce.data.data);
-        setData(responce.data.data)
-      }
-      catch (err) {
-        console.log("Error shows ", err);
-      }
-    }
-    categoryList();
-    localStorage.setItem("GENDER", "Men");
-  }, []);
-
-  console.log(getName);
-  const searchMethod = async (searchValue) => {
-    setSearchItem(searchValue);
-    if (searchValue !== "" && searchValue !== null && searchItem !== undefined) {
-      navigate(`/ProductList?category=${searchValue}`)
-    }
-
-
-  }
-  // useEffect(()=>{
-  //   setTimeout(() => {
-  //     setLoginFirst(true)
-  //   }, 2000);
-  // }, [])
-
-
-  return (
-    <>
-    {toggelNav && <ToggleNav/>}
-      {/* {toggelNav && (<div className="toggleNavBar">
-        <h1 onClick={()=>navigate(-1)}> hello</h1>
-        {
-        getData.map((item, index) => {
-          return <div onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod("")}} key={index} className="categoryParent">
-            {item}
-            <div className="categoryUnderline" />
-
-          </div>
-        })
-      }    
-      </div>)} */}
-      
-      {isScreenSmall ?
-        (
-          <div>
-            <button onClick={toggeleNavBar}><MdMenu /></button>
-          </div>
-        ) : 
-        (
-          <nav>
-            <div className="nav">
-              <div className="topBottomNav">
-                <div className="topNav">
-                  <ul className="topNavLeft">
-                    <NavLink to='/Women'>
-                      <li className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Women")}>WOMEN</li >
-                    </NavLink >
-                    <NavLink to='/Men'>
-                      <li className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Men")}>MEN</li>
-                    </NavLink>
-                  </ul >
-                  <div className="topNavRight flex">
-                    {/* <span>TRACK ORDER</span>
-                <span>CONTACT US</span>
-                <span><FaMobileScreenButton />DOWNLOAD APP</span> */}
-                    <div className=" search-container">
-                      {/* <div className="navbar">
-                    <div className="search-icon" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                      {isHovered && (
-                      <input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />)}
-                      <FaSearch />
-                    </div>
-                  </div> */}
-
-                      <div className="navbar">
-
-                        {/* setSearchItem(e.target.value) */}
-                        {<input type="text" value={searchItem} onChange={(e) => searchMethod(e.target.value)} placeholder="Search..." className="search-bar" />}
-                        <div style={{ color: "red" }} className="search-icon" >
-                          <FaSearch />
-                        </div>
-                      </div>
-
-                      {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>
-                  <FaSearch /></span>
-                  {!isSearchBarOpen && <span className="search-bar">
-                    <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
-                      {/* <div className="categoryUnderline" /> */}
-                    </div>
-                    <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : setLoginFirst(!loginFirst)} className="categoryParent">
-                      <span ><FaRegHeart /></span>
-                      {localStorage.getItem('token') && <sup>{whishListItem ? whishListItem.length : 0}</sup>}
-                      {loginFirst && <div class="alert alert-warning login-warning" role="alert">
-                        <p>Please Login First!</p> <MdCancel onClick={() => setLoginFirst(false)} />
-                      </div>}
-                    </div>
-                    {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
-                    <ul className="navbar-nav mr-auto">
-                      <li className="nav-item dropdown my-2 my-lg-0 left-nav" >
-                        <div className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
-                          {localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name")}</span> : <span><FaRegUser /></span>}
-                        </div>
-                        <div className="dropdown-menu">
-                          {localStorage.getItem("token") && <><Link className="dropdown-item" onClick={logOutHandler} to="/login">Logout</Link>
-                            <Link className="dropdown-item" to="/TrackOrder">TrackOrder</Link>
-                          </>}
-                          {!localStorage.getItem("token") && <>
-                            <Link className="dropdown-item" to="/login">Login</Link>
-                          </>}
-                        </div>
-                      </li>
-                    </ul>
-                    {/* </div> */}
-                    <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : setLoginFirst(!loginFirst)} className="categoryParent">
-                      <span ><HiOutlineShoppingBag /></span>
-                      {localStorage.getItem('token') && <sup>{cartitem.length}</sup>}
-                    </div>
-                  </div>
-                </div >
-                <div className="bottomNav">
-                  <div className="bottomNavLeft">
-                    <div className="logoNav">
-                      <img className="nav-img-logo" src="https://www.thesouledstore.com/static/img/300x157-twitter.png" onClick={() => navigate('/')} />
-                    </div>
-                    {
-                      getData.map((item, index) => {
-                        return <div onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod("") }} key={index} className="categoryParent">
-                          {item}
-                          <div className="categoryUnderline" />
-                        </div>
-                      })
-                    }
-                  </div>
-                  <div className="bottomNavRight flex ">
-                    <span className="bottomRightNavItem categoryParent" onClick={() => navigate('/TrackOrder')}>Track Order</span>
-                  </div>
-                  {/* <div className="bottomNavRight flex">
-                <div className="categoryParent search-container">
-                
-                  <span className="search-icon" onClick={()=>toggleSearchBar()}>
-                    <FaSearch /></span>
-                    {!isSearchBarOpen && <span className="search-bar">
-                      <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>}
-                 
-                </div>
-                <div className="categoryParent">
-                  <span onClick={()=>navigate('/WhishList')}><FaRegHeart /></span>
-                  <p>{wishListCount}</p>
-                </div>
-               
-                <ul className="navbar-nav mr-auto">
-                <li className="nav-item dropdown my-2 my-lg-0 left-nav" >                 
-                  <div className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
-                    {localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name").toUpperCase()}</span> : <span><FaRegUser /></span>}
-                  </div>
-                  <div className="dropdown-menu">
-                    {localStorage.getItem("token") && <><Link className="dropdown-item" onClick={logOutHandler} to="/login">Logout</Link></>}
-                    {!localStorage.getItem("token") && <>
-                      <Link className="dropdown-item" to="/login">Login</Link>
-                      <Link className="dropdown-item" to="/register">Register</Link>
-                    </>}
-                  </div>
-                </li>
-                </ul>
-                <div className="categoryParent">
-                  <span onClick={()=>navigate('/ProductCart')}><HiOutlineShoppingBag /></span>
-                  <p>{localStorage.getItem("cartItem")}</p>
-                </div>
-              </div> */}
-                </div>
-              </div >
-            </div >
-          </nav >
-        )
-
-      }
-
-
-    </>
-  )
+const nevigateToProductCategory = (value) => {
+navigate(`/ProductList?category=${value}`);
 }
+
+const handleMouseEnter = () => {
+setIsHovered(true);
+};
+const handleMouseLeave = () => {
+setIsHovered(false);
+};
+
+const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 1100);
+
+useEffect(() => {
+const checkScreenSize = () => {
+setIsScreenSmall(window.innerWidth < 1100);
+};
+
+window.addEventListener("resize", checkScreenSize);
+setToggleNav(!toggelNav);
+return () => window.removeEventListener("resize", checkScreenSize);
+}, []);
+
+
+const logOutHandler = () => {
+TokenHandler(null);
+NameHandler(null);
+localStorage.removeItem("token");
+localStorage.removeItem("name");
+localStorage.removeItem("wishList");
+localStorage.removeItem("cartItem");
+localStorage.removeItem("addData");
+setNewToken("")
+}
+
+const [getData, setData] = useState([]);
+
+useEffect(() => {
+const categoryList = async () => {
+
+try {
+const responce = await axios.get("https://academics.newtonschool.co/api/v1/ecommerce/clothes/categories", {
+  headers: {
+    projectId: "rhxg8aczyt09"
+  }
+});
+// console.log(responce.data.data);
+setData(responce.data.data)
+}
+catch (err) {
+console.log("Error shows ", err);
+}
+}
+categoryList();
+localStorage.setItem("GENDER", "Men");
+}, []);
+
+// console.log(getName);
+const searchMethod = async (searchValue) => {
+setSearchItem(searchValue);
+if (searchValue !== "" && searchValue !== null && searchItem !== undefined) {
+navigate(`/ProductList?category=${searchValue}`)
+}
+
+
+}
+// useEffect(()=>{
+//   setTimeout(() => {
+//     setLoginFirst(true)
+//   }, 2000);
+// }, [])
+
+
+return (
+<>
+{
+  isScreenSmall && <ResponNav/>
+}
+{
+ !isScreenSmall && 
+   <nav>
+  <div className="nav">
+    <div className="topBottomNav">
+      <div className="topNav">
+        <ul className="topNavLeft">
+          <NavLink to='/Women'>
+            <li className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Women")}>WOMEN</li >
+          </NavLink >
+          <NavLink to='/Men'>
+            <li className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Men")}>MEN</li>
+          </NavLink>
+        </ul >
+        <div className="topNavRight flex">
+          {/* <span>TRACK ORDER</span>
+      <span>CONTACT US</span>
+      <span><FaMobileScreenButton />DOWNLOAD APP</span> */}
+          <div className=" search-container">
+            {/* <div className="navbar">
+          <div className="search-icon" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            {isHovered && (
+            <input type="text" value={searchItem} onChange={(e) => setSearchItem(e.target.value)} placeholder="Search..." className="search-bar" />)}
+            <FaSearch />
+          </div>
+        </div> */}
+
+            <div className="navbar">
+
+              {/* setSearchItem(e.target.value) */}
+              {<input type="text" value={searchItem} onChange={(e) => searchMethod(e.target.value)} placeholder="Search..." className="search-bar" />}
+              <div style={{ color: "red" }} className="search-icon" >
+                <FaSearch />
+              </div>
+            </div>
+
+            {/* <span className="search-icon" onClick={()=>toggleSearchBar()}>
+        <FaSearch /></span>
+        {!isSearchBarOpen && <span className="search-bar">
+          <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
+            {/* <div className="categoryUnderline" /> */}
+          </div>
+          <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : setLoginFirst(!loginFirst)} className="categoryParent">
+            <span ><FaRegHeart /></span>
+            {localStorage.getItem('token') && <sup>{whishListItem ? whishListItem.length : 0}</sup>}
+            {loginFirst && <div class="alert alert-warning login-warning" role="alert">
+              <p>Please Login First!</p> <MdCancel onClick={() => setLoginFirst(false)} />
+            </div>}
+          </div>
+          {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
+          <ul className="navbar-nav mr-auto">
+            <li className="nav-item dropdown my-2 my-lg-0 left-nav" >
+              <div className="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="false">
+                {localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name")}</span> : <span><FaRegUser /></span>}
+              </div>
+              <div className="dropdown-menu">
+                {localStorage.getItem("token") && <><Link className="dropdown-item" onClick={logOutHandler} to="/login">Logout</Link>
+                  <Link className="dropdown-item" to="/TrackOrder">TrackOrder</Link>
+                </>}
+                {!localStorage.getItem("token") && <>
+                  <Link className="dropdown-item" to="/login">Login</Link>
+                </>}
+              </div>
+            </li>
+          </ul>
+          {/* </div> */}
+          <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : setLoginFirst(!loginFirst)} className="categoryParent">
+            <span ><HiOutlineShoppingBag /></span>
+            {localStorage.getItem('token') && <sup>{cartitem.length}</sup>}
+          </div>
+        </div>
+      </div >
+      {/* <div className="bottomNav">
+        <div className="bottomNavLeft">
+          <div className="logoNav">
+            <img className="nav-img-logo" src="https://www.thesouledstore.com/static/img/300x157-twitter.png" onClick={() => navigate('/')} />
+          </div>
+          {
+            getData.map((item, index) => {
+              return <div onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod("") }} key={index} className="categoryParent">
+                {item}
+                <div className="categoryUnderline" />
+              </div>
+            })
+          }
+        </div>
+        <div className="bottomNavRight flex ">
+          <span className="bottomRightNavItem categoryParent" onClick={() => navigate('/TrackOrder')}>Track Order</span>
+        </div>
+        
+      </div> */}
+      <ResponNav/>
+    </div >
+  </div >
+</nav >
+}
+
+
+ 
+</>
+)
+}
+

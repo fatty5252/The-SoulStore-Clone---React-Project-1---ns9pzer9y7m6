@@ -156,3 +156,58 @@ input {
     font-weight: 700;
     text-transform: capitalize;
 }
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Tinos", serif;
+    font-weight: 700;
+    font-size: large;
+    font-style: normal;
+}
+
+/* Form Main Container */
+.form-main {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    position: absolute;
+    top: 20%;
+    left: 30%; /* Adjusted left position for better centering */
+    padding: 0.8rem;
+    background-color: white;
+    z-index: 1;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* Mobile and Tablet Views */
+
+/* Tablet View */
+@media (max-width: 1024px) {
+    /* Adjust form-main */
+    .form-main {
+        position: relative; /* Remove absolute positioning */
+        width: 100vw; /* Adjust width */
+        left: 20%; /* Center the form container */
+        top: 15%; /* Adjust top position */
+        padding: 1rem; /* Adjust padding */
+    }
+
+    /* Adjust other containers and components */
+    .left-ctn-address,
+    .right-ctn-address {
+        width: 100%; /* Full width for each container */
+        flex-direction: column; /* Stack containers vertically */
+    }
+
+    .crt-dtl,
+    .address-box,
+    .odr-btn,
+    .add-opt,
+    .head-div {
+        margin: 0.5rem 0; /* Add margin for separation */
+    }
+}
+

@@ -15,7 +15,7 @@
     flex-direction: column;
     /* justify-content: center; */
     /* border: 2px solid red; */
-    /* height: 85vh; */
+    /* height: 100vh; */
     width: 50vw;
     box-shadow: 0px 19px 38px 0px rgba(0, 0, 0, 0.3),
         0px 15px 12px 0px rgba(0, 0, 0, 0.22);
@@ -117,4 +117,103 @@ label{
     font-weight: 400;
     color: blue;
     cursor: pointer;
+}
+
+.lg-main{
+    margin-bottom: 10rem;
+}
+
+/* Default styles for desktop view */
+.lg-main {
+    width: 98.7vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-login-register-ctn {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    box-shadow: 0px 19px 38px 0px rgba(0, 0, 0, 0.3),
+        0px 15px 12px 0px rgba(0, 0, 0, 0.22);
+    align-items: center;
+    margin-top: 12rem;
+}
+
+/* Media query for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+    .lg-main {
+        width: 100vw;
+        height: 100vh;
+        justify-content: flex-start;
+    }
+
+    .main-login-register-ctn {
+        width: 70vw;
+        margin-top: 6rem;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .container {
+        width: 80%;
+    }
+
+    .rtg-container {
+        width: 80%;
+    }
+
+    .btn-pry {
+        width: 100%;
+    }
+
+    .btn-toggle {
+        width: 100%;
+    }
+}
+
+/* Media query for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .lg-main {
+        width: 100vw;
+        height: 100vh;
+        justify-content: flex-start;
+    }
+
+    .main-login-register-ctn {
+        width: 90vw;
+        margin-top: 4rem;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .rtg-container {
+        width: 100%;
+    }
+
+    .btn-pry {
+        width: 100%;
+    }
+
+    .btn-toggle {
+        width: 100%;
+    }
 }

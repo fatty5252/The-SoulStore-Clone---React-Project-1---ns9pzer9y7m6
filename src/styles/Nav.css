@@ -118,6 +118,7 @@
     
   .nav-img-logo :hover{
     cursor: pointer;
+    height: 80px;
   }
   .categoryParent {
     margin-right: 0.5rem;

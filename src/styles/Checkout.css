@@ -296,6 +296,9 @@
     .checkout-main-left {
         width: 100%;
     }
+    .paymentdone {
+        width: 90vw;
+    }
 }
 
 /* Mobile View */
@@ -315,5 +318,8 @@
     .cfrm-order-btn {
         width: 100%;
         padding: 1rem;
+    }
+    .paymentdone {
+        width: 90vw;
     }
 }

@@ -104,6 +104,7 @@
 .flex {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .flexXY {
@@ -234,6 +235,7 @@
     .list-main {
         flex-direction: column;
         width: 100vw;
+        margin-top: 0;
     }
 
     /* Adjust list sort section */

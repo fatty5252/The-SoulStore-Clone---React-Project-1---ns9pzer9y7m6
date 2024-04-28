@@ -115,7 +115,7 @@ export default function CheckOut() {
 
     return (
         <>
-        <div className='flex pay-opt'> <p style={{color:'blue'}}>MY BAG</p><p style={{color:'blue'}}> ----------- ADDRESS</p><p style={{color:'blue'}}> ----------- PAYMENT</p></div>
+        <div className='flex pay-opt'> <p style={{color:'#298E83'}}>MY BAG</p><p style={{color:'#298E83'}}> ----------- ADDRESS</p><p style={{color:'#298E83'}}> ----------- PAYMENT</p></div>
         <div className='checkout-main'>
            
             <div className='checkout-main-left'>
@@ -189,7 +189,6 @@ export default function CheckOut() {
                 </div>
             </div>
         </div>
-        <ToggleNav/>
         </>
     )
 }

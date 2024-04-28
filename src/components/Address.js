@@ -102,7 +102,7 @@ export default function Address() {
 
   return (
     <div>
-    <div className='flex add-opt'> <p style={{color:'blue'}}>MY BAG</p><p style={{color:'blue'}}> ----------- ADDRESS</p><p> ----------- PAYMENT</p></div>
+    <div className='flex add-opt'> <p style={{color:'#298E83'}}>MY BAG</p><p style={{color:'#298E83'}}> ----------- ADDRESS</p><p> ----------- PAYMENT</p></div>
     <div className='head-div'>
       <div className='left-ctn-address'>
       {storageData && !toggleForm &&

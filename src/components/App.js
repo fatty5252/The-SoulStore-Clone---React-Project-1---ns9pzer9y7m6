@@ -51,6 +51,7 @@ function App() {
         <Route path="/Checkout" element={<CheckOut/>}/>
         <Route path="/ComingSoon" element={<ComingSoon/>}/>
         <Route path='/SuccessPayment' element={<SuccessPayment/>}/>
+        <Route path='/ResponNav' element={<ResponNav/>}/>
        </Routes>   
        <Footer/>  
              
