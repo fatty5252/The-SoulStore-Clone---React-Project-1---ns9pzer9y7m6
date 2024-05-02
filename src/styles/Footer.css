@@ -30,7 +30,7 @@
 }
 .red-head{
     color: red;
-    padding: 2rem 0.7rem 1rem;
+    padding-bottom: 1rem;
 
 }
 .main-footer{
@@ -81,7 +81,7 @@
 
 .red-head {
     color: red;
-    padding: 2rem 0.7rem 1rem;
+    padding-bottom: 1rem;
 }
 
 .main-footer {
@@ -107,26 +107,41 @@
     .bottom-footer-heading {
         font-size: 2rem;
     }
+    .sub-footer {
+        /* margin: 1rem 0; */
+        padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+    }
 }
 
 /* Mobile View */
 @media (max-width: 768px) {
-    .main-footer {
+    /* .main-footer {
         flex-direction: column;
         align-items: center;
-    }
+    } */
     
-    .sub-footer {
+    .sub-2-footer {
         /* margin: 1rem 0; */
         padding: 0.5rem;
+        display: flex;
+        gap: 30px;
+
     }
     
     .bottom-footer-heading {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     
     .top-footer-heading,
     .bottom-footer-heading {
         padding: 0.5rem;
+    }
+    h2{
+        font-size: 1.2rem;
+    }
+    .heading-sub{
+        font-size: 2rem;
     }
 }

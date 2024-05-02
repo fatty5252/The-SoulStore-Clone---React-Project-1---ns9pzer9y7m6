@@ -15,6 +15,7 @@ export default function Footer() {
       <div onClick={(event) => {
             event.target.tagName === 'P' && navigate('/ComingSoon');
           }} className='main-footer'>
+            <div className='sub-2-footer'>
         <div className='sub-footer'>
           <div className='red-head'>NEED HELP</div>
           <div>
@@ -31,6 +32,8 @@ export default function Footer() {
           <p>Privacy Policy</p>
           <p>Sitemap</p>
         </div>
+        </div>
+        <div className='sub-2-footer'>
         <div className='sub-footer'>
           <div className='red-head'>COMPANY</div>
           <p>About Us</p>
@@ -51,6 +54,7 @@ export default function Footer() {
           <p>Haryana</p>
           <p>Bhopal</p>
           <p>Surat</p>
+        </div>
         </div>
       </div>
       <div style={{textAlign:'center'}}> © The Souled Store made by Fatema 2024-25</div>

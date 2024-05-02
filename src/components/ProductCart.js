@@ -96,8 +96,8 @@ export default function ProductCart() {
             {!storageData ? <span className='address-para '>Please select address..</span>
               :
               <div className='address-box-crt'>
-                <p>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
-                <p>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
+                <p style={{color:"#117A7A"}}>{storageData.name} {storageData.lastName}, {storageData.pincode}</p>
+                <p style={{color:"#117A7A"}}>{storageData.house} {storageData.street} {storageData.landmark} {storageData.city}</p>
               </div>}
             <button className='address-btn' onClick={navigateToCart}>ADD</button>
           </div>

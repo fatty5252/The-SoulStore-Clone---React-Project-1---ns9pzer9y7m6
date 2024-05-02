@@ -218,6 +218,14 @@
     padding: 3px;
     z-index: 1;
   }
+  .css-19r6kue-MuiContainer-root{
+    position: fixed;
+    z-index: 40;
+  }
+  .css-1b4wni1-MuiToolbar-root{
+    width: 110%;
+    margin-left: -16px;
+  }
 
   /* @media (max-width: 768px) {
    .bottomNavLeft{

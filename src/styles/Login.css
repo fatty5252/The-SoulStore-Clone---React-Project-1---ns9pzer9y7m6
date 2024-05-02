@@ -148,15 +148,12 @@ label{
         width: 100vw;
         height: 100vh;
         justify-content: flex-start;
+        margin-bottom: -8rem;
     }
 
     .main-login-register-ctn {
         width: 70vw;
         margin-top: 6rem;
-    }
-
-    .form-control {
-        width: 100%;
     }
 
     .form-group {
@@ -186,15 +183,13 @@ label{
         width: 100vw;
         height: 100vh;
         justify-content: flex-start;
+        margin-bottom: -8rem;
+
     }
 
     .main-login-register-ctn {
         width: 90vw;
-        margin-top: 4rem;
-    }
-
-    .form-control {
-        width: 100%;
+        margin-top: -13rem;
     }
 
     .form-group {

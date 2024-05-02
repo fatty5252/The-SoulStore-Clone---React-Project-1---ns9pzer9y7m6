@@ -143,7 +143,7 @@
         flex-direction: column;
         /* Stack elements vertically */
         width: 100vw;
-        margin-top: 6rem;
+        margin-top: 1rem;
         /* Adjust margin to maintain space from top */
         padding: 0 10px;
         /* Add padding for small screens */
@@ -171,7 +171,7 @@
 
     /* Adjust .img-container styling */
     .img-container {
-        width: 100%;
+        width: 90%;
         /* Full width on smaller screens */
         height: auto;
         /* Adjust height to fit content */
@@ -222,7 +222,7 @@
     .cart-btn {
         width: 100%;
         /* Full width on smaller screens */
-        margin: 10px 0;
+        margin: 10px;
         /* Add margin between buttons */
     }
 

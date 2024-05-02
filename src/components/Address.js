@@ -8,6 +8,7 @@ export default function Address() {
 
   const { storageData, setStorageData, totalAmmount } = useUser();
   const [toggleForm, setToggleForm] = useState(false);
+  const [msg, setMessage] = useState('');
   const [addData, setAddData] = useState({
     name: "", lastName: "", house: "", street: "", landmark: "",
     pincode: "", city: "", state: "", country: "India", phnum: ""
@@ -83,7 +84,7 @@ export default function Address() {
     let cvv = /^[0-9]{6}$/;
     let resultCVV = cvv.test(addData.pincode);
     if (resultCVV == false){
-        alert("Invalid CVV");
+        setMessage("Invalid Pincode");
         return;
     }
     //regex pattern for phnumber
@@ -91,7 +92,7 @@ export default function Address() {
         let result = regex.test(addData.phnum);
         console.log(result);
         if (result == false){
-           alert("Invalid MobileNo.");
+          setMessage("Invalid MobileNo.");
             return;
         }
   }
@@ -143,6 +144,7 @@ export default function Address() {
             <div className='item-form'>
               <input onChange={(e) => AddressInfo("pincode", `${e.target.value}`)} type="text" placeholder='Pin Code' value={addData.pincode} />
             </div>
+            <div>{msg}</div>
             <div className='item-form'>
               <input onChange={(e) => AddressInfo("city", `${e.target.value}`)} type="text" placeholder='City/District' value={addData.city} />
             </div>
@@ -164,9 +166,10 @@ export default function Address() {
           <div className='item-form'>
             <input onChange={(e) => AddressInfo("phnum", `${e.target.value}`)} type="tel" placeholder='Phone No.' value={addData.phnum} />
           </div>
+          <div>{msg}</div>
           <div className='fr-btn'>
           <button type="button" onClick={() => closeForm()} className="btn-primary">Cancel</button>
-          <button type="button" onClick={() => saveAdd()} className="btn-primary">Save</button>
+          <button type="button" onClick={()=>{AddFormSubmithandler(), saveAdd()}}  className="btn-primary">Save</button>
           </div>
         </form>
         {/* <p>{addData.name}</p> */}
@@ -192,7 +195,6 @@ export default function Address() {
       </div>
       </div>
       <div className='address-footer'>
-      <Footer/>
       </div>
     </div>
   )

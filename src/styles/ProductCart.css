@@ -21,7 +21,7 @@
    
 }
 .rightCart-container{
-    width: 30vw;
+ 
     /* border: 2px solid blue; */
     padding: 1.5rem;
 }
@@ -199,11 +199,7 @@ margin: 0;
   }
 
   @media (max-width: 760px){
-    .rightCart-container{
-        display: flex;
-        /* flex-direction: column; */
-        width: 30vw;
-    }
+    
     .listsort-sec {
         display: flex;
         gap: 30px;

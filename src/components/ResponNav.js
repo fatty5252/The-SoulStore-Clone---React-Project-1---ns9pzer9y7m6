@@ -17,9 +17,11 @@ import "../styles/Nav.css";
 import axios from 'axios';
 import { useUser } from '../providers/UserProvider';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { FaRegUser } from "react-icons/fa";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { capitalize } from '@mui/material';
 import { FaBold } from 'react-icons/fa6';
+import { MdCancel } from 'react-icons/md';
+import { HiOutlineShoppingBag } from 'react-icons/hi2';
 
 
 
@@ -81,6 +83,7 @@ function ResponsiveAppBar() {
         localStorage.removeItem("cartItem");
         localStorage.removeItem("addData");
         setNewToken("")
+        console.log("clicked logout")
     }
 
     const [getData, setData] = useState([]);
@@ -110,8 +113,6 @@ function ResponsiveAppBar() {
         if (searchValue !== "" && searchValue !== null && searchItem !== undefined) {
             navigate(`/ProductList?category=${searchValue}`)
         }
-
-
     }
 
     return (
@@ -173,30 +174,29 @@ function ResponsiveAppBar() {
                                 <NavLink to='/Men'>
                                     <Typography onClick={() => localStorage.setItem("GENDER", "Men")} textAlign="center">Men</Typography>
                                 </NavLink>
-
                                 <NavLink to='/Women'>
                                     <Typography sx={{ marginLeft: "0.5rem" }} onClick={() => localStorage.setItem("GENDER", "Women")} textAlign="center">Women</Typography>
                                 </NavLink>
                             </MenuItem>
-                            
-                           
+
+
                             {getData.map((item, index) => (
                                 <MenuItem key={index} onClick={handleCloseNavMenu} >
                                     <Typography
-                                     onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod(""), handleCloseNavMenu() }} textAlign="center">{item}</Typography>
+                                        onClick={() => { nevigateToProductCategory(item), setCategoryToggle(!categoryToggle), searchMethod(""), handleCloseNavMenu() }} textAlign="center">{item}</Typography>
                                 </MenuItem>
                             ))}
-                             <MenuItem>
+                            <MenuItem>
                                 {
                                     !localStorage.getItem('token') && <>
-                                        <Typography sx={{color:'blue'}} onClick={() => navigate('/Login')}>Login</Typography>
+                                        <Typography sx={{ color: 'blue' }} onClick={() => navigate('/Login')}>Login</Typography>
                                     </>
                                 }
                             </MenuItem>
                             <MenuItem onClick={handleCloseUserMenu}>
                                 {
                                     localStorage.getItem('token') && <div style={{ display: "flex", flexDirection: "column" }}><MenuItem onClick={handleCloseUserMenu}>
-                                        <Typography onClick={() => logOutHandler}>
+                                        <Typography onClick={() => logOutHandler()}>
                                             Logout
                                         </Typography>
                                     </MenuItem>
@@ -208,7 +208,6 @@ function ResponsiveAppBar() {
                                     </div>
                                 }
                             </MenuItem>
-                            
                         </Menu>
                     </Box>
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -245,15 +244,29 @@ function ResponsiveAppBar() {
                         ))}
                     </Box>
 
-                    {/* <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Box sx={{ flexGrow: 0 }}>
+                        <Typography className='d-flex' href="#app-bar-with-responsi
+                        ve-menu" >
+                            {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 {
                                     localStorage.getItem("token") ? <span><FaRegUser /> {localStorage.getItem("name")}</span> : <FaRegUser />
                                 }
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
+                            </IconButton> */}
+                            <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : setLoginFirst(!loginFirst)} className="categoryParent">
+                                <span style={{ color: "black" }} ><FaRegHeart /></span>
+                                {localStorage.getItem('token') && <sup style={{ color: "black" }}>{whishListItem ? whishListItem.length : 0}</sup>}
+                                {loginFirst && <div class="alert alert-warning login-warning" role="alert">
+                                    <p>Please Login First!</p> <MdCancel onClick={() => setLoginFirst(false)} />
+                                </div>}
+                            </div>
+                       
+                            <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : setLoginFirst(!loginFirst)} className="categoryParent">
+                                <span style={{ color: "black" }}><HiOutlineShoppingBag /></span>
+                                {localStorage.getItem('token') && <sup style={{ color: "black" }}>{cartitem.length}</sup>}
+                            </div>
+                            </Typography>
+                       
+                        {/* <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
                             anchorEl={anchorElUser}
@@ -296,8 +309,8 @@ function ResponsiveAppBar() {
                                     </>
                                 }
                             </MenuItem>
-                        </Menu>
-                    </Box> */}
+                        </Menu> */}
+                    </Box>
                 </Toolbar>
             </Container>
         </AppBar>

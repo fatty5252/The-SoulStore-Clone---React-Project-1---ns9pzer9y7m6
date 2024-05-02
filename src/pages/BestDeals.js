@@ -24,14 +24,53 @@ const SampleNextArrow = (props) => {
     />
   );
 };
+
+
 const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 5,
+  slidesToShow: 4,
   slidesToScroll: 2,
   prevArrow: <SamplePrevArrow />,
   nextArrow: <SampleNextArrow />,
+  responsive: [
+
+    {
+
+      breakpoint: 1024,
+
+      settings: {
+
+        slidesToShow: 2,
+
+        slidesToScroll: 1,
+
+        infinite: true,
+
+        dots: true
+
+      }
+
+    },
+
+    {
+
+      breakpoint: 600,
+
+      settings: {
+
+        slidesToShow: 1,
+
+        slidesToScroll: 1,
+
+        initialSlide: 1
+
+      }
+
+    }
+
+  ]
 };
 const BestDealsCarousel = ({ deals }) => {
   const navigate = useNavigate();
@@ -49,8 +88,8 @@ const BestDealsCarousel = ({ deals }) => {
                 <p>{product.name}</p>
                 <Rating name="read-only" value={product.ratings} readOnly />
                 <div className="flex">
-                <p className="price">₹ {product.price}</p>
-                <p className="price-cut">₹ {product.price + 100}</p>
+                  <p className="price">₹ {product.price}</p>
+                  <p className="price-cut">₹ {product.price + 100}</p>
                 </div>
               </div>
             </div>

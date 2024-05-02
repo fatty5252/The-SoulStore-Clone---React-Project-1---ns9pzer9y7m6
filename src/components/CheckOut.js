@@ -117,7 +117,7 @@ export default function CheckOut() {
         <>
         <div className='flex pay-opt'> <p style={{color:'#298E83'}}>MY BAG</p><p style={{color:'#298E83'}}> ----------- ADDRESS</p><p style={{color:'#298E83'}}> ----------- PAYMENT</p></div>
         <div className='checkout-main'>
-           
+           {/* ========================Address box====================================== */}
             <div className='checkout-main-left'>
                 <div className='add-box'>
                     {storageData &&

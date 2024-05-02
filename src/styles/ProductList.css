@@ -230,13 +230,14 @@
 }
 
 /* Mobile View */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     /* Adjust list main container */
     .list-main {
         flex-direction: column;
-        width: 100vw;
+        width: 100%;
         margin-top: 0;
     }
+
 
     /* Adjust list sort section */
     .listsort-sec {
@@ -244,6 +245,8 @@
         border-bottom: 1px solid #8080802a;
         border-right: none;
         padding: 10px;
+        margin-left: 3rem;
+        margin-top: 2rem;
     }
 
     /* Adjust main cart container */
@@ -255,7 +258,7 @@
 
     /* Adjust product card container */
     .list-cart-container {
-        width: 100%;
+        width: 75%;
         height: auto;
         margin-bottom: 10px;
     }
