@@ -13,32 +13,32 @@ export default function Home() {
       {
         src: '/images/slider1.webp',
         alt: "Image 1 for carousel",
-        href: "/subCategory/audio",
+        href: "/Men",
       },
       {
         src: '/images/slider2.webp',
         alt: "Image 2 for carousel",
-        href: "/subCategory/refrigerator",
+        href: "/Men",
       },
       {
         src: '/images/slider3.webp',
         alt: "Image 3 for carousel",
-        href: "/subCategory/kitchenappliances",
+        href: "/Men",
       },
       {
         src: '/images/slider4.webp',
         alt: "Image 4 for carousel",
-        href: "/subCategory/audio",
+        href: "/Women",
       },
       {
         src: '/images/slider5.webp',
         alt: "Image 5 for carousel",
-        href: "/subCategory/refrigerator",
+        href: "/Women",
       },
       {
         src: '/images/slider6.webp',
         alt: "Image 6 for carousel",
-        href: "/subCategory/mobile",
+        href: "/Women",
       },
     ],
   };
