@@ -14,6 +14,7 @@ export default function Address() {
     pincode: "", city: "", state: "", country: "India", phnum: ""
   });
   // console.log(storageData);
+  
   const navigate = useNavigate();
 
   const closeForm = () => {
@@ -23,7 +24,7 @@ export default function Address() {
       pincode: "", city: "", state: "", country: "", phnum: ""
     })
   }
-
+  
   const saveAdd = () => {
     if (addData.name && addData.lastName && addData.house && addData.street && addData.landmark &&
       addData.pincode && addData.city && addData.state && addData.country && addData.phnum) {
