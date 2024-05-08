@@ -20,7 +20,8 @@ export const UserProvider = ({ children }) => {
   const [wishListToggle, setwishListToggle] = useState(true);
   const [whishListItem, setWhishListItem] = useState([]);
   const [toggleheart, settoggleheart] = useState(false)
-  const [togglewishlistpop, settogglewishlistpop] = useState(false)
+  const [togglewishlistpop, settogglewishlistpop] = useState(false);
+  const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 1100);
 
 
 const [productID, setproductID] = useState('')
@@ -153,7 +154,7 @@ const [productID, setproductID] = useState('')
     setNewToken, storageData, setStorageData, productID,
     TokenHandler,
     NameHandler,
-    addToWhishList
+    addToWhishList,isScreenSmall, setIsScreenSmall
   }
 
   return (

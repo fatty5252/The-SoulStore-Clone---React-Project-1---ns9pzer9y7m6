@@ -48,7 +48,7 @@ function ResponsiveAppBar() {
     };
 
     const { whishListItem, getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
-        searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem } = useUser();
+        searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem, isScreenSmall, setIsScreenSmall } = useUser();
 
     const [isHovered, setIsHovered] = useState(false);
     const [togglesearch, settogglesearch] = useState(false)
@@ -245,7 +245,7 @@ function ResponsiveAppBar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Typography className='d-flex' href="#app-bar-with-responsi
+                      {isScreenSmall &&  <Typography className='d-flex' href="#app-bar-with-responsi
                         ve-menu" >
                             {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 {
@@ -264,7 +264,7 @@ function ResponsiveAppBar() {
                                 <span style={{ color: "black" }}><HiOutlineShoppingBag /></span>
                                 {localStorage.getItem('token') && <sup style={{ color: "black" }}>{cartitem.length}</sup>}
                             </div>
-                            </Typography>
+                            </Typography>}
                        
                         {/* <Menu
                             sx={{ mt: '45px' }}

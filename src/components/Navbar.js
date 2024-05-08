@@ -21,7 +21,7 @@ import ResponNav from './ResponNav';
 export default function Navbar() {
 
 const { whishListItem, getToken, getName, setNewToken, token, TokenHandler, NameHandler, categoryToggle, setCategoryToggle,
-searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem } = useUser();
+searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, cartitem,isScreenSmall, setIsScreenSmall } = useUser();
 
 const [isHovered, setIsHovered] = useState(false);
 const [togglesearch, settogglesearch] = useState(false)
@@ -47,7 +47,7 @@ const handleMouseLeave = () => {
 setIsHovered(false);
 };
 
-const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 1100);
+
 
 useEffect(() => {
 const checkScreenSize = () => {
