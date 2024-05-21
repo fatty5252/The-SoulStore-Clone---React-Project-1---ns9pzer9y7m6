@@ -162,10 +162,11 @@ input {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Tinos", serif;
+    font-family: sans-serif;
     font-weight: 700;
     font-size: large;
     font-style: normal;
+    text-transform: capitalize;
 }
 
 /* Form Main Container */

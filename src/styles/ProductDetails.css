@@ -14,7 +14,7 @@
 
 .left-container {
     display: grid;
-    width: 60vw;
+    margin-left: 50px;
     grid-template-columns: 50% 50%;
     width: 50vw;
     padding: 0 10px 0 10px;

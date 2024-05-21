@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:'Source Sans Pro', sans-serif;
     /* overflow-x: hidden; */
   }
 
@@ -150,6 +151,11 @@
     /* border-bottom: 5px solid red; */
     display: block;
   }
+  [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight: 550;
+}
   /* .bottomNavRight {
     font-size: 1.1rem;
     margin-right: 50px;
@@ -223,8 +229,8 @@
     z-index: 40;
   }
   .css-1b4wni1-MuiToolbar-root{
-    width: 110%;
-    margin-left: -16px;
+    width: 103%;
+    margin-left: -25px;
   }
 
   /* @media (max-width: 768px) {

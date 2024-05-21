@@ -1,98 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.flex{
-    display: flex;
-    gap: 10px;
-}
-.flexXY{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.list-main{
-    width: 98vw;
-    display: flex;
-    margin-top: 8rem;
-}
-.listsort-sec{
-    width: 18%;
-    padding: 15px;
-    border-right: 1px solid #8080802a;
-}
-.pricesort-sec{
-    margin-bottom: 20px;
-}
-.pricesort-sec h5, .ratingsort-sec h5{
-    font-size: 20px;
-    font-weight: 700;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #8080802a;
-}
-.price-input{
-    width: fit-content;
-}
-.price-label{
-    font-size: 0.8rem;
-}
-.main-cart-container{
-    width: 82%;
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 30px;
-   
-}
-.list-cart-container{
-    height: 28rem;
-    width: 16rem;
-    /* background-color: black; */
-}
-.list-details p{
-    padding: .3rem;
-    margin-bottom: 0;
-}
-.cart-img{
-    width: 100%;
-    height: 300px;
-    border-radius: 3px;  
-    margin-bottom: 1rem;  
-}
-.cart-img:hover{
- transform: scale(1.1);
- transition: all 0.5s ease-in-out;
-}
-
-.para-description{
-    margin: 0;
-    max-width: 70%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.listName{
-    margin-bottom: 0;
-    border-bottom: 1px solid #8080807e;
-}
-.title{
-    margin-bottom: 0;
-    text-transform: capitalize;
-}
-
-.price-cut{
-    text-decoration: line-through;
-    color: #80808069;
-}
-.listbrand{
-    font-size: 14px;
-    color: #80808069;
-}
 
 /* Base Styles */
 * {
@@ -154,8 +59,8 @@
 }
 
 .list-cart-container {
-    height: 28rem;
-    width: 16rem;
+    height: 29rem;
+    width: 250px;
     /* You may adjust background color and other properties as needed */
 }
 
