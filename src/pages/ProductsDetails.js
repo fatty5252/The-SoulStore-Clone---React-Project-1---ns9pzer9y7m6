@@ -8,6 +8,7 @@ import { FaHeart } from "react-icons/fa";
 import { useUser } from '../providers/UserProvider';
 import { MdCancel } from 'react-icons/md';
 import { Rating } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -100,7 +101,7 @@ export default function ProductsDetails() {
 
     const cleanedParts = description && description.map(part => part.replace(/<\/?b[^>]*>/g, ''));
     setdes(cleanedParts)
-    console.log(cleanedParts)
+    // console.log(cleanedParts)
 
     // return cleanedParts;
   };
@@ -118,7 +119,7 @@ export default function ProductsDetails() {
 
     <div className='main-container'>
 
-      <div className='left-container'>
+      <div className='left-container' >
         {productDetails &&
           productDetails.images.map((itemImage, index) => (
             <img className='img-container' key={index} src={itemImage} />
@@ -133,6 +134,7 @@ export default function ProductsDetails() {
         {togglewishlistpop && <div style={{ background: "green", color: "white" }} class="alert alert-warning addedsuccessfully" role="alert">
           <p>Product added to your wishlist.</p> <MdCancel onClick={() => settogglewishlistpop(false)} />
         </div>}
+        
         <p className='name'>{productDetails.name}</p>
         <p className='category'>{productDetails.subCategory}</p>
         <hr></hr>
@@ -166,7 +168,7 @@ export default function ProductsDetails() {
         <div className='btn-container'>
           {!toggleBtn ? <button onClick={() => { fetchToCartItems() }} className='cart-btn'>ADD TO CART</button>
             : <button onClick={navigateToCart} className='cart-btn'>GO TO CART</button>}
-          <button onClick={() => { addToWhishList(productDetails._id) }} className='wish-btn'>{!toggleheart ? <CiHeart /> : <FaHeart />}ADD TO WISHLIST</button>
+          <button onClick={() => { addToWhishList(productDetails._id)}} className='wish-btn'>{!toggleheart ? <CiHeart /> : <FaHeart />}ADD TO WISHLIST</button>
         </div>
         
         <div className='return-policy'>

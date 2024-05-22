@@ -186,7 +186,7 @@ input {
 /* Mobile and Tablet Views */
 
 /* Tablet View */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     /* Adjust form-main */
     .form-main {
         position: relative; /* Remove absolute positioning */
@@ -199,7 +199,7 @@ input {
     /* Adjust other containers and components */
     .left-ctn-address,
     .right-ctn-address {
-        width: 100%; /* Full width for each container */
+        width: 80%; /* Full width for each container */
         flex-direction: column; /* Stack containers vertically */
     }
 
@@ -208,7 +208,8 @@ input {
     .odr-btn,
     .add-opt,
     .head-div {
-        margin: 0.5rem 0; /* Add margin for separation */
+        margin: 0.5rem 1rem; /* Add margin for separation */
+        flex-direction: column;
     }
 }
 

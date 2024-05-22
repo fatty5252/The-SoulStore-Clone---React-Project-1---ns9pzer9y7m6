@@ -122,10 +122,10 @@ return (
       <div className="topNav">
         <ul className="topNavLeft">
           <NavLink to='/Women'>
-            <li className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Women")}>WOMEN</li >
+            <a className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Women")}>WOMEN</a >
           </NavLink >
           <NavLink to='/Men'>
-            <li className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Men")}>MEN</li>
+            <a className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Men")}>MEN</a>
           </NavLink>
         </ul >
         <div className="topNavRight flex">
