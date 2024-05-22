@@ -24,6 +24,8 @@ export default function ProductsDetails() {
   const searchParams = new URLSearchParams(location.search);
   let id = searchParams.get("id");
 
+  console.log('id------------>', id)
+
   const [productDetails, setProductDetails] = useState('');
   const [toggleBtn, setToggleBtn] = useState(false);
   const [toggleadd, settoggleadd] = useState(false)

@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function WhishList() {
     const { setWishListCount, cartItemToggle, whishListItem, setWhishListItem, setwishListToggle, wishListToggle } = useUser();
+
+    console.log('whishListItem----------->', whishListItem);
+
     const navigate = useNavigate()
     // const { setWishListCount, cartItemToggle } = useUser();
     // const [wishListToggle, setwishListToggle] = useState(true);
@@ -53,13 +56,14 @@ export default function WhishList() {
             );
             setwishListToggle(!wishListToggle);
             // setWhishListItem(response.data.items);
-            console.log(whishListItem);
 
         } catch (err) {
             console.log("Error shows ", err);
         }
     };
-
+     const nevigateToProductDetails = (value) => {
+    navigate(`/WhishList/ProductsDetails?id=${value}`);
+  }
 
     return (
         <div >
@@ -72,9 +76,9 @@ export default function WhishList() {
                 {whishListItem && whishListItem.length > 0 ?
                     whishListItem.map((item, index) => (
                         <>
-                        <div className='whishlist-items>'>
+                        <div key={index} className='whishlist-items>'>
                          <div className='sub-container' >
-                            <img className='wishCart-img' src={item.products.displayImage} />
+                            <img onClick={()=>nevigateToProductDetails(item.products._id)} className='wishCart-img' src={item.products.displayImage} />
                             </div>
                             <div className='sub-container-items'>
                             <p className='brand-name'>{item.products.name}</p>
