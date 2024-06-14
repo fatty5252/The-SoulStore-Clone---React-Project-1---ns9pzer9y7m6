@@ -164,8 +164,8 @@ export default function ProductCart() {
               // </div>
             }
           </div>
-          {cartitem.length > 0 && <button className='clear-cart-btn' onClick={() => { clearCartItems() }} >CLEAR CART </button>}
 
+          {cartitem.length > 0 && <button className='clear-cart-btn' onClick={() => { clearCartItems() }} >CLEAR CART </button>}
         </div>
 
         {/* <div class="dropdown">

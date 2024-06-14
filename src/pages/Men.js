@@ -10,7 +10,7 @@ import { Rating } from "@mui/material";
 
 
 export default function Men() {
- 
+
 
   const CAROUSEL_DATA = {
     slides: [

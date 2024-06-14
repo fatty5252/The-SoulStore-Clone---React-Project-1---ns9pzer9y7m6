@@ -166,7 +166,7 @@ input {
     font-weight: 700;
     font-size: large;
     font-style: normal;
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
 }
 
 /* Form Main Container */

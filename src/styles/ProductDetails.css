@@ -152,7 +152,7 @@
 
     /* Adjust .left-container styling */
     .left-container {
-        width: 100%;
+        width: 80%;
         /* Full width on smaller screens */
         grid-template-columns: 1fr;
         /* Single column layout */
@@ -162,7 +162,7 @@
 
     /* Adjust .right-container styling */
     .right-container {
-        width: 100%;
+        width: 80%;
         /* Full width on smaller screens */
         margin-top: 20px;
         /* Add margin between left and right containers */

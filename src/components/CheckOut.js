@@ -5,7 +5,6 @@ import { useUser } from '../providers/UserProvider';
 import "../styles/Checkout.css";
 import { useNavigate } from 'react-router-dom';
 import Footer from './Footer';
-import ToggleNav from './ToggleNav';
 
 export default function CheckOut() {
 
@@ -145,9 +144,9 @@ export default function CheckOut() {
                             <input className='debit-input' type='text' maxLength={16} value={debitdata.cardno} onChange={(e) => AddressInfo("cardno", e.target.value)} placeholder='xxxx xxxx xxxx' />
                         </div>
                         <div className='exp-cv-ctn'>
-                            <input className='debit-input' type='text' value={debitdata.Expirymonth} onChange={(e) => AddressInfo("Expirymonth", e.target.value)} placeholder='xx' />
-                            <input className='debit-input' type='text' value={debitdata.Expiryyear} onChange={(e) => AddressInfo("Expiryyear", e.target.value)} placeholder='xxxx' />
-                            <input className='debit-input cvv-inp' type='text' value={debitdata.CVV} onChange={(e) => AddressInfo("CVV", e.target.value)} placeholder='xxx' />
+                            <input className='debit-input' type='text' value={debitdata.Expirymonth} onChange={(e) => AddressInfo("Expirymonth", e.target.value)} placeholder='MM' />
+                            <input className='debit-input' type='text' value={debitdata.Expiryyear} onChange={(e) => AddressInfo("Expiryyear", e.target.value)} placeholder='YEAR' />
+                            <input className='debit-input cvv-inp' type='text' value={debitdata.CVV} onChange={(e) => AddressInfo("CVV", e.target.value)} placeholder='CVV' />
                         </div>
                         <div className='atm-card-name'>
                             <input className='debit-input' type='text' value={debitdata.name} onChange={(e) => AddressInfo("name", e.target.value)} placeholder='Cardholder name' />

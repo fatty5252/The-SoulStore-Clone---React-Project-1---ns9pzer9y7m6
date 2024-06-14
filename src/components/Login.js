@@ -3,6 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
 import "../styles/Login.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 function Login() {
@@ -20,7 +22,6 @@ function Login() {
         email: '',
         password: '',
         mobno: '',
-        // gender: '',
         appType: 'ecommerce'
     });
     // console.log(data.gender);
@@ -36,19 +37,24 @@ function Login() {
         event.preventDefault();
         setError(null);
         if (!data.name) {
-            setError("User name is Mandatory");
+            // setError("User name is Mandatory");
+            setError(toast("User name is Mandatory"));
             return;
         }
         else if (!data.email) {
-            setError("Email is Mandatory")
+            setError(toast("Email is Mandatory"))
             return;
         }
         else if (!data.password) {
-            setError("Pasword can not be empty")
+            setError(toast("Pasword can not be empty"))
             return;
         }
+        // else if (data.name !== name || data.email !== email || data.password !== password){
+        //     setError(toast("Please Enter a valid Details"))
+        //     return;
+        // }
         
-        console.log(data);
+        // console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/login', data, {
             headers: {
                 projectID: "rhxg8aczyt09"
@@ -78,23 +84,23 @@ function Login() {
         event.preventDefault();
         setError(null);
         if (!data.name) {
-            setError("User name is Mandatory");
+            setError(toast("User name is Mandatory"));            
             return;
         }
         else if (!data.email) {
-            setError("Email is Mandatory")
+            setError(toast("Email is Mandatory"))
             return;
         }
         else if (!data.password) {
-            setError("Pasword can not be empty")
+            setError(toast("Pasword can not be empty"))
             return;
         }
         let regex = /^[0-9]{10}$/;
         let result = regex.test(data.mobno);
         console.log(data.mobno);
-        console.log(result);
+        // console.log(result);
         if (result == false){
-            setError("Invalid MobileNo.");
+            setError(toast("Invalid MobileNo."));
             return;
         }
         
@@ -116,15 +122,17 @@ function Login() {
             }
         }).catch((err) => {
             console.log(err.message ? err.message : "Internal Server Error")
-            if (err.message ? err.message : "User already exists") {
-                alert("User already exists")
-            }
+                toast("User already exists")
+            // if (err.message ? err.message : "User already exists") {
+            //     alert(toast("User already exists"))
+            // }
         });
     }
 
     return (
         <> <div className="lg-main">
             <div className="main-login-register-ctn">
+               <ToastContainer position="top-right" />
                 <div className="toggle-btn-container">
                     <button className={`btn-toggle ${toggle && "active-log-reg"}`} onClick={() => { setToggle(true) }}>Login</button>
                     <button className={`btn-toggle ${!toggle && "active-log-reg"}`} onClick={() => { setToggle(false) }}>Register</button>
@@ -132,9 +140,9 @@ function Login() {
                 {toggle && <div className="container">
                     <div className="row">
                         <div className="col-4">
-                            {error && <div className="alert alert-secondary" role="alert">
+                            {/* {error && <div className="alert alert-secondary" role="alert">
                                 {error}
-                            </div>}
+                            </div>} */}
                             <form >
                                 <div className="form-group">
                                     <label htmlFor="name">User Name</label>
@@ -163,9 +171,9 @@ function Login() {
                         <h2></h2>
                         <div className="row">
                             <div className="col-4">
-                                {error && <div class="alert alert-secondary" role="alert">
+                                {/* {error && <div class="alert alert-secondary" role="alert">
                                     {error}
-                                </div>}
+                                </div>} */}
                                 <form onSubmit={submitRegisterHandler}>
                                     <div className="form-group">
                                         <label htmlFor="name">User Name</label>

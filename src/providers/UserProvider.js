@@ -22,6 +22,8 @@ export const UserProvider = ({ children }) => {
   const [toggleheart, settoggleheart] = useState(false)
   const [togglewishlistpop, settogglewishlistpop] = useState(false);
   const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 1100);
+  const [isInWhishList, setIsInWhishList] = useState(false);
+  const [active, setActive] = useState(false);
 
 
 const [productID, setproductID] = useState('')
@@ -66,6 +68,7 @@ const [productID, setproductID] = useState('')
   }
 
   // --------------WishlistItems-------------------------
+  
 
   useEffect(() => {
     const fetchWhishListItems = async () => {
@@ -82,7 +85,7 @@ const [productID, setproductID] = useState('')
         if (response.data.status === "success") {
           setWhishListItem(response.data.data.items)
           setWishListCount(response.data.data.items.length);
-          // console.log(response.data.data.items);
+          console.log('------------->',response.data.data.items);
           localStorage.setItem("wishList", response.data.data.items.length)
 
         }
@@ -94,7 +97,28 @@ const [productID, setproductID] = useState('')
     fetchWhishListItems();
   }, [wishListToggle, cartItemToggle]);
 
+  //============================ CheckWishList===========================================
+  const checkIfInWishlist = async (id) => {
+    try {
+      const response = await axios.get(
+        `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/${id}`,
+        {
+          headers: {
+            projectID: "rhxg8aczyt09",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+      if (response.data.status === 'success' && response.data.inWishlist) {
+        setIsInWishlist(true);
+        settoggleheart(true); // Fill the heart if in wishlist
+      }
+    } catch (err) {
+      console.log("Error shows ", err);
+    }
+  };
 
+  //=================add item to wishList=============================================================
   const addToWhishList = async (id) => {
     try {
       const response = await axios.patch(
@@ -109,12 +133,14 @@ const [productID, setproductID] = useState('')
           }
         }
       );
-      console.log(response);
+      console.log('response-------->', response);
+      settoggleheart((prev) => ({ ...prev, [id]: !prev[id] }))
       if (response.data.status === 'success') {
+        setIsInWhishList(true);
         setCartItemToggle(!cartItemToggle);
-        settoggleheart(!toggleheart)
+        settoggleheart(true);
         setWishListCount(wishListCount + 1);
-        settogglewishlistpop(!togglewishlistpop)
+        settogglewishlistpop(!togglewishlistpop);
       }
     } 
     catch (err) {
@@ -153,8 +179,8 @@ const [productID, setproductID] = useState('')
     setSearchItem, cartItemCount, setCartItemCount, togglewishlistpop, settogglewishlistpop,
     setNewToken, storageData, setStorageData, productID,
     TokenHandler,
-    NameHandler,
-    addToWhishList,isScreenSmall, setIsScreenSmall
+    NameHandler,isInWhishList, setIsInWhishList,checkIfInWishlist,
+    addToWhishList,isScreenSmall, setIsScreenSmall, active, setActive
   }
 
   return (

@@ -13,8 +13,9 @@ import { Link } from 'react-router-dom';
 import WhishList from "./WhishList";
 import TrackOrder from "./TrackOrder";
 import { MdMenu } from "react-icons/md";
-import ToggleNav from "./ToggleNav";
 import ResponNav from './ResponNav';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -27,7 +28,7 @@ const [isHovered, setIsHovered] = useState(false);
 const [togglesearch, settogglesearch] = useState(false)
 const [loginFirst, setLoginFirst] = useState(false)
 const [toggelNav, setToggleNav] = useState(false)
-
+const [selectedGender, setSelectedGender] = useState("Men");
 const navigate = useNavigate();
 
 // const toggeleNavBar = () => {
@@ -119,13 +120,14 @@ return (
    <nav>
   <div className="nav">
     <div className="topBottomNav">
+        <ToastContainer position="top-centre"/>
       <div className="topNav">
         <ul className="topNavLeft">
           <NavLink to='/Women'>
-            <a className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Women")}>WOMEN</a >
+            <a className={selectedGender === "Women" ? "topNavLeftItem highlight" : "topNavLeftItem" } onClick={() =>{ localStorage.setItem("GENDER", "Women"); setSelectedGender("Women")} }>WOMEN</a >
           </NavLink >
           <NavLink to='/Men'>
-            <a className="topNavLeftItem" onClick={() => localStorage.setItem("GENDER", "Men")}>MEN</a>
+            <a className={selectedGender === "Men" ? "topNavLeftItem highlight" : "topNavLeftItem" }  onClick={() => {localStorage.setItem("GENDER", "Men"); setSelectedGender("Men")}}>MEN</a>
           </NavLink>
         </ul >
         <div className="topNavRight flex">
@@ -156,11 +158,13 @@ return (
           <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
             {/* <div className="categoryUnderline" /> */}
           </div>
-          <div onClick={() => localStorage.getItem('token') ? navigate('/WhishList') : setLoginFirst(!loginFirst)} className="categoryParent">
+          <div onClick={() => { console.log("clicked heart"); localStorage.getItem('token') ? navigate('/WhishList') : setLoginFirst(!loginFirst)}} className="categoryParent">
             <span ><FaRegHeart /></span>
             {localStorage.getItem('token') && <sup>{whishListItem ? whishListItem.length : 0}</sup>}
-            {loginFirst && <div class="alert alert-warning login-warning" role="alert">
-              <p>Please Login First!</p> <MdCancel onClick={() => setLoginFirst(false)} />
+            {loginFirst && <div>
+              {/* <p>Please Login First!</p>  */}
+             { toast("Please Login First!")}
+              <MdCancel onClick={() => setLoginFirst(false)} />
             </div>}
           </div>
           {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}

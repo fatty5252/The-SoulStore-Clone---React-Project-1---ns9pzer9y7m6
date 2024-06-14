@@ -6,43 +6,12 @@ import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
 
 export default function WhishList() {
-    const { setWishListCount, cartItemToggle, whishListItem, setWhishListItem, setwishListToggle, wishListToggle } = useUser();
+    const { setWishListCount, cartItemToggle, whishListItem, setWhishListItem, setwishListToggle, wishListToggle, checkIfInWishlist } = useUser();
 
-    console.log('whishListItem----------->', whishListItem);
+    // console.log('whishListItem----------->', whishListItem);
 
     const navigate = useNavigate()
-    // const { setWishListCount, cartItemToggle } = useUser();
-    // const [wishListToggle, setwishListToggle] = useState(true);
     
-    
-    // const [whishListItem, setWhishListItem] = useState([]);
-    // useEffect(() => {
-    //     const fetchWhishListItems = async () => {
-    //         try {
-    //             const response = await axios.get(
-    //                 `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/`,
-    //                 {
-    //                     headers: {
-    //                         projectID: "rhxg8aczyt09",
-    //                         Authorization: `Bearer ${localStorage.getItem("token")}`
-    //                     }
-    //                 }
-    //             );
-    //             if (response.data.status === "success") {
-    //                 setWhishListItem(response.data.data.items)
-    //                 setWishListCount(response.data.data.items.length);
-    //                 // console.log(response.data.data.items.length);
-    //                 localStorage.setItem("wishList", response.data.data.items.length)
-
-    //             }
-    //             // console.log(response);
-    //         } catch (err) {
-    //             console.log("Error shows ", err);
-    //         }
-    //     };
-    //     fetchWhishListItems();
-    // }, [wishListToggle, cartItemToggle]);
-
     const deletWhishListItems = async (id) => {
         try {
             const response = await axios.delete(
@@ -94,7 +63,6 @@ export default function WhishList() {
                     :
                     <div className="wishlistprod">
                     <div>
-                      {/* <div className="flexXY">{notrainsfound}</div> */}
                       <img src='https://www.thesouledstore.com/static/img/wishList-empty-icon.fd2a993.png'/>
                       <h3>Your wishlist is lonely and looking for love.</h3>
                       <p>Add products to your wishlist, review them anytime and easily move to cart.</p>
