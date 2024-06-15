@@ -3,12 +3,15 @@ import { useUser } from '../providers/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Address.css';
 import Footer from './Footer';
+import { GiButterToast } from 'react-icons/gi';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Address() {
 
   const { storageData, setStorageData, totalAmmount } = useUser();
   const [toggleForm, setToggleForm] = useState(false);
-  const [msg, setMessage] = useState('');
+  // const [msg, setMessage] = useState('');
   const [addData, setAddData] = useState({
     name: "", lastName: "", house: "", street: "", landmark: "",
     pincode: "", city: "", state: "", country: "India", phnum: ""
@@ -85,7 +88,7 @@ export default function Address() {
     let cvv = /^[0-9]{6}$/;
     let resultCVV = cvv.test(addData.pincode);
     if (resultCVV == false){
-        setMessage("Invalid Pincode");
+        toast("Invalid Pincode");
         return;
     }
     //regex pattern for phnumber
@@ -93,7 +96,7 @@ export default function Address() {
         let result = regex.test(addData.phnum);
         console.log(result);
         if (result == false){
-          setMessage("Invalid MobileNo.");
+          toast("Invalid MobileNo.");
             return;
         }
   }
@@ -105,6 +108,7 @@ export default function Address() {
   return (
     <div>
     <div className='flex add-opt'> <p style={{color:'#298E83'}}>MY BAG</p><p style={{color:'#298E83'}}> ----------- ADDRESS</p><p> ----------- PAYMENT</p></div>
+    <ToastContainer position="top-center" />
     <div className='head-div'>
       <div className='left-ctn-address'>
       {storageData && !toggleForm &&
@@ -145,7 +149,7 @@ export default function Address() {
             <div className='item-form'>
               <input onChange={(e) => AddressInfo("pincode", `${e.target.value}`)} type="text" placeholder='Pin Code' value={addData.pincode} />
             </div>
-            <div>{msg}</div>
+            {/* <div>{msg}</div> */}
             <div className='item-form'>
               <input onChange={(e) => AddressInfo("city", `${e.target.value}`)} type="text" placeholder='City/District' value={addData.city} />
             </div>
@@ -167,7 +171,7 @@ export default function Address() {
           <div className='item-form'>
             <input onChange={(e) => AddressInfo("phnum", `${e.target.value}`)} type="tel" placeholder='Phone No.' value={addData.phnum} />
           </div>
-          <div>{msg}</div>
+          {/* <div>{msg}</div> */}
           <div className='fr-btn'>
           <button type="button" onClick={() => closeForm()} className="btn-primary">Cancel</button>
           <button type="button" onClick={()=>{AddFormSubmithandler(), saveAdd()}}  className="btn-primary">Save</button>

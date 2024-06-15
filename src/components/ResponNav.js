@@ -75,9 +75,9 @@ function ResponsiveAppBar() {
   const navigate = useNavigate();
 
   //============toaster func===================================
-  function LoginAleart() {
-    const notify = () => toast("Wow so easy!");
-  }
+  // function LoginAleart() {
+  //   const notify = () => toast("Wow so easy!");
+  // }
 
   const toggeleNavBar = () => {
     setToggleNav(!toggelNav);

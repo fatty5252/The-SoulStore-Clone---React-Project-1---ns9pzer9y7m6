@@ -8,6 +8,8 @@ import Footer from "./Footer";
 import { CiStar } from "react-icons/ci";
 import { Pagination, Rating } from "@mui/material";
 import ResponNav from "./ResponNav";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 export default function ProductList() {
@@ -98,7 +100,7 @@ export default function ProductList() {
       catch (err) {
         console.log("Error shows ", err);
         if (!searchItem) {
-          alert(`This Product is not available ${localStorage.getItem("GENDER")}`);       
+          toast(`This Product is not available ${localStorage.getItem("GENDER")}`);       
         }
       }
     }
@@ -133,6 +135,7 @@ export default function ProductList() {
     <>
       <div className="list-main">
         <div className="listsort-sec">
+        <ToastContainer position="top-center" />
           <div className="pricesort-sec">
             <h5>Sort by price</h5>
             <div className="flex" onClick={() => lowhighchanger('hightolow')}>

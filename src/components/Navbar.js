@@ -26,7 +26,7 @@ searchItem, setSearchItem, wishListCount, cartItemCount, setCartItemCount, carti
 
 const [isHovered, setIsHovered] = useState(false);
 const [togglesearch, settogglesearch] = useState(false)
-const [loginFirst, setLoginFirst] = useState(false)
+// const [loginFirst, setLoginFirst] = useState(false)
 const [toggelNav, setToggleNav] = useState(false)
 const [selectedGender, setSelectedGender] = useState("Men");
 const navigate = useNavigate();
@@ -158,14 +158,13 @@ return (
           <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
             {/* <div className="categoryUnderline" /> */}
           </div>
-          <div onClick={() => { console.log("clicked heart"); localStorage.getItem('token') ? navigate('/WhishList') : setLoginFirst(!loginFirst)}} className="categoryParent">
+          <div onClick={() => { console.log("clicked heart"); localStorage.getItem('token') ? navigate('/WhishList') :  toast("Please Login First!")}} className="categoryParent">
             <span ><FaRegHeart /></span>
             {localStorage.getItem('token') && <sup>{whishListItem ? whishListItem.length : 0}</sup>}
-            {loginFirst && <div>
-              {/* <p>Please Login First!</p>  */}
+            {/* {loginFirst && <div>
              { toast("Please Login First!")}
               <MdCancel onClick={() => setLoginFirst(false)} />
-            </div>}
+            </div>} */}
           </div>
           {/* <div className="collapse navbar-collapse" id="navbarSupportedContent">  */}
           <ul className="navbar-nav mr-auto">
@@ -184,7 +183,7 @@ return (
             </li>
           </ul>
           {/* </div> */}
-          <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : setLoginFirst(!loginFirst)} className="categoryParent">
+          <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : toast("Please Login First!")} className="categoryParent">
             <span ><HiOutlineShoppingBag /></span>
             {localStorage.getItem('token') && <sup>{cartitem.length}</sup>}
           </div>

@@ -4,7 +4,8 @@ import axios from 'axios';
 import { useUser } from '../providers/UserProvider';
 import "../styles/Checkout.css";
 import { useNavigate } from 'react-router-dom';
-import Footer from './Footer';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CheckOut() {
 
@@ -66,7 +67,7 @@ export default function CheckOut() {
                 setpaymentdone(false)
                 navigate('/SuccessPayment')          
         } else {
-            alert("Enter correct UPI")
+            toast("Enter correct UPI")
         }
     }
     
@@ -76,7 +77,7 @@ export default function CheckOut() {
         let cardNum = /^[0-9]{16}$/;
         let resultCardNum = cardNum.test(debitdata.cardno);
         if (resultCardNum == false){
-            alert("Invalid Card Number");
+            toast("Invalid Card Number");
             return;
         }
         
@@ -84,14 +85,14 @@ export default function CheckOut() {
         let monthExp = /^(0[1-9]|1[0-2])$/;
         let resultExp = monthExp.test(debitdata.Expirymonth);
         if (resultExp == false){
-            alert("Invalid Month of Expiry");
+            toast("Invalid Month of Expiry");
             return;
         }
         //regex pattern for Year of Expiry
         let yearExp = /^(20[2-9][0-9]|2[1-9][0-9]{2}|30[0-5][0-9]|3060)$/;
         let resultExpYear = yearExp.test(debitdata.Expiryyear);
         if (resultExpYear == false){
-            alert("Invalid Year of Expiry");
+            toast("Invalid Year of Expiry");
             return;
         }
        
@@ -99,7 +100,7 @@ export default function CheckOut() {
         let cvv = /^[0-9]{3}$/;
         let resultCVV = cvv.test(debitdata.CVV);
         if (resultCVV == false){
-            alert("Invalid CVV");
+            toast("Invalid CVV");
             return;
         }
 
@@ -115,6 +116,7 @@ export default function CheckOut() {
     return (
         <>
         <div className='flex pay-opt'> <p style={{color:'#298E83'}}>MY BAG</p><p style={{color:'#298E83'}}> ----------- ADDRESS</p><p style={{color:'#298E83'}}> ----------- PAYMENT</p></div>
+        <ToastContainer position="top-right" />
         <div className='checkout-main'>
            {/* ========================Address box====================================== */}
             <div className='checkout-main-left'>
