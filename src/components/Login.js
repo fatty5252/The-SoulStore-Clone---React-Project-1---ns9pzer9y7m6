@@ -70,13 +70,8 @@ function Login() {
 
             navigate('/');
         }).catch((err) => {
-            // console.log(err.message?err.message:"Internal Server Error")
             console.log(err)
-            if (err.response.data.message === "Incorrect EmailId or Password") {
-                alert('Incorrect EmailId or Password')
-            } else if (err.response.data.message === "please provide email and password") {
-                alert("please provide email and password")
-            }
+            toast('Incorrect EmailId or Password')      
         });
     }
 
@@ -84,7 +79,7 @@ function Login() {
         event.preventDefault();
         setError(null);
         if (!data.name) {
-            setError(toast("User name is Mandatory"));            
+            setError(toast("User name is Mandatory"));          
             return;
         }
         else if (!data.email) {

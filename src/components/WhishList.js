@@ -4,6 +4,8 @@ import "../styles/WhishList.css";
 import { useUser } from '../providers/UserProvider';
 import Footer from './Footer';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function WhishList() {
     const { setWishListCount, cartItemToggle, whishListItem, setWhishListItem, setwishListToggle, wishListToggle, checkIfInWishlist } = useUser();
@@ -24,6 +26,7 @@ export default function WhishList() {
                 }
             );
             setwishListToggle(!wishListToggle);
+            toast("Product Remove From Wishlist!");
             // setWhishListItem(response.data.items);
 
         } catch (err) {
@@ -37,6 +40,7 @@ export default function WhishList() {
     return (
         <div >
             <div className='wish-heading'>
+        <ToastContainer position="top-right" />
                 <p>MY WISHLIST</p>
             </div>
             <hr></hr>
@@ -47,7 +51,7 @@ export default function WhishList() {
                         <>
                         <div key={index} className='whishlist-items>'>
                          <div className='sub-container' >
-                            <img onClick={()=>nevigateToProductDetails(item.products._id)} className='wishCart-img' src={item.products.displayImage} />
+                            <img onClick={()=>{nevigateToProductDetails(item.products._id)}} className='wishCart-img' src={item.products.displayImage} />
                             </div>
                             <div className='sub-container-items'>
                             <p className='brand-name'>{item.products.name}</p>
