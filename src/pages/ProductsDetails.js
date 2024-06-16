@@ -8,7 +8,7 @@ import { FaHeart } from "react-icons/fa";
 import { useUser } from "../providers/UserProvider";
 import { MdCancel } from "react-icons/md";
 import { Rating } from "@mui/material";
-import { ToastContainer, toast } from "react-toastify";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductsDetails() {
@@ -19,10 +19,6 @@ export default function ProductsDetails() {
     setCartItemCount,
     setCartItemToggle,
     cartItemToggle,
-    toggleheart,
-    settoggleheart,
-    togglewishlistpop,
-    settogglewishlistpop,
     isInWishlist,
     whishListItem,
   } = useUser();
@@ -80,7 +76,7 @@ export default function ProductsDetails() {
       localStorage.getItem("token") == undefined ||
       localStorage.getItem("token") == null
     ) {
-      toast("Please Login first");
+      toast.warn("Please Login first");
       return;
     }
     else {   
@@ -104,17 +100,19 @@ export default function ProductsDetails() {
           setCartItemCount(cartItemCount + 1);
           //  console.log(response.data.data.items.length);
           setToggleBtn(!toggleBtn);
-          setCartItemToggle(!cartItemToggle);
+          // setCartItemToggle(!cartItemToggle);
           settoggleSize(false);
-          settoggleadd(!toggleadd);
+          // settoggleadd(!toggleadd);
         }
+      toast.success("Product added to cart successfully!")
+
         // console.log(response);
       } catch (err) {
         console.log("Error shows ", err);
       }
     } else if (getSize === "") {
       settoggleSize(!toggleSize);
-      toast("PLease Select the Size First!")
+      toast.warn("PLease Select the Size First!")
     }
   }
   };
@@ -143,10 +141,6 @@ export default function ProductsDetails() {
     removeBTags();
   }, [productDetails.description, productDetails]);
 
-  // const separatedText = removeBTags(productDetails.description && productDetails.description);
-
-  // Log the cleaned array of separated text
-  // console.log(separatedText);
 
   return (
     <div className="main-container">
@@ -158,29 +152,6 @@ export default function ProductsDetails() {
           ))}
       </div>
       <div className="right-container">
-        {toggleadd && ( toast("Product added to cart Succesfully!")
-          // <div
-          //   style={{ background: "green", color: "white" }}
-          //   class="alert alert-warning addedsuccessfully"
-          //   role="alert"
-          // >
-          //   <p>Product added to cart succesfully.</p>{" "}
-          //   {toast("Product added to cart Succesfully!")}
-          //   <MdCancel onClick={() => settoggleadd(false)} />
-          // </div>
-        )}
-        {togglewishlistpop && (toast("Product added to your wishlist.")
-          // <div
-          //   style={{ background: "green", color: "white" }}
-          //   class="alert alert-warning addedsuccessfully"
-          //   role="alert"
-          // >
-          //   {/* <p>Product added to your wishlist.</p>{" "} */}
-          //   {toast("Product added to your wishlist.")}
-          //   <MdCancel onClick={() => settogglewishlistpop(false)} />
-          // </div>
-        )}
-
         <p className="name">{productDetails.name}</p>
         <p className="category">{productDetails.subCategory}</p>
         <hr></hr>
@@ -201,7 +172,6 @@ export default function ProductsDetails() {
                 {itemSize}
               </p>
             ))}
-          {/* {toggleSize ? toast("Please select the Size") : ""} */}
         </div>
         <p className="color bold">Color: {productDetails.color}</p>
         {/* <Rating name="read-only" value={productDetails.ratings} readOnly /> */}
@@ -264,7 +234,7 @@ export default function ProductsDetails() {
             }}
             className="wish-btn"
           >
-            {toggleheart[productDetails._id] || searchWishlisItem.length > 0 ? (
+            {searchWishlisItem.length > 0 ? (
               <FaHeart />
             ) : (
               <CiHeart />

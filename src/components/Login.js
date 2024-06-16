@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../providers/UserProvider";
 import "../styles/Login.css";
-import { ToastContainer, toast } from "react-toastify";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
@@ -25,7 +25,6 @@ function Login() {
         appType: 'ecommerce'
     });
     // console.log(data.gender);
-    const [error, setError] = useState(null);
 
     const navigate = useNavigate();
 
@@ -35,24 +34,19 @@ function Login() {
 
     const submitLoginHandler = (event) => {
         event.preventDefault();
-        setError(null);
+       
         if (!data.name) {
-            // setError("User name is Mandatory");
-            setError(toast("User name is Mandatory"));
+            (toast.warn("User name is Mandatory"));
             return;
         }
         else if (!data.email) {
-            setError(toast("Email is Mandatory"))
+            (toast.warn("Email is Mandatory"))
             return;
         }
         else if (!data.password) {
-            setError(toast("Pasword can not be empty"))
+            (toast.warn("Pasword can not be empty"))
             return;
         }
-        // else if (data.name !== name || data.email !== email || data.password !== password){
-        //     setError(toast("Please Enter a valid Details"))
-        //     return;
-        // }
         
         // console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/login', data, {
@@ -67,27 +61,26 @@ function Login() {
             setCartItemToggle(!cartItemToggle)
             console.log(result.data.token);
             console.log(result);
-
             navigate('/');
         }).catch((err) => {
             console.log(err)
-            toast('Incorrect EmailId or Password')      
+            toast.error('Incorrect EmailId or Password')      
         });
     }
 
     const submitRegisterHandler = (event) => {
         event.preventDefault();
-        setError(null);
+       
         if (!data.name) {
-            setError(toast("User name is Mandatory"));          
+            (toast.warn("User name is Mandatory"));          
             return;
         }
         else if (!data.email) {
-            setError(toast("Email is Mandatory"))
+            (toast.warn("Email is Mandatory"))
             return;
         }
         else if (!data.password) {
-            setError(toast("Pasword can not be empty"))
+            (toast.warn("Pasword can not be empty"))
             return;
         }
         let regex = /^[0-9]{10}$/;
@@ -95,14 +88,10 @@ function Login() {
         console.log(data.mobno);
         // console.log(result);
         if (result == false){
-            setError(toast("Invalid MobileNo."));
+            (toast.warn("Invalid MobileNo."));
             return;
         }
-        
-        // else if (gendertoggle) {
-        //     setError("Please select gender")
-        //     return;
-        // }
+       
         // console.log(data);
         axios.post('https://academics.newtonschool.co/api/v1/user/signup', data, {
             headers: {
@@ -115,19 +104,26 @@ function Login() {
                 setToggle(!toggle)
                 setCartItemToggle(!cartItemToggle)
             }
+           
         }).catch((err) => {
-            console.log(err.message ? err.message : "Internal Server Error")
-                toast("User already exists")
-            // if (err.message ? err.message : "User already exists") {
-            //     alert(toast("User already exists"))
-            // }
+            console.log(err);
+              (toast.error("User already exists"),{
+                    position: "top-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                    })
         });
     }
 
     return (
         <> <div className="lg-main">
             <div className="main-login-register-ctn">
-               <ToastContainer position="top-right" />
                 <div className="toggle-btn-container">
                     <button className={`btn-toggle ${toggle && "active-log-reg"}`} onClick={() => { setToggle(true) }}>Login</button>
                     <button className={`btn-toggle ${!toggle && "active-log-reg"}`} onClick={() => { setToggle(false) }}>Register</button>
@@ -213,6 +209,7 @@ function Login() {
                     </div>}
             </div>
         </div>
+        <ToastContainer position="top-right" />
         
         </>
     )

@@ -158,7 +158,7 @@ return (
           <input value={searchItem} onChange={(e)=>setSearchItem(e.target.value)} type="search" placeholder="Searchbar..."/></span>} */}
             {/* <div className="categoryUnderline" /> */}
           </div>
-          <div onClick={() => { console.log("clicked heart"); localStorage.getItem('token') ? navigate('/WhishList') :  toast("Please Login First!")}} className="categoryParent">
+          <div onClick={() => { console.log("clicked heart"); localStorage.getItem('token') ? navigate('/WhishList') :  toast.warn("Please Login First!")}} className="categoryParent">
             <span ><FaRegHeart /></span>
             {localStorage.getItem('token') && <sup>{whishListItem ? whishListItem.length : 0}</sup>}
             {/* {loginFirst && <div>
@@ -183,7 +183,7 @@ return (
             </li>
           </ul>
           {/* </div> */}
-          <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : toast("Please Login First!")} className="categoryParent">
+          <div onClick={() => localStorage.getItem('token') ? navigate('/ProductCart') : toast.warn("Please Login First!")} className="categoryParent">
             <span ><HiOutlineShoppingBag /></span>
             {localStorage.getItem('token') && <sup>{cartitem.length}</sup>}
           </div>

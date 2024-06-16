@@ -26,7 +26,7 @@ export default function WhishList() {
                 }
             );
             setwishListToggle(!wishListToggle);
-            toast("Product Remove From Wishlist!");
+            toast.success("Product Remove From Wishlist!");
             // setWhishListItem(response.data.items);
 
         } catch (err) {

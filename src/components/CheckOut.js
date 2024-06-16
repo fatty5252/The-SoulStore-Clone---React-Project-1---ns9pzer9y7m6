@@ -67,7 +67,8 @@ export default function CheckOut() {
                 setpaymentdone(false)
                 navigate('/SuccessPayment')          
         } else {
-            toast("Enter correct UPI")
+               <ToastContainer position="top-right" />
+               toast.error("Enter correct UPI")
         }
     }
     
@@ -77,7 +78,7 @@ export default function CheckOut() {
         let cardNum = /^[0-9]{16}$/;
         let resultCardNum = cardNum.test(debitdata.cardno);
         if (resultCardNum == false){
-            toast("Invalid Card Number");
+            toast.error("Invalid Card Number");
             return;
         }
         
@@ -85,14 +86,14 @@ export default function CheckOut() {
         let monthExp = /^(0[1-9]|1[0-2])$/;
         let resultExp = monthExp.test(debitdata.Expirymonth);
         if (resultExp == false){
-            toast("Invalid Month of Expiry");
+            toast.error("Invalid Month of Expiry");
             return;
         }
         //regex pattern for Year of Expiry
         let yearExp = /^(20[2-9][0-9]|2[1-9][0-9]{2}|30[0-5][0-9]|3060)$/;
         let resultExpYear = yearExp.test(debitdata.Expiryyear);
         if (resultExpYear == false){
-            toast("Invalid Year of Expiry");
+            toast.error("Invalid Year of Expiry");
             return;
         }
        
@@ -100,7 +101,7 @@ export default function CheckOut() {
         let cvv = /^[0-9]{3}$/;
         let resultCVV = cvv.test(debitdata.CVV);
         if (resultCVV == false){
-            toast("Invalid CVV");
+            toast.error("Invalid CVV");
             return;
         }
 

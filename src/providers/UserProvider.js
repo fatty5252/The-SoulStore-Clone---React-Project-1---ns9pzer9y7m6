@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const UserContext = createContext();
 
@@ -120,6 +122,14 @@ const [productID, setproductID] = useState('')
 
   //=================add item to wishList=============================================================
   const addToWhishList = async (id) => {
+    if (
+      localStorage.getItem("token") == "" ||
+      localStorage.getItem("token") == undefined ||
+      localStorage.getItem("token") == null
+    ) {
+      toast.warn("Please Login first");    
+    }
+    else {
     try {
       const response = await axios.patch(
         `https://academics.newtonschool.co/api/v1/ecommerce/wishlist/`,
@@ -132,20 +142,24 @@ const [productID, setproductID] = useState('')
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         }
+        
       );
       console.log('response-------->', response);
-      settoggleheart((prev) => ({ ...prev, [id]: !prev[id] }))
+      // settoggleheart((prev) => ({ ...prev, [id]: !prev[id] }))
       if (response.data.status === 'success') {
         setIsInWhishList(true);
-        setCartItemToggle(!cartItemToggle);
+        // setCartItemToggle(!cartItemToggle);
         settoggleheart(true);
         setWishListCount(wishListCount + 1);
         settogglewishlistpop(!togglewishlistpop);
       }
+      toast.success("Product added to your wishlist.");
+        
     } 
     catch (err) {
       console.log("Error shows ", err);
     }
+  }
   };
 
   const getCategoryImage = (category) => {
@@ -186,6 +200,7 @@ const [productID, setproductID] = useState('')
   return (
     <div>
       <UserContext.Provider value={object}>
+      <ToastContainer position="top-center" />
         {children}
       </UserContext.Provider>
     </div>

@@ -74,11 +74,6 @@ function ResponsiveAppBar() {
 
   const navigate = useNavigate();
 
-  //============toaster func===================================
-  // function LoginAleart() {
-  //   const notify = () => toast("Wow so easy!");
-  // }
-
   const toggeleNavBar = () => {
     setToggleNav(!toggelNav);
 
@@ -352,7 +347,6 @@ function ResponsiveAppBar() {
                     localStorage.getItem("token")
                       ? navigate("/WhishList")
                       : setLoginFirst(!loginFirst);
-                    console.log("showtoast");
                   }}
                   className="categoryParent"
                 >
@@ -367,8 +361,8 @@ function ResponsiveAppBar() {
                   {loginFirst && (
                     <div >
                       {/* <p>Please Login First!</p>{" "} */}
-                     { toast("Please Login First")}
-                      <MdCancel onClick={() => setLoginFirst(false)} />
+                     { toast.warn("Please Login First")}
+                      {/* <MdCancel onClick={() => setLoginFirst(false)} /> */}
                     </div>
                   )}
                              

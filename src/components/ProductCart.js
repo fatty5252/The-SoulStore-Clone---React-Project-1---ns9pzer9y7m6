@@ -5,6 +5,8 @@ import { CiHeart } from "react-icons/ci";
 import "../styles/ProductCart.css";
 import { useUser } from '../providers/UserProvider';
 import Footer from './Footer';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ProductCart() {
 
@@ -91,6 +93,7 @@ export default function ProductCart() {
       </div>}
       <hr></hr>
       <div className='main-addCart-container flex'>
+      <ToastContainer position="top-right" />
         <div className='leftCart-container flex' >
           <div className='address-bar flex'>
             {!storageData ? <span className='address-para '>Please select address..</span>
@@ -143,8 +146,8 @@ export default function ProductCart() {
                     </div>
                     <div>
                       <div className='btns-del-add flex'>
-                        <button onClick={() => deleteCartItems(item.product._id)} className='remove-del'>REMOVE</button>
-                        <button onClick={() => { addToWhishList(item.product._id), deleteCartItems(item.product._id) }}
+                        <button onClick={() => {deleteCartItems(item.product._id); toast.success("Product deleted from cart successfully!")}}  className='remove-del'>REMOVE</button>
+                        <button onClick={() => { addToWhishList(item.product._id), deleteCartItems(item.product._id); toast.success("Product move to wishlist successfully!") }}
                           className='remove-del' ><CiHeart /> MOVE TO WHISHLIST</button>
                       </div>
                     </div>

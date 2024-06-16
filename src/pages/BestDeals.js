@@ -4,6 +4,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import { useNavigate } from 'react-router-dom';
 import { Rating } from '@mui/material';
+
+
 const SamplePrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
@@ -96,6 +98,7 @@ const BestDealsCarousel = ({ deals }) => {
           ))
         ) : (
           <p>Loading...</p>
+        
         )}
       </Slider>
     </div>
